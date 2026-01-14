@@ -57,13 +57,13 @@
             transform: translateY(0) scale(1);
         }
 
-        /* Swapping Project Animation */
-        .project-pair {
+        /* Swapping Animation Logic */
+        .swap-group {
             display: none;
             animation: swapFade 1s ease-in-out forwards;
         }
 
-        .project-pair.active-pair {
+        .active-swap {
             display: grid;
         }
 
@@ -79,14 +79,17 @@
             backdrop-filter: blur(12px);
             border: 1px solid rgba(226, 232, 240, 0.8);
             border-radius: 1.5rem;
-            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
         }
 
-        .journey-container { position: relative; padding-left: 2rem; }
-        .journey-line { position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: linear-gradient(to bottom, var(--primary), var(--secondary)); border-radius: 2px; opacity: 0.3; }
-        .journey-point { position: absolute; left: -38px; top: 20px; width: 16px; height: 16px; background: white; border: 4px solid var(--primary); border-radius: 50%; z-index: 10; }
-        
-        .flashcard-wide-container { perspective: 1500px; width: 100%; height: 180px; margin-bottom: 1.5rem; position: relative; }
+        .journey-line { 
+            position: absolute; left: 0; top: 0; bottom: 0; width: 4px; 
+            background: linear-gradient(to bottom, var(--primary), var(--secondary)); 
+            border-radius: 2px; opacity: 0.3; 
+        }
+
+        /* Wide Flashcards */
+        .flashcard-wide-container { perspective: 1500px; width: 100%; height: 180px; position: relative; }
         .flashcard-inner { position: relative; width: 100%; height: 100%; transition: transform 0.8s; transform-style: preserve-3d; cursor: pointer; }
         .flashcard-inner.is-flipped { transform: rotateX(180deg); }
         .flashcard-front, .flashcard-back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 1.25rem; display: flex; align-items: center; padding: 1.5rem; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
@@ -121,18 +124,18 @@
                 </div>
                 <div class="lg:col-span-8">
                     <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-50 border border-teal-100 text-teal-700 text-xs font-bold uppercase tracking-widest mb-6">
-                        <span class="w-2 h-2 rounded-full bg-teal-500 animate-pulse"></span> Bioinformatician | Pharmacist
+                        <span class="w-2 h-2 rounded-full bg-teal-500 animate-pulse"></span> Bioinformatician | Pharmacist [cite: 2]
                     </div>
                     <h1 class="text-4xl md:text-6xl font-heading font-bold text-slate-900 leading-tight mb-6">The <span class="text-teal-600">Genomic</span> Journey.</h1>
-                    <p class="text-lg text-slate-600 mb-8 max-w-2xl">Hybrid specialist at the intersection of clinical pharmacology and computational data science[cite: 6]. Specialising in <strong>Single-Cell Analysis</strong> and <strong>NGS workflows</strong>[cite: 7, 8].</p>
+                    <p class="text-lg text-slate-600 mb-8 max-w-2xl">Hybrid specialist at the intersection of clinical pharmacology and computational data science[cite: 6]. Specialising in <strong>Single-Cell Analysis</strong> and <strong>NGS workflows</strong>[cite: 7].</p>
                     <div class="flex gap-4">
                         <div class="glass-panel p-4 flex-1 border-l-4 border-teal-500">
                             <p class="text-[10px] text-slate-500 font-bold uppercase">Workflows</p>
-                            <p class="text-lg font-bold text-slate-900">Nextflow</p>
+                            <p class="text-lg font-bold text-slate-900">Nextflow [cite: 12]</p>
                         </div>
                         <div class="glass-panel p-4 flex-1 border-l-4 border-indigo-500">
                             <p class="text-[10px] text-slate-500 font-bold uppercase">Location</p>
-                            <p class="text-lg font-bold text-slate-900">Riyadh, KSA</p>
+                            <p class="text-lg font-bold text-slate-900">Riyadh, KSA [cite: 3]</p>
                         </div>
                     </div>
                 </div>
@@ -143,7 +146,7 @@
             <div class="content-wrap text-center max-w-4xl">
                 <h2 class="text-4xl font-heading font-bold text-slate-900 mb-8">Professional Profile</h2>
                 <div class="glass-panel p-10 text-left text-slate-700 leading-relaxed text-lg shadow-xl">
-                    Accomplished Bioinformatics Professional with a foundational background in Pharmacy, uniquely positioned at the intersection of clinical pharmacology and computational data science[cite: 6]. Leveraging years of pharmaceutical expertise to specialise in Single-Cell Analysis and Next-Generation Sequencing (NGS) workflows[cite: 7, 8]. Proven expertise in leveraging Python and statistics to interpret multi-omic data, with advanced technical training completed through the National Bioinformatics Infrastructure Sweden (NBIS)[cite: 8]. Dedicated to advancing Saudi Arabia’s Vision 2030 healthcare goals by applying computational drug discovery and precision medicine to improve patient outcomes in government and startup research environments[cite: 9].
+                    Accomplished Bioinformatics Professional with a foundational background in Pharmacy, uniquely positioned at the intersection of clinical pharmacology and computational data science[cite: 6]. Leveraging years of pharmaceutical expertise to specialise in Single-Cell Analysis and Next-Generation Sequencing (NGS) workflows[cite: 7]. Proven expertise in leveraging Python and statistics to interpret multi-omic data, with advanced technical training completed through the National Bioinformatics Infrastructure Sweden (NBIS)[cite: 8]. Dedicated to advancing Saudi Arabia’s Vision 2030 healthcare goals by applying computational drug discovery and precision medicine to improve patient outcomes in government and startup research environments[cite: 9].
                 </div>
             </div>
         </section>
@@ -152,43 +155,42 @@
             <div class="content-wrap w-full">
                 <div class="mb-12 border-b border-slate-200 pb-6">
                     <h2 class="text-4xl font-heading font-bold text-slate-900">Research Lab</h2>
-                    <p class="text-slate-500 mt-2 text-lg">Computational drug discovery and precision medicine workflows[cite: 9].</p>
                 </div>
 
-                <div id="pair-1" class="project-pair active-pair grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div class="glass-panel p-8 hover:border-teal-500 transition-colors group">
-                        <h3 class="text-2xl font-bold text-slate-900 mb-3">Covid-19 Single-Cell Analysis</h3>
+                <div id="project-group-1" class="swap-group active-swap grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="glass-panel p-8">
+                        <h3 class="text-2xl font-bold text-slate-900 mb-3">Covid-19 Single-Cell Analysis [cite: 15]</h3>
                         <p class="text-slate-600 mb-6 leading-relaxed">Performed downstream analysis on six PBMC samples to compare transcriptomic profiles[cite: 16].</p>
-                        <div class="flex gap-2 pt-6 border-t border-slate-100">
-                            <span class="px-3 py-1 bg-slate-100 text-slate-600 text-xs rounded-md font-mono">Python</span>
-                            <span class="px-3 py-1 bg-slate-100 text-slate-600 text-xs rounded-md font-mono">Scanpy</span>
+                        <div class="flex gap-2 pt-6 border-t">
+                            <span class="px-3 py-1 bg-slate-100 text-xs rounded-md font-mono">Python [cite: 15]</span>
+                            <span class="px-3 py-1 bg-slate-100 text-xs rounded-md font-mono">Scanpy [cite: 15]</span>
                         </div>
                     </div>
-                    <div class="glass-panel p-8 hover:border-indigo-500 transition-colors group">
-                        <h3 class="text-2xl font-bold text-slate-900 mb-3">Spatial & scRNA-seq Integration</h3>
+                    <div class="glass-panel p-8">
+                        <h3 class="text-2xl font-bold text-slate-900 mb-3">Spatial & scRNA-seq Integration [cite: 24]</h3>
                         <p class="text-slate-600 mb-6 leading-relaxed">Integrated spatial datasets using Scanorama to achieve accurate cell-type mapping[cite: 25].</p>
-                        <div class="flex gap-2 pt-6 border-t border-slate-100">
-                            <span class="px-3 py-1 bg-slate-100 text-slate-600 text-xs rounded-md font-mono">Scanorama</span>
-                            <span class="px-3 py-1 bg-slate-100 text-slate-600 text-xs rounded-md font-mono">Nextflow</span>
+                        <div class="flex gap-2 pt-6 border-t">
+                            <span class="px-3 py-1 bg-slate-100 text-xs rounded-md font-mono">Scanorama [cite: 24]</span>
+                            <span class="px-3 py-1 bg-slate-100 text-xs rounded-md font-mono">Python [cite: 24]</span>
                         </div>
                     </div>
                 </div>
 
-                <div id="pair-2" class="project-pair grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div class="glass-panel p-8 hover:border-amber-500 transition-colors group">
-                        <h3 class="text-2xl font-bold text-slate-900 mb-3">Memory-Efficient Pipelines</h3>
+                <div id="project-group-2" class="swap-group grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="glass-panel p-8">
+                        <h3 class="text-2xl font-bold text-slate-900 mb-3">Memory-Efficient Pipelines [cite: 21]</h3>
                         <p class="text-slate-600 mb-6 leading-relaxed">Analysed 10x Genomics datasets using Scarf and Dask for low-memory chunking[cite: 22].</p>
-                        <div class="flex gap-2 pt-6 border-t border-slate-100">
-                            <span class="px-3 py-1 bg-slate-100 text-slate-600 text-xs rounded-md font-mono">Scarf</span>
-                            <span class="px-3 py-1 bg-slate-100 text-slate-600 text-xs rounded-md font-mono">Zarr</span>
+                        <div class="flex gap-2 pt-6 border-t">
+                            <span class="px-3 py-1 bg-slate-100 text-xs rounded-md font-mono">Scarf [cite: 21]</span>
+                            <span class="px-3 py-1 bg-slate-100 text-xs rounded-md font-mono">Zarr [cite: 21]</span>
                         </div>
                     </div>
-                    <div class="glass-panel p-8 hover:border-blue-500 transition-colors group">
-                        <h3 class="text-2xl font-bold text-slate-900 mb-3">Genomic Data Visualisation</h3>
+                    <div class="glass-panel p-8">
+                        <h3 class="text-2xl font-bold text-slate-900 mb-3">Genomic Data Visualisation [cite: 18]</h3>
                         <p class="text-slate-600 mb-6 leading-relaxed">Developed publication-quality visuals transforming raw data into insights[cite: 19].</p>
-                        <div class="flex gap-2 pt-6 border-t border-slate-100">
-                            <span class="px-3 py-1 bg-slate-100 text-slate-600 text-xs rounded-md font-mono">R</span>
-                            <span class="px-3 py-1 bg-slate-100 text-slate-600 text-xs rounded-md font-mono">ggplot2</span>
+                        <div class="flex gap-2 pt-6 border-t">
+                            <span class="px-3 py-1 bg-slate-100 text-xs rounded-md font-mono">R [cite: 18]</span>
+                            <span class="px-3 py-1 bg-slate-100 text-xs rounded-md font-mono">ggplot2 [cite: 18]</span>
                         </div>
                     </div>
                 </div>
@@ -197,10 +199,78 @@
 
         <section id="experience">
             <div class="content-wrap w-full">
-                <h2 class="text-3xl font-heading font-bold text-slate-900 mb-12 border-b pb-4">Professional Journey</h2>
-                <div class="journey-container max-h-[500px] overflow-y-auto pr-4">
-                    <div class="journey-line"></div>
-                    <div id="experience-timeline" class="space-y-4"></div>
+                <div class="mb-12 border-b border-slate-200 pb-4">
+                    <h2 class="text-4xl font-heading font-bold text-slate-900">Professional Journey [cite: 5]</h2>
+                </div>
+
+                <div id="journey-group-1" class="swap-group active-swap grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="flashcard-wide-container">
+                        <div class="flashcard-inner" onclick="this.classList.toggle('is-flipped')">
+                            <div class="flashcard-front">
+                                <div class="w-full">
+                                    <h3 class="text-xl font-bold">Scientific Engagement Officer [cite: 28]</h3>
+                                    <p class="text-slate-500">Salmawit Co. Ltd | 2021-2022 [cite: 28, 29]</p>
+                                </div>
+                            </div>
+                            <div class="flashcard-back">
+                                <ul class="text-sm">
+                                    <li>• Evaluated genomic-related clinical studies[cite: 32].</li>
+                                    <li>• Translated high-dimensional biological findings[cite: 33].</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flashcard-wide-container">
+                        <div class="flashcard-inner" onclick="this.classList.toggle('is-flipped')">
+                            <div class="flashcard-front">
+                                <div class="w-full">
+                                    <h3 class="text-xl font-bold">Production Supervisor [cite: 34]</h3>
+                                    <p class="text-slate-500">Blue Nile Pharma | 2019-2021 [cite: 34]</p>
+                                </div>
+                            </div>
+                            <div class="flashcard-back">
+                                <ul class="text-sm">
+                                    <li>• Engineered 4x throughput increase[cite: 35].</li>
+                                    <li>• Managed manufacturing under GMP[cite: 37].</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="journey-group-2" class="swap-group grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="flashcard-wide-container">
+                        <div class="flashcard-inner" onclick="this.classList.toggle('is-flipped')">
+                            <div class="flashcard-front">
+                                <div class="w-full">
+                                    <h3 class="text-xl font-bold">Medical Representative [cite: 38]</h3>
+                                    <p class="text-slate-500">Aurobindo Pharma | 2017-2018 [cite: 39]</p>
+                                </div>
+                            </div>
+                            <div class="flashcard-back">
+                                <ul class="text-sm">
+                                    <li>• Interpreted multidimensional clinical studies[cite: 41].</li>
+                                    <li>• Analyzed institutional healthcare data[cite: 42].</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flashcard-wide-container">
+                        <div class="flashcard-inner" onclick="this.classList.toggle('is-flipped')">
+                            <div class="flashcard-front">
+                                <div class="w-full">
+                                    <h3 class="text-xl font-bold">Pharmacist [cite: 49, 54]</h3>
+                                    <p class="text-slate-500">Sudan Military Hospital & Wenji [cite: 49, 54]</p>
+                                </div>
+                            </div>
+                            <div class="flashcard-back">
+                                <ul class="text-sm">
+                                    <li>• Dispensed medications with 100% accuracy[cite: 51].</li>
+                                    <li>• Monitored controlled substances[cite: 56].</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -208,14 +278,14 @@
         <section id="education" class="bg-slate-900 text-white">
             <div class="content-wrap text-center">
                 <i data-lucide="graduation-cap" class="w-16 h-16 mx-auto mb-8 text-teal-400"></i>
-                <h2 class="text-5xl font-heading font-bold mb-4">Academic Foundation</h2>
+                <h2 class="text-5xl font-heading font-bold mb-4">Academic Foundation [cite: 58]</h2>
                 <h3 class="text-2xl mb-2">Bachelor of Science in Pharmacy [cite: 59]</h3>
                 <p class="text-teal-400 font-bold uppercase tracking-widest text-sm mb-12">National Ribat University, Khartoum [cite: 60]</p>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto">
-                    <div class="glass-panel p-4 text-slate-900 font-bold">Pharmacology [cite: 62]</div>
-                    <div class="glass-panel p-4 text-slate-900 font-bold">Biochemistry [cite: 62]</div>
-                    <div class="glass-panel p-4 text-slate-900 font-bold">Microbiology [cite: 62]</div>
-                    <div class="glass-panel p-4 text-slate-900 font-bold">Clinical Pharm [cite: 62]</div>
+                    <div class="glass-panel p-4 text-slate-900 font-bold">Pharmacology </div>
+                    <div class="glass-panel p-4 text-slate-900 font-bold">Biochemistry </div>
+                    <div class="glass-panel p-4 text-slate-900 font-bold">Microbiology </div>
+                    <div class="glass-panel p-4 text-slate-900 font-bold">Clinical Pharm </div>
                 </div>
             </div>
         </section>
@@ -224,43 +294,19 @@
     <script>
         lucide.createIcons();
 
-        const experience = [
-            { role: 'Scientific Engagement Officer [cite: 28]', co: 'Salmawit Co. Ltd [cite: 28]', yr: '2021-2022 [cite: 29]', icon: 'zap', bullets: ['Synthesised clinical data for HCPs [cite: 30].', 'Evaluated genomic clinical studies[cite: 32].'] },
-            { role: 'Production Supervisor [cite: 34]', co: 'Blue Nile Pharma [cite: 34]', yr: '2019-2021 [cite: 34]', icon: 'settings', bullets: ['Engineered 4x throughput increase [cite: 35].', 'Managed GMP standards[cite: 37].'] },
-            { role: 'Medical Representative [cite: 38]', co: 'Aurobindo Pharma [cite: 38]', yr: '2017-2018 [cite: 39]', icon: 'briefcase', bullets: ['Interpreted clinical studies [cite: 41].', 'Analyzed healthcare data[cite: 42].'] }
-        ];
-
-        function renderWideFlashcards() {
-            const container = document.getElementById('experience-timeline');
-            experience.forEach(item => {
-                const wrapper = document.createElement('div');
-                wrapper.className = "flashcard-wide-container";
-                wrapper.innerHTML = `
-                    <div class="journey-point"></div>
-                    <div class="flashcard-inner" onclick="this.classList.toggle('is-flipped')">
-                        <div class="flashcard-front">
-                            <div class="flex items-center w-full">
-                                <div class="w-12 h-12 bg-teal-50 text-teal-600 rounded-xl flex items-center justify-center mr-6"><i data-lucide="${item.icon}"></i></div>
-                                <div class="flex-grow"><h3 class="text-xl font-bold">${item.role}</h3><p class="text-sm text-slate-500 font-semibold">${item.co}</p></div>
-                                <span class="text-xs font-bold text-teal-600 bg-teal-50 px-3 py-1 rounded-full uppercase">${item.yr}</span>
-                            </div>
-                        </div>
-                        <div class="flashcard-back">
-                            <ul class="text-sm space-y-2">${item.bullets.map(b => `<li>• ${b}</li>`).join('')}</ul>
-                        </div>
-                    </div>`;
-                container.appendChild(wrapper);
-            });
-            lucide.createIcons();
+        // Universal Group Swapper
+        function setupSwapper(groupIdPrefix, interval) {
+            let active = 1;
+            setInterval(() => {
+                document.getElementById(`${groupIdPrefix}-${active}`).classList.remove('active-swap');
+                active = active === 1 ? 2 : 1;
+                document.getElementById(`${groupIdPrefix}-${active}`).classList.add('active-swap');
+            }, interval);
         }
 
-        // Project Swapping Interval
-        let activePair = 1;
-        setInterval(() => {
-            document.getElementById(`pair-${activePair}`).classList.remove('active-pair');
-            activePair = activePair === 1 ? 2 : 1;
-            document.getElementById(`pair-${activePair}`).classList.add('active-pair');
-        }, 5000);
+        // Setup swaps for both Research and Journey
+        setupSwapper('project-group', 5000);
+        setupSwapper('journey-group', 6000);
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -274,8 +320,6 @@
         function scrollToSection(id) {
             document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
         }
-
-        window.onload = () => { renderWideFlashcards(); };
     </script>
 </body>
 </html>
