@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,24 +7,18 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@300;400;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&family=Inter:wght@400;600&display=swap');
         
-        :root {
-            --primary: #0d9488;
-            --secondary: #4f46e5;
-            --dark: #0f172a;
-        }
-
         body, html {
             margin: 0; padding: 0;
-            height: 100%;
+            height: 100vh;
             font-family: 'Inter', sans-serif;
-            background-color: var(--dark);
+            background-color: #0f172a;
             color: white;
-            overflow: hidden; /* Essential for deck feel */
+            overflow: hidden;
         }
 
-        /* Swapping Animation Engine */
+        /* The Animation Engine */
         .presentation-deck {
             height: 100vh;
             overflow-y: scroll;
@@ -45,49 +39,42 @@
             position: relative;
         }
 
-        /* Slide Swap Transitions */
+        /* Swapping Entrance Animation */
         .slide > div {
             opacity: 0;
-            transform: translateY(50px);
-            transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+            transform: translateY(60px) scale(0.9);
+            transition: all 0.9s cubic-bezier(0.22, 1, 0.36, 1);
         }
 
         .slide.active > div {
             opacity: 1;
-            transform: translateY(0);
+            transform: translateY(0) scale(1);
         }
 
         .font-heading { font-family: 'Space Grotesk', sans-serif; }
 
-        /* Component Styling */
         .profile-container {
-            position: relative;
-            padding: 10px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            padding: 8px;
+            background: linear-gradient(135deg, #0d9488, #4f46e5);
             border-radius: 2rem;
-            width: 240px; height: 300px;
+            width: 220px; height: 280px;
         }
 
         .bento-card {
             background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 1.5rem;
             padding: 2rem;
-            transition: border-color 0.3s;
         }
 
-        .bento-card:hover { border-color: var(--primary); }
-
         .tag {
-            background: var(--primary);
-            color: white;
+            background: #0d9488;
             padding: 4px 12px;
             border-radius: 999px;
             font-size: 0.75rem;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.05em;
         }
     </style>
 </head>
@@ -103,8 +90,8 @@
                              onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1000&auto=format&fit=crop'">
                     </div>
                 </div>
-                <h1 class="text-5xl md:text-7xl font-heading font-bold mb-4">Mohamed Elmugtaba</h1>
-                <p class="text-xl text-teal-400 font-medium mb-6">Bioinformatician | Pharmacist</p>
+                <h1 class="text-5xl md:text-6xl font-heading font-bold mb-4">Mohamed Elmugtaba</h1>
+                <p class="text-xl text-teal-400 mb-6">Bioinformatician | Pharmacist</p>
                 <div class="flex gap-4 text-sm opacity-70">
                     <span>📍 Riyadh, KSA</span>
                     <span>🇸🇩 Sudanese</span>
@@ -118,19 +105,16 @@
                 <h2 class="text-3xl font-heading font-bold mb-12 text-center">Technical Arsenal</h2>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <div class="bento-card">
-                        <i data-lucide="code" class="text-teal-400 mb-4"></i>
-                        <h3 class="font-bold mb-2">Programming</h3>
-                        <p class="text-sm opacity-70">Python, R Language, Bash Scripting, Linux CLI</p>
+                        <h3 class="font-bold text-teal-400 mb-2">Programming</h3>
+                        <p class="text-sm opacity-75">Python, R Language, Bash Scripting, Linux CLI</p>
                     </div>
                     <div class="bento-card">
-                        <i data-lucide="dna" class="text-indigo-400 mb-4"></i>
-                        <h3 class="font-bold mb-2">Bioinformatics</h3>
-                        <p class="text-sm opacity-70">Scanpy, Scarf, Nextflow Pipeline Development</p>
+                        <h3 class="font-bold text-indigo-400 mb-2">Bioinformatics</h3>
+                        <p class="text-sm opacity-75">Scanpy, Scarf, Nextflow Pipeline Development</p>
                     </div>
                     <div class="bento-card">
-                        <i data-lucide="database" class="text-amber-400 mb-4"></i>
-                        <h3 class="font-bold mb-2">Data Environments</h3>
-                        <p class="text-sm opacity-70">Jupyter Notebook, RStudio, Conda, Git/GitHub</p>
+                        <h3 class="font-bold text-amber-400 mb-2">Data Labs</h3>
+                        <p class="text-sm opacity-75">Jupyter Notebook, RStudio, Conda, Git/GitHub</p>
                     </div>
                 </div>
             </div>
@@ -140,15 +124,15 @@
             <div class="max-w-5xl w-full">
                 <h2 class="text-3xl font-heading font-bold mb-12 text-center">Genomic Research</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div class="bento-card border-l-4 border-l-teal-500">
+                    <div class="bento-card border-t-4 border-t-teal-500">
                         <span class="tag mb-4">scRNA-seq</span>
                         <h3 class="text-xl font-bold mb-2">Covid-19 Single-Cell Analysis</h3>
-                        <p class="text-sm opacity-70">Transcriptomic profiles of PBMC samples comparing patients vs controls.</p>
+                        <p class="text-sm opacity-70">Analysis of 6 PBMC samples comparing transcriptomic profiles of COVID-19 patients vs controls.</p>
                     </div>
-                    <div class="bento-card border-l-4 border-l-indigo-500">
+                    <div class="bento-card border-t-4 border-t-indigo-500">
                         <span class="tag mb-4">Spatial</span>
-                        <h3 class="text-xl font-bold mb-2">Spatial Transcriptomics</h3>
-                        <p class="text-sm opacity-70">Batch correction with Scanorama to map gene expression in tissue architectures.</p>
+                        <h3 class="text-xl font-bold mb-2">Spatial Transcriptomics Integration</h3>
+                        <p class="text-sm opacity-70">Utilized Scanorama to integrate spatial datasets with single-cell references for batch correction.</p>
                     </div>
                 </div>
             </div>
@@ -157,11 +141,10 @@
         <section class="slide bg-slate-950">
             <div class="max-w-4xl w-full">
                 <div class="bento-card text-center py-16">
-                    <span class="text-teal-400 font-heading text-6xl font-bold block mb-4">4X</span>
+                    <span class="text-teal-400 font-heading text-7xl font-bold block mb-4">4X</span>
                     <h3 class="text-2xl font-bold mb-2">Production Supervisor | Blue Nile Pharma</h3>
                     <p class="text-lg opacity-80 max-w-2xl mx-auto">
-                        Engineered a 4x manufacturing throughput increase by optimizing production cycles and 
-                        maintaining strict GMP standards.
+                        Engineered a four-fold throughput increase by optimizing production cycles and implementing data-driven improvements under GMP standards.
                     </p>
                 </div>
             </div>
@@ -169,28 +152,41 @@
 
         <section class="slide bg-slate-900">
             <div class="max-w-4xl w-full">
-                <div class="bento-card">
-                    <i data-lucide="zap" class="text-indigo-400 w-12 h-12 mb-6"></i>
-                    <h3 class="text-3xl font-bold mb-4">Scientific Engagement Officer</h3>
-                    <h4 class="text-teal-400 mb-6">Salmawit Co. Ltd | 2021-2022</h4>
-                    <p class="text-lg opacity-80 leading-relaxed">
-                        Communicated complex clinical trial data and molecular mechanism-of-action studies 
-                        to healthcare professionals to support evidence-based decision-making.
+                <div class="bento-card border-l-4 border-l-indigo-500">
+                    <h3 class="text-2xl font-bold mb-2">Scientific Engagement Officer</h3>
+                    <h4 class="text-indigo-400 mb-6">Salmawit Co. Ltd | 2021-2022</h4>
+                    <p class="opacity-80 leading-relaxed">
+                        Evaluated peer-reviewed medical literature and genomic clinical studies to translate high-dimensional biological findings into therapeutic insights.
                     </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="slide bg-slate-950">
+            <div class="max-w-5xl w-full">
+                <h2 class="text-3xl font-heading font-bold mb-12 text-center">Clinical Roots</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bento-card">
+                        <h3 class="font-bold text-teal-400">Medical Representative</h3>
+                        <p class="text-sm opacity-70 mt-2">Aurobindo Pharma & Bioderma (2017-2018). Interpreted clinical studies and healthcare data trends.</p>
+                    </div>
+                    <div class="bento-card">
+                        <h3 class="font-bold text-indigo-400">Hospital Pharmacist</h3>
+                        <p class="text-sm opacity-70 mt-2">Sudan Military Hospital & Wenji Pharmacy (2016). Monitored drug therapy and dispensed with 100% accuracy.</p>
+                    </div>
                 </div>
             </div>
         </section>
 
         <section class="slide bg-indigo-900">
             <div class="max-w-4xl text-center">
-                <i data-lucide="graduation-cap" class="w-16 h-16 mx-auto mb-8 text-white"></i>
                 <h2 class="text-5xl font-heading font-bold mb-4">B.Sc. in Pharmacy</h2>
-                <h3 class="text-2xl mb-8">National Ribat University, Khartoum</h3>
-                <div class="flex flex-wrap justify-center gap-4">
+                <h3 class="text-2xl opacity-90 mb-8">National Ribat University, Khartoum</h3>
+                <div class="flex flex-wrap justify-center gap-4 text-sm">
                     <span class="bg-white/10 px-4 py-2 rounded-lg">Pharmacology</span>
                     <span class="bg-white/10 px-4 py-2 rounded-lg">Biochemistry</span>
-                    <span class="bg-white/10 px-4 py-2 rounded-lg">Clinical Pharm</span>
                     <span class="bg-white/10 px-4 py-2 rounded-lg">Microbiology</span>
+                    <span class="bg-white/10 px-4 py-2 rounded-lg">Clinical Pharm</span>
                 </div>
             </div>
         </section>
@@ -199,22 +195,17 @@
             <div class="max-w-5xl w-full flex flex-col md:flex-row gap-12">
                 <div class="flex-1">
                     <h2 class="text-5xl font-heading font-bold text-indigo-600 mb-6">Connect.</h2>
-                    <p class="text-xl opacity-70 mb-8">Available for Precision Medicine and Bioinformatics Research in Riyadh.</p>
-                    <div class="space-y-4">
-                        <div class="flex items-center gap-4">
-                            <i data-lucide="mail" class="text-indigo-500"></i>
-                            <span class="font-bold">Mujtababarsi@mail.com</span>
-                        </div>
-                        <div class="flex items-center gap-4">
-                            <i data-lucide="github" class="text-indigo-500"></i>
-                            <span class="font-bold">github.com/Mujtababarsi</span>
-                        </div>
+                    <p class="text-xl opacity-70 mb-8">Available for Precision Medicine and Research roles in Riyadh.</p>
+                    <div class="space-y-4 font-bold">
+                        <p>📧 Mujtababarsi@mail.com</p>
+                        <p>🔗 github.com/Mujtababarsi</p>
+                        <p>📞 0536986581</p>
                     </div>
                 </div>
                 <form class="flex-1 flex flex-col gap-4 p-8 bg-slate-50 rounded-3xl" onsubmit="event.preventDefault(); alert('Message Sent!');">
-                    <input type="text" placeholder="Name" class="p-4 rounded-xl border-none ring-1 ring-slate-200" required>
-                    <input type="email" placeholder="Email" class="p-4 rounded-xl border-none ring-1 ring-slate-200" required>
-                    <textarea placeholder="Message" rows="4" class="p-4 rounded-xl border-none ring-1 ring-slate-200" required></textarea>
+                    <input type="text" placeholder="Name" class="p-4 rounded-xl border border-slate-200" required>
+                    <input type="email" placeholder="Email" class="p-4 rounded-xl border border-slate-200" required>
+                    <textarea placeholder="Your Message..." rows="4" class="p-4 rounded-xl border border-slate-200" required></textarea>
                     <button type="submit" class="bg-indigo-600 text-white p-4 rounded-xl font-bold hover:bg-teal-600 transition-colors">Send Inquiry</button>
                 </form>
             </div>
@@ -225,8 +216,6 @@
     <script>
         lucide.createIcons();
 
-        // Animation Swapping Logic
-        const observerOptions = { threshold: 0.6 };
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -235,16 +224,9 @@
                     entry.target.classList.remove('active');
                 }
             });
-        }, observerOptions);
+        }, { threshold: 0.6 });
 
         document.querySelectorAll('.slide').forEach(slide => observer.observe(slide));
-
-        // Keyboard navigation
-        window.addEventListener('keydown', (e) => {
-            const deck = document.querySelector('.presentation-deck');
-            if (e.key === 'ArrowDown') deck.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
-            if (e.key === 'ArrowUp') deck.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
-        });
     </script>
 </body>
 </html>
