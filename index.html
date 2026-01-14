@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mohamed Elmugtaba | Bioinformatician & Pharmacist</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;600&display=swap');
@@ -21,7 +20,7 @@
         html, body {
             margin: 0; padding: 0;
             height: 100vh;
-            overflow: hidden; /* Prevent body scroll */
+            overflow: hidden;
             font-family: 'Inter', sans-serif;
             background-color: var(--bg-light);
         }
@@ -29,7 +28,7 @@
         /* Main Deck Container */
         main {
             height: 100vh;
-            overflow-y: auto; /* Enable vertical scroll */
+            overflow-y: auto;
             scroll-snap-type: y mandatory;
             scroll-behavior: smooth;
         }
@@ -43,7 +42,7 @@
             flex-direction: column;
             justify-content: center;
             position: relative;
-            padding: 80px 20px 20px 20px; /* Space for fixed nav */
+            padding: 80px 20px 20px 20px;
         }
 
         /* Swapping Transition Animations */
@@ -85,7 +84,7 @@
         .flashcard-back { background: #0f172a; color: white; transform: rotateX(180deg); }
     </style>
 </head>
-<body>
+<body class="antialiased">
 
     <nav class="fixed top-0 w-full z-50 glass-panel !rounded-none border-b border-slate-200">
         <div class="max-w-7xl mx-auto px-6 flex justify-between h-16 items-center">
@@ -101,7 +100,7 @@
     </nav>
 
     <main id="deck">
-        <section id="dashboard">
+        <section id="dashboard" class="active">
             <div class="content-wrap grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
                 <div class="lg:col-span-4 flex justify-center">
                     <div class="bg-gradient-to-br from-teal-500 to-indigo-600 p-2 rounded-[2rem] shadow-2xl">
@@ -118,8 +117,8 @@
                     <p class="text-lg text-slate-600 mb-8 max-w-2xl">Hybrid specialist at the intersection of clinical pharmacology and computational data science. Specialising in <strong>Single-Cell Analysis</strong> and <strong>NGS workflows</strong>.</p>
                     <div class="flex gap-4">
                         <div class="glass-panel p-4 flex-1 border-l-4 border-teal-500">
-                            <p class="text-[10px] text-slate-500 font-bold uppercase">Workflows</p>
-                            <p class="text-lg font-bold text-slate-900">Nextflow</p>
+                            <p class="text-[10px] text-slate-500 font-bold uppercase">Analysis</p>
+                            <p class="text-lg font-bold text-slate-900">Scanpy</p>
                         </div>
                         <div class="glass-panel p-4 flex-1 border-l-4 border-indigo-500">
                             <p class="text-[10px] text-slate-500 font-bold uppercase">Location</p>
@@ -134,29 +133,48 @@
             <div class="content-wrap text-center max-w-4xl">
                 <h2 class="text-4xl font-heading font-bold text-slate-900 mb-8">Professional Profile</h2>
                 <div class="glass-panel p-10 text-left text-slate-700 leading-relaxed text-lg shadow-xl">
-                    Accomplished Bioinformatics Professional with a foundational background in Pharmacy, uniquely positioned at the intersection of clinical pharmacology and computational data science[cite: 6]. Leveraging years of pharmaceutical expertise to specialise in Single-Cell Analysis and Next-Generation Sequencing (NGS) workflows[cite: 7]. Proven expertise in leveraging Python and statistics to interpret multi-omic data, with advanced technical training completed through the National Bioinformatics Infrastructure Sweden (NBIS)[cite: 8]. Dedicated to advancing Saudi Arabia’s Vision 2030 healthcare goals by applying computational drug discovery and precision medicine to improve patient outcomes in government and startup research environments[cite: 9].
+                    Accomplished Bioinformatics Professional with a foundational background in Pharmacy, uniquely positioned at the intersection of clinical pharmacology and computational data science. Leveraging years of pharmaceutical expertise to specialise in Single-Cell Analysis and Next-Generation Sequencing (NGS) workflows. Proven expertise in leveraging Python and statistics to interpret multi-omic data, with advanced technical training completed through the National Bioinformatics Infrastructure Sweden (NBIS). Dedicated to advancing Saudi Arabia’s Vision 2030 healthcare goals by applying computational drug discovery and precision medicine to improve patient outcomes in government and startup research environments.
                 </div>
             </div>
         </section>
 
-        <section id="projects">
+        <section id="projects" class="bg-white">
             <div class="content-wrap w-full">
-                <h2 class="text-3xl font-heading font-bold text-slate-900 mb-10 border-b pb-4">Research Lab</h2>
-                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                    <div class="lg:col-span-2 bg-white rounded-2xl p-2 border shadow-sm">
-                        <div id="projectPlot" class="w-full h-[400px]"></div>
+                <div class="mb-12 border-b border-slate-200 pb-6 flex flex-col md:flex-row md:items-end justify-between gap-4">
+                    <div>
+                        <h2 class="text-4xl font-heading font-bold text-slate-900">Research Lab</h2>
+                        <p class="text-slate-500 mt-2 text-lg">Computational drug discovery and precision medicine workflows.</p>
                     </div>
-                    <div class="lg:col-span-1 bg-slate-950 text-white rounded-2xl p-8 flex flex-col justify-center" id="p-detail-pane">
-                        <div id="default-msg" class="text-center">
-                            <i data-lucide="mouse-pointer-2" class="w-10 h-10 mx-auto mb-4 text-slate-500"></i>
-                            <h3 class="text-xl font-bold">Select a node</h3>
-                            <p class="text-slate-400 text-sm">Explore technical pipelines.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="glass-panel p-8 hover:border-teal-500 transition-colors group">
+                        <div class="flex justify-between items-start mb-6">
+                            <div class="p-3 bg-teal-50 text-teal-600 rounded-2xl group-hover:bg-teal-600 group-hover:text-white transition-colors">
+                                <i data-lucide="microscope" class="w-6 h-6"></i>
+                            </div>
+                            <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">PBMC Analysis</span>
                         </div>
-                        <div id="project-content" class="hidden space-y-6">
-                            <span id="p-tag" class="text-[10px] font-bold uppercase tracking-widest bg-teal-600 px-2 py-1 rounded"></span>
-                            <h3 id="p-title" class="text-2xl font-bold"></h3>
-                            <p id="p-desc" class="text-slate-300 text-sm leading-relaxed"></p>
-                            <div id="p-stack" class="flex flex-wrap gap-2 pt-4 border-t border-slate-800"></div>
+                        <h3 class="text-2xl font-bold text-slate-900 mb-3">Covid-19 Single-Cell Analysis</h3>
+                        <p class="text-slate-600 mb-6 leading-relaxed">Performed downstream analysis on six PBMC samples to compare transcriptomic profiles between COVID-19 patients and healthy controls.</p>
+                        <div class="flex flex-wrap gap-2 pt-6 border-t border-slate-100">
+                            <span class="px-3 py-1 bg-slate-100 text-slate-600 text-xs rounded-md font-mono">Python</span>
+                            <span class="px-3 py-1 bg-slate-100 text-slate-600 text-xs rounded-md font-mono">Scanpy</span>
+                        </div>
+                    </div>
+
+                    <div class="glass-panel p-8 hover:border-indigo-500 transition-colors group">
+                        <div class="flex justify-between items-start mb-6">
+                            <div class="p-3 bg-indigo-50 text-indigo-600 rounded-2xl group-hover:bg-indigo-600 group-hover:text-white transition-colors">
+                                <i data-lucide="layers" class="w-6 h-6"></i>
+                            </div>
+                            <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Batch Correction</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-slate-900 mb-3">Spatial & scRNA-seq Integration</h3>
+                        <p class="text-slate-600 mb-6 leading-relaxed">Integrated spatial datasets using Scanorama to achieve accurate cell-type mapping while preserving tissue context.</p>
+                        <div class="flex flex-wrap gap-2 pt-6 border-t border-slate-100">
+                            <span class="px-3 py-1 bg-slate-100 text-slate-600 text-xs rounded-md font-mono">Scanorama</span>
+                            <span class="px-3 py-1 bg-slate-100 text-slate-600 text-xs rounded-md font-mono">Nextflow</span>
                         </div>
                     </div>
                 </div>
@@ -177,13 +195,13 @@
             <div class="content-wrap text-center">
                 <i data-lucide="graduation-cap" class="w-16 h-16 mx-auto mb-8 text-teal-400"></i>
                 <h2 class="text-5xl font-heading font-bold mb-4">Academic Foundation</h2>
-                <h3 class="text-2xl mb-2">Bachelor of Science in Pharmacy [cite: 59]</h3>
-                <p class="text-teal-400 font-bold uppercase tracking-widest text-sm mb-12">National Ribat University, Khartoum [cite: 60]</p>
+                <h3 class="text-2xl mb-2">Bachelor of Science in Pharmacy</h3>
+                <p class="text-teal-400 font-bold uppercase tracking-widest text-sm mb-12">National Ribat University, Khartoum</p>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto">
-                    <div class="glass-panel p-4 text-slate-900 font-bold">Pharmacology [cite: 62]</div>
-                    <div class="glass-panel p-4 text-slate-900 font-bold">Biochemistry [cite: 62]</div>
-                    <div class="glass-panel p-4 text-slate-900 font-bold">Microbiology [cite: 62]</div>
-                    <div class="glass-panel p-4 text-slate-900 font-bold">Clinical Pharm [cite: 62]</div>
+                    <div class="glass-panel p-4 text-slate-900 font-bold">Pharmacology</div>
+                    <div class="glass-panel p-4 text-slate-900 font-bold">Biochemistry</div>
+                    <div class="glass-panel p-4 text-slate-900 font-bold">Microbiology</div>
+                    <div class="glass-panel p-4 text-slate-900 font-bold">Clinical Pharm</div>
                 </div>
             </div>
         </section>
@@ -192,42 +210,11 @@
     <script>
         lucide.createIcons();
 
-        const projects = [
-            { id: 1, title: "Covid-19 Single-Cell Analysis", desc: "scRNA-seq downstream analysis comparing transcriptomic profiles of COVID-19 patients and healthy controls[cite: 16].", tech: ["Python", "Scanpy"], cat: "Single-Cell", comp: 8.5, clin: 9.8 },
-            { id: 2, title: "Memory-Efficient (Scarf)", desc: "Analyzed 10x Genomics datasets using Zarr and Dask for low-memory data chunking[cite: 22].", tech: ["Python", "Scarf", "Dask"], cat: "Big Data", comp: 9.2, clin: 8.0 },
-            { id: 3, title: "Spatial Transcriptomics", desc: "Integrated spatial datasets with single-cell references using Scanorama for batch correction[cite: 25].", tech: ["Python", "Scanorama"], cat: "Integration", comp: 9.5, clin: 9.4 }
-        ];
-
         const experience = [
-            { role: 'Scientific Engagement Officer', co: 'Salmawit Co. Ltd [cite: 28]', yr: '2021-2022 [cite: 29]', icon: 'zap', bullets: ['Synthesised clinical trial data and molecular studies [cite: 30].', 'Evaluated genomic-related clinical studies[cite: 32].'] },
-            { role: 'Production Supervisor', co: 'Blue Nile Pharma [cite: 34]', yr: '2019-2021 [cite: 34]', icon: 'settings', bullets: ['Engineered 4x throughput increase .', 'Managed GMP standards[cite: 37].'] },
-            { role: 'Medical Representative', co: 'Aurobindo Pharma [cite: 38]', yr: '2017-2018 [cite: 39]', icon: 'briefcase', bullets: ['Interpreted clinical studies [cite: 41].', 'Analyzed healthcare data[cite: 42].'] }
+            { role: 'Scientific Engagement Officer', co: 'Salmawit Co. Ltd', yr: '2021-2022', icon: 'zap', bullets: ['Synthesised clinical trial data and molecular studies.', 'Evaluated genomic-related clinical studies.'] },
+            { role: 'Production Supervisor', co: 'Blue Nile Pharma', yr: '2019-2021', icon: 'settings', bullets: ['Engineered 4x throughput increase via optimization.', 'Managed pharmaceutical manufacturing under GMP.'] },
+            { role: 'Medical Representative', co: 'Aurobindo Pharma', yr: '2017-2018', icon: 'briefcase', bullets: ['Interpreted clinical studies for medical inquiries.', 'Analyzed healthcare data for emerging trends.'] }
         ];
-
-        function initProjectChart() {
-            Plotly.newPlot('projectPlot', [{
-                x: projects.map(p => p.clin),
-                y: projects.map(p => p.comp),
-                text: projects.map(p => p.title),
-                mode: 'markers',
-                marker: { size: [40, 50, 60], color: ['#0d9488', '#4f46e5', '#f59e0b'], opacity: 0.8 }
-            }], {
-                paper_bgcolor: 'rgba(0,0,0,0)', plot_bgcolor: 'rgba(0,0,0,0)',
-                margin: { t: 20, l: 40, r: 20, b: 40 }
-            }, { responsive: true, displayModeBar: false });
-            document.getElementById('projectPlot').on('plotly_click', d => showProject(d.points[0].pointIndex));
-        }
-
-        function showProject(idx) {
-            const p = projects[idx];
-            document.getElementById('default-msg').classList.add('hidden');
-            const content = document.getElementById('project-content');
-            content.classList.remove('hidden');
-            document.getElementById('p-title').innerText = p.title;
-            document.getElementById('p-desc').innerText = p.desc;
-            document.getElementById('p-tag').innerText = p.cat;
-            document.getElementById('p-stack').innerHTML = p.tech.map(t => `<span class="px-2 py-1 bg-slate-800 text-teal-400 text-[10px] rounded border border-slate-700">${t}</span>`).join('');
-        }
 
         function renderWideFlashcards() {
             const container = document.getElementById('experience-timeline');
@@ -255,11 +242,8 @@
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                } else {
-                    entry.target.classList.remove('active');
-                }
+                if (entry.isIntersecting) entry.target.classList.add('active');
+                else entry.target.classList.remove('active');
             });
         }, { threshold: 0.3 });
 
@@ -270,7 +254,7 @@
             if (section) section.scrollIntoView({ behavior: 'smooth' });
         }
 
-        window.onload = () => { initProjectChart(); renderWideFlashcards(); };
+        window.onload = () => { renderWideFlashcards(); };
     </script>
 </body>
 </html>
