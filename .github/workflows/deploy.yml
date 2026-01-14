@@ -23,7 +23,10 @@ jobs:
           cache: 'npm'
 
       - name: Install dependencies
-        run: npm install
+        run: |
+          npm install
+          # Force compatibility with Tailwind v3 to match your manual configuration files
+          npm install tailwindcss@3.4.17 postcss autoprefixer
 
       - name: Build
         run: npm run build
