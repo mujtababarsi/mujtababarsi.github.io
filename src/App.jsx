@@ -40,7 +40,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 // --- USER CONFIGURATION ---
 // 1. Paste your profile image URL here (e.g., from LinkedIn or GitHub)
 // 2. If left empty, it will show the scientific placeholder icon
-const PROFILE_IMAGE_URL = ""; 
+const PROFILE_IMAGE_URL = "const PROFILE_IMAGE_URL = "/profile.png"; 
 
 // --- GEMINI API CONFIGURATION ---
 const apiKey = ""; 
