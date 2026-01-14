@@ -7,13 +7,13 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@300;400;600&display=swap');
         
         :root {
             --primary: #0d9488;
             --secondary: #4f46e5;
-            --bg-light: #f8fafc;
-            --text-dark: #0f172a;
+            --dark: #0f172a;
+            --glass: rgba(255, 255, 255, 0.03);
         }
 
         html, body {
@@ -21,9 +21,11 @@
             height: 100vh;
             overflow: hidden;
             font-family: 'Inter', sans-serif;
-            background-color: var(--bg-light);
+            background-color: var(--dark);
+            color: white;
         }
 
+        /* Presentation Deck Engine */
         main {
             height: 100vh;
             overflow-y: auto;
@@ -40,248 +42,182 @@
             flex-direction: column;
             justify-content: center;
             position: relative;
-            padding: 80px 20px;
+            padding: 2rem;
         }
 
-        .content-wrap {
+        /* Swapping Animation Mechanics */
+        .content-reveal {
             opacity: 0;
-            transform: translateY(40px) scale(0.95);
-            transition: all 0.9s cubic-bezier(0.22, 1, 0.36, 1);
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
+            transform: translateY(30px) scale(0.98);
+            transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
         }
 
-        section.active .content-wrap {
+        section.active .content-reveal {
             opacity: 1;
             transform: translateY(0) scale(1);
         }
 
-        /* Floating Card Animation */
-        .swap-item {
-            display: none;
-            animation: floatIn 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        /* Floating Card System */
+        .floating-card {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 2.5rem;
+            padding: 3rem;
+            transition: all 0.5s ease;
+            display: none; /* Controlled by JS */
+            animation: cardSwap 0.6s ease-out forwards;
         }
 
-        .active-swap {
-            display: block;
-        }
+        .floating-card.active-card { display: block; }
 
-        @keyframes floatIn {
-            0% { opacity: 0; transform: translateY(30px) scale(0.9); }
-            100% { opacity: 1; transform: translateY(0) scale(1); }
+        @keyframes cardSwap {
+            0% { opacity: 0; transform: translateX(20px); }
+            100% { opacity: 1; transform: translateX(0); }
         }
 
         h1, h2, h3, h4, .font-heading { font-family: 'Space Grotesk', sans-serif; }
 
-        .glass-panel {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: 2rem;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            transition: transform 0.3s;
         }
 
-        /* Specific Floating Journey Card */
-        .floating-job-card {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 2.5rem;
-            padding: 3rem;
-            transition: transform 0.3s ease;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-        }
-
-        .floating-job-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--primary);
-        }
-
-        .nav-arrow {
-            cursor: pointer;
-            transition: all 0.3s;
-            border-radius: 50%;
-            padding: 12px;
-            background: white;
-            color: var(--text-dark);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        }
-
-        .nav-arrow:hover {
-            background: var(--primary);
-            color: white;
-            transform: scale(1.1);
-        }
+        .btn-primary:hover { transform: scale(1.05); }
     </style>
 </head>
 <body class="antialiased">
 
-    <nav class="fixed top-0 w-full z-50 glass-panel !rounded-none border-b border-slate-200">
-        <div class="max-w-7xl mx-auto px-6 flex justify-between h-16 items-center">
-            <span class="font-heading font-bold text-xl tracking-tight text-slate-900 uppercase">M.ELMUGTABA.DATA</span>
-            <div class="hidden md:flex space-x-8 text-sm font-medium text-slate-600">
-                <button onclick="scrollToSection('dashboard')" class="hover:text-teal-600">Dashboard</button>
-                <button onclick="scrollToSection('about')" class="hover:text-teal-600">About</button>
-                <button onclick="scrollToSection('projects')" class="hover:text-teal-600">Research</button>
-                <button onclick="scrollToSection('experience')" class="hover:text-teal-600">Journey</button>
-            </div>
-            <a href="mailto:Mujtababarsi@mail.com" class="bg-slate-900 text-white px-6 py-2 rounded-full text-sm font-bold hover:bg-teal-700 transition-all">Contact</a>
+    <nav class="fixed top-0 w-full z-50 px-8 py-6 flex justify-between items-center pointer-events-none">
+        <div class="pointer-events-auto">
+            <span class="font-heading font-bold text-xl tracking-tighter uppercase text-white">M.ELMUGTABA.</span>
         </div>
+        <div class="hidden md:flex gap-8 pointer-events-auto bg-white/5 backdrop-blur-md px-8 py-3 rounded-full border border-white/10">
+            <button onclick="scrollToSection('dashboard')" class="text-sm font-medium hover:text-teal-400">Identity</button>
+            <button onclick="scrollToSection('about')" class="text-sm font-medium hover:text-teal-400">Profile</button>
+            <button onclick="scrollToSection('research')" class="text-sm font-medium hover:text-teal-400">Research</button>
+            <button onclick="scrollToSection('experience')" class="text-sm font-medium hover:text-teal-400">Journey</button>
+        </div>
+        <a href="mailto:Mujtababarsi@mail.com" class="pointer-events-auto btn-primary px-6 py-2 rounded-full text-sm font-bold">Contact</a>
     </nav>
 
     <main id="deck">
-        <section id="dashboard" class="active">
-            <div class="content-wrap grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-                <div class="lg:col-span-4 flex justify-center">
-                    <div class="bg-gradient-to-br from-teal-500 to-indigo-600 p-2 rounded-[2.5rem] shadow-2xl rotate-2">
-                        <div class="bg-white rounded-[2rem] overflow-hidden aspect-[4/5] w-64 md:w-80 -rotate-2">
-                            <img src="profile.jpg" alt="Mohamed Elmugtaba" class="w-full h-full object-cover scale-110" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1000&auto=format&fit=crop'">
-                        </div>
-                    </div>
-                </div>
-                <div class="lg:col-span-8">
-                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-teal-50 border border-teal-100 text-teal-700 text-xs font-bold uppercase tracking-widest mb-6">
+        <section id="dashboard" class="active bg-slate-950">
+            <div class="content-reveal max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="space-y-8">
+                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-teal-500/10 border border-teal-500/20 text-teal-400 text-xs font-bold uppercase tracking-widest">
                         <span class="w-2 h-2 rounded-full bg-teal-500 animate-pulse"></span> Bioinformatician | Pharmacist
                     </div>
-                    <h1 class="text-5xl md:text-7xl font-heading font-bold text-slate-900 leading-tight mb-6">The Genomic Journey.</h1>
-                    <p class="text-xl text-slate-600 mb-8 max-w-2xl">Hybrid specialist at the intersection of clinical pharmacology and computational data science specializing in Single-Cell Analysis and NGS workflows.</p>
+                    <h1 class="text-6xl md:text-8xl font-heading font-bold leading-none">The Genomic <span class="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-indigo-500">Architecture</span></h1>
+                    <p class="text-xl text-slate-400 max-w-xl">Specializing in Single-Cell RNA-seq and NGS workflows to bridge the gap between clinical pharmacy and computational precision medicine.</p>
+                </div>
+                <div class="relative flex justify-center">
+                    <div class="w-72 h-96 bg-gradient-to-br from-teal-500 to-indigo-600 p-2 rounded-[3rem] shadow-2xl rotate-3">
+                        <div class="bg-slate-900 rounded-[2.5rem] overflow-hidden w-full h-full -rotate-3">
+                            <img src="profile.jpg" alt="Mohamed Elmugtaba" class="w-full h-full object-cover scale-110" onerror="this.src='https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1000&auto=format&fit=crop'">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="bg-slate-900">
+            <div class="content-reveal max-w-4xl mx-auto text-center space-y-12">
+                <h2 class="text-4xl font-heading font-bold">Professional Summary</h2>
+                <div class="p-12 rounded-[3rem] bg-white/5 border border-white/10 text-left text-xl leading-relaxed text-slate-300">
+                    Accomplished Bioinformatics Professional with a foundational background in Pharmacy, uniquely positioned at the intersection of clinical pharmacology and computational data science. 
+                    Proven expertise in leveraging Python and statistics to interpret multi-omic data, with advanced technical training through NBIS. 
+                    Dedicated to advancing Saudi Arabia’s Vision 2030 healthcare goals by applying precision medicine to improve patient outcomes in government and research environments.
+                </div>
+            </div>
+        </section>
+
+        <section id="research" class="bg-slate-950">
+            <div class="content-reveal max-w-6xl mx-auto w-full">
+                <div class="flex justify-between items-end mb-16 border-b border-white/10 pb-8">
+                    <h2 class="text-5xl font-heading font-bold">Research Lab</h2>
                     <div class="flex gap-4">
-                        <div class="glass-panel p-6 flex-1 border-l-4 border-teal-500">
-                            <p class="text-[10px] text-slate-500 font-bold uppercase tracking-widest">Core Tech</p>
-                            <p class="text-xl font-bold text-slate-900">Scanpy & Python</p>
+                        <button onclick="cycle('res', -1)" class="p-4 rounded-full border border-white/20 hover:bg-white/10"><i data-lucide="arrow-left"></i></button>
+                        <button onclick="cycle('res', 1)" class="p-4 rounded-full border border-white/20 hover:bg-white/10"><i data-lucide="arrow-right"></i></button>
+                    </div>
+                </div>
+
+                <div id="res-1" class="floating-card active-card">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                        <div>
+                            <h3 class="text-3xl font-bold text-teal-400 mb-4">scRNA-seq Analysis</h3>
+                            <p class="text-slate-400 text-lg leading-relaxed">Downstream analysis of PBMC samples comparing transcriptomic profiles. Pipeline from QC to prediction.</p>
                         </div>
-                        <div class="glass-panel p-6 flex-1 border-l-4 border-indigo-500">
-                            <p class="text-[10px] text-slate-500 font-bold uppercase tracking-widest">Location</p>
-                            <p class="text-xl font-bold text-slate-900">Riyadh, KSA</p>
+                        <div class="space-y-4">
+                            <span class="block text-xs uppercase text-slate-500 font-bold tracking-widest">Stack</span>
+                            <div class="flex flex-wrap gap-3">
+                                <span class="px-4 py-2 bg-white/5 rounded-xl border border-white/10 font-mono text-sm">Python</span>
+                                <span class="px-4 py-2 bg-white/5 rounded-xl border border-white/10 font-mono text-sm">Scanpy</span>
+                                <span class="px-4 py-2 bg-white/5 rounded-xl border border-white/10 font-mono text-sm">Jupyter</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="res-2" class="floating-card">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                        <div>
+                            <h3 class="text-3xl font-bold text-indigo-400 mb-4">Spatial Integration</h3>
+                            <p class="text-slate-400 text-lg leading-relaxed">Integrated spatial datasets with single-cell references using Scanorama for accurate tissue mapping.</p>
+                        </div>
+                        <div class="space-y-4">
+                            <span class="block text-xs uppercase text-slate-500 font-bold tracking-widest">Stack</span>
+                            <div class="flex flex-wrap gap-3">
+                                <span class="px-4 py-2 bg-white/5 rounded-xl border border-white/10 font-mono text-sm">Nextflow</span>
+                                <span class="px-4 py-2 bg-white/5 rounded-xl border border-white/10 font-mono text-sm">Scanorama</span>
+                                <span class="px-4 py-2 bg-white/5 rounded-xl border border-white/10 font-mono text-sm">Bash</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="about" class="bg-slate-50">
-            <div class="content-wrap text-center max-w-4xl">
-                <h2 class="text-4xl font-heading font-bold text-slate-900 mb-8">Professional Profile</h2>
-                <div class="glass-panel p-12 text-left text-slate-700 leading-relaxed text-xl shadow-2xl border-none">
-                    Accomplished Bioinformatics Professional with a foundational background in Pharmacy, uniquely positioned at the intersection of clinical pharmacology and computational data science. Leveraging years of pharmaceutical expertise to specialise in Single-Cell Analysis and Next-Generation Sequencing (NGS) workflows. Proven expertise in leveraging Python and statistics to interpret multi-omic data, with advanced technical training completed through the National Bioinformatics Infrastructure Sweden (NBIS). Dedicated to advancing Saudi Arabia’s Vision 2030 healthcare goals by applying computational drug discovery and precision medicine to improve patient outcomes.
-                </div>
-            </div>
-        </section>
-
-        <section id="projects" class="bg-white">
-            <div class="content-wrap w-full">
-                <div class="flex justify-between items-end mb-12 border-b border-slate-200 pb-6">
-                    <h2 class="text-4xl font-heading font-bold text-slate-900">Research Lab</h2>
+        <section id="experience" class="bg-slate-900">
+            <div class="content-reveal max-w-6xl mx-auto w-full">
+                <div class="flex justify-between items-end mb-16 border-b border-white/10 pb-8">
+                    <h2 class="text-5xl font-heading font-bold">Journey</h2>
                     <div class="flex gap-4">
-                        <button onclick="changeSwap('project', -1)" class="nav-arrow"><i data-lucide="chevron-left"></i></button>
-                        <button onclick="changeSwap('project', 1)" class="nav-arrow"><i data-lucide="chevron-right"></i></button>
+                        <button onclick="cycle('job', -1)" class="p-4 rounded-full border border-white/20 hover:bg-white/10"><i data-lucide="arrow-left"></i></button>
+                        <button onclick="cycle('job', 1)" class="p-4 rounded-full border border-white/20 hover:bg-white/10"><i data-lucide="arrow-right"></i></button>
                     </div>
                 </div>
 
-                <div id="project-1" class="swap-item active-swap project-swap">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        <div class="glass-panel p-10 border-t-8 border-teal-500">
-                            <h3 class="text-2xl font-bold mb-4">Covid-19 Single-Cell Analysis</h3>
-                            <p class="text-slate-600 mb-8 leading-relaxed">Downstream analysis on PBMC samples comparing transcriptomic profiles of COVID-19 patients and healthy controls.</p>
-                            <div class="flex gap-3"><span class="bg-slate-100 px-4 py-2 rounded-xl text-sm font-mono text-teal-700 font-bold">Python</span><span class="bg-slate-100 px-4 py-2 rounded-xl text-sm font-mono text-teal-700 font-bold">Scanpy</span></div>
-                        </div>
-                        <div class="glass-panel p-10 border-t-8 border-indigo-500">
-                            <h3 class="text-2xl font-bold mb-4">Spatial Transcriptomics</h3>
-                            <p class="text-slate-600 mb-8 leading-relaxed">Integrated spatial datasets with single-cell references using Scanorama algorithm for batch correction.</p>
-                            <div class="flex gap-3"><span class="bg-slate-100 px-4 py-2 rounded-xl text-sm font-mono text-indigo-700 font-bold">Scanorama</span><span class="bg-slate-100 px-4 py-2 rounded-xl text-sm font-mono text-indigo-700 font-bold">Nextflow</span></div>
-                        </div>
+                <div id="job-1" class="floating-card active-card">
+                    <div class="text-center space-y-6">
+                        <h3 class="text-4xl font-bold text-teal-400">Scientific Engagement Officer</h3>
+                        <p class="text-2xl text-slate-400">Salmawit Co. Ltd | 2021-2022</p>
+                        <div class="max-w-3xl mx-auto h-px bg-white/10"></div>
+                        <p class="text-xl text-slate-300">Translated high-dimensional biological findings into clinical insights for healthcare professionals.</p>
                     </div>
                 </div>
 
-                <div id="project-2" class="swap-item project-swap">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        <div class="glass-panel p-10 border-t-8 border-amber-500">
-                            <h3 class="text-2xl font-bold mb-4">Memory-Efficient Pipelines</h3>
-                            <p class="text-slate-600 mb-8 leading-relaxed">Analysed 10x Genomics datasets using Scarf, Zarr, and Dask for low-memory data chunking.</p>
-                            <div class="flex gap-3"><span class="bg-slate-100 px-4 py-2 rounded-xl text-sm font-mono text-amber-700 font-bold">Scarf</span><span class="bg-slate-100 px-4 py-2 rounded-xl text-sm font-mono text-amber-700 font-bold">Dask</span></div>
-                        </div>
-                        <div class="glass-panel p-10 border-t-8 border-blue-500">
-                            <h3 class="text-2xl font-bold mb-4">Data Visualisation</h3>
-                            <p class="text-slate-600 mb-8 leading-relaxed">Developed publication-quality visuals transforming raw transcriptomic data into insightful representations.</p>
-                            <div class="flex gap-3"><span class="bg-slate-100 px-4 py-2 rounded-xl text-sm font-mono text-blue-700 font-bold">R Language</span><span class="bg-slate-100 px-4 py-2 rounded-xl text-sm font-mono text-blue-700 font-bold">ggplot2</span></div>
-                        </div>
+                <div id="job-2" class="floating-card">
+                    <div class="text-center space-y-6">
+                        <h3 class="text-4xl font-bold text-indigo-400">Production Supervisor</h3>
+                        <p class="text-2xl text-slate-400">Blue Nile Pharmaceutical Factory | 2019-2021</p>
+                        <div class="text-7xl font-bold mb-4">4X <span class="text-xl font-light opacity-50 tracking-widest">INCREASE</span></div>
+                        <p class="text-xl text-slate-300">Engineered data-driven workflow improvements to maximize manufacturing throughput under GMP.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="experience" class="bg-slate-950 text-white overflow-hidden">
-            <div class="content-wrap w-full">
-                <div class="flex justify-between items-end mb-12 border-b border-white/10 pb-6">
-                    <div>
-                        <h2 class="text-4xl font-heading font-bold">Professional Journey</h2>
-                        <p class="text-slate-400 mt-2">10-second auto-cycle through career milestones.</p>
-                    </div>
-                    <div class="flex gap-4">
-                        <button onclick="changeSwap('job', -1)" class="nav-arrow"><i data-lucide="chevron-left"></i></button>
-                        <button onclick="changeSwap('job', 1)" class="nav-arrow"><i data-lucide="chevron-right"></i></button>
-                    </div>
-                </div>
-
-                <div id="job-1" class="swap-item active-swap job-swap">
-                    <div class="floating-job-card text-center">
-                        <h3 class="text-4xl font-bold text-teal-400 mb-4">Scientific Engagement Officer</h3>
-                        <p class="text-2xl opacity-60 mb-10">Salmawit Co. Ltd | 2021-2022</p>
-                        <ul class="text-xl space-y-6 max-w-4xl mx-auto opacity-90">
-                            <li>• Translated high-dimensional biological findings into actionable clinical insights.</li>
-                            <li>• Evaluated peer-reviewed medical literature and genomic-related clinical studies.</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div id="job-2" class="swap-item job-swap">
-                    <div class="floating-job-card text-center">
-                        <h3 class="text-4xl font-bold text-indigo-400 mb-4">Production Supervisor</h3>
-                        <p class="text-2xl opacity-60 mb-10">Blue Nile Pharmaceutical Factory | 2019-2021</p>
-                        <div class="text-7xl font-bold text-white mb-8">4X <span class="text-xl font-normal opacity-50 tracking-widest">THROUGHPUT INCREASE</span></div>
-                        <ul class="text-xl space-y-6 max-w-4xl mx-auto opacity-90">
-                            <li>• Optimized production cycles and engineered data-driven workflow improvements.</li>
-                            <li>• Managed manufacturing operations under strict adherence to GMP standards.</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div id="job-3" class="swap-item job-swap">
-                    <div class="floating-job-card text-center">
-                        <h3 class="text-4xl font-bold text-amber-400 mb-4">Medical Representative</h3>
-                        <p class="text-2xl opacity-60 mb-10">Aurobindo Pharma | 2017-2018</p>
-                        <ul class="text-xl space-y-6 max-w-4xl mx-auto opacity-90">
-                            <li>• Interpreted multidimensional clinical studies for healthcare professionals.</li>
-                            <li>• Identified emerging clinical trends through institutional healthcare data analysis.</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div id="job-4" class="swap-item job-swap">
-                    <div class="floating-job-card text-center">
-                        <h3 class="text-4xl font-bold text-teal-400 mb-4">Clinical Pharmacist</h3>
-                        <p class="text-2xl opacity-60 mb-10">Sudan Military Hospital & Wenji | 2016</p>
-                        <ul class="text-xl space-y-6 max-w-4xl mx-auto opacity-90">
-                            <li>• Dispensed medications with 100% accuracy while verifying drug-drug interactions.</li>
-                            <li>• Coordinated pharmaceutical therapy plans in accordance with legal standards.</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="education" class="bg-indigo-900 text-white">
-            <div class="content-wrap text-center">
-                <i data-lucide="graduation-cap" class="w-20 h-20 mx-auto mb-8 text-teal-400"></i>
-                <h2 class="text-6xl font-heading font-bold mb-6">Academic Foundation</h2>
-                <h3 class="text-3xl mb-4 font-light">Bachelor of Science in Pharmacy</h3>
-                <p class="text-teal-400 font-bold uppercase tracking-[0.2em] text-lg mb-12">National Ribat University, Khartoum</p>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
-                    <div class="glass-panel p-6 text-slate-900 font-bold bg-white/95">Pharmacology</div>
-                    <div class="glass-panel p-6 text-slate-900 font-bold bg-white/95">Biochemistry</div>
-                    <div class="glass-panel p-6 text-slate-900 font-bold bg-white/95">Microbiology</div>
-                    <div class="glass-panel p-6 text-slate-900 font-bold bg-white/95">Clinical Pharm</div>
+        <section id="foundation" class="bg-slate-950">
+            <div class="content-reveal max-w-5xl mx-auto text-center space-y-12">
+                <h2 class="text-5xl font-heading font-bold">Academic Foundation</h2>
+                <h3 class="text-2xl text-teal-400">National Ribat University, Khartoum</h3>
+                <p class="text-lg opacity-60">Bachelor of Science in Pharmacy</p>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                    <div class="p-8 rounded-3xl bg-white/5 border border-white/10 font-bold">Pharmacology</div>
+                    <div class="p-8 rounded-3xl bg-white/5 border border-white/10 font-bold">Biochemistry</div>
+                    <div class="p-8 rounded-3xl bg-white/5 border border-white/10 font-bold">Microbiology</div>
+                    <div class="p-8 rounded-3xl bg-white/5 border border-white/10 font-bold">Clinical Pharm</div>
                 </div>
             </div>
         </section>
@@ -290,33 +226,31 @@
     <script>
         lucide.createIcons();
 
-        let projectIndex = 1;
-        let jobIndex = 1;
-        const totalProjects = 2;
-        const totalJobs = 4;
+        // Carousel Logic
+        let resIdx = 1; const resMax = 2;
+        let jobIdx = 1; const jobMax = 2;
 
-        function changeSwap(type, dir) {
-            if (type === 'project') {
-                document.getElementById(`project-${projectIndex}`).classList.remove('active-swap');
-                projectIndex = (projectIndex + dir > totalProjects) ? 1 : (projectIndex + dir < 1) ? totalProjects : projectIndex + dir;
-                document.getElementById(`project-${projectIndex}`).classList.add('active-swap');
+        function cycle(type, dir) {
+            if(type === 'res') {
+                document.getElementById(`res-${resIdx}`).classList.remove('active-card');
+                resIdx = (resIdx + dir > resMax) ? 1 : (resIdx + dir < 1) ? resMax : resIdx + dir;
+                document.getElementById(`res-${resIdx}`).classList.add('active-card');
             } else {
-                document.getElementById(`job-${jobIndex}`).classList.remove('active-swap');
-                jobIndex = (jobIndex + dir > totalJobs) ? 1 : (jobIndex + dir < 1) ? totalJobs : jobIndex + dir;
-                document.getElementById(`job-${jobIndex}`).classList.add('active-swap');
+                document.getElementById(`job-${jobIdx}`).classList.remove('active-card');
+                jobIdx = (jobIdx + dir > jobMax) ? 1 : (jobIdx + dir < 1) ? jobMax : jobIdx + dir;
+                document.getElementById(`job-${jobIdx}`).classList.add('active-card');
             }
         }
 
-        // Automatic Swap Intervals (Project: 7s, Journey: 10s)
-        setInterval(() => changeSwap('project', 1), 7000);
-        setInterval(() => changeSwap('job', 1), 10000);
+        // 10-second auto-cycle
+        setInterval(() => cycle('job', 1), 10000);
 
+        // Deck Observer
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) entry.target.classList.add('active');
-                else entry.target.classList.remove('active');
             });
-        }, { threshold: 0.3 });
+        }, { threshold: 0.5 });
 
         document.querySelectorAll('section').forEach(s => observer.observe(s));
 
