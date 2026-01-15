@@ -43,7 +43,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 const PROFILE_IMAGE_URL = "/profile.png"; 
 
 // --- GEMINI API CONFIGURATION ---
-const apiKey = ""; 
+const apiKey = "AIzaSyC-Scclz4hbb320TPKwFj0q7tPSzk3cYBo"; 
 
 async function callGemini(prompt, systemInstruction = "") {
   const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
