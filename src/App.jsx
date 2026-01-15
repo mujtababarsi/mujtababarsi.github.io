@@ -38,9 +38,9 @@ import {
 import { motion, AnimatePresence } from 'framer-motion';
 
 // --- USER CONFIGURATION ---
-// 1. Paste your profile image URL here (e.g., from LinkedIn or GitHub)
-// 2. If left empty, it will show the scientific placeholder icon
-const PROFILE_IMAGE_URL = "const PROFILE_IMAGE_URL = "/profile.png"; 
+// Path to your profile image. 
+// For mujtababarsi.github.io, placing it in the 'public' folder makes it accessible at '/profile.png'
+const PROFILE_IMAGE_URL = "/profile.png"; 
 
 // --- GEMINI API CONFIGURATION ---
 const apiKey = ""; 
@@ -121,28 +121,28 @@ const PROJECTS = [
     tools: "Python, Scanpy, Jupyter Notebook",
     desc: "Performed scRNA-seq downstream analysis on six PBMC samples, comparing transcriptomic profiles between COVID-19 patients and healthy controls. Implemented QC, dimensionality reduction, and cell-type prediction.",
     tags: ["scRNA-seq", "Scanpy", "COVID-19"],
-    link: "https://github.com/Mujtababarsi"
+    link: "https://github.com/mujtababarsi"
   },
   {
     title: "Data Visualisation with ggplot2",
     tools: "R, RStudio, ggplot2, Tidyverse",
     desc: "Developed publication-quality visualizations using the 'Grammar of Graphics' framework. Implemented EDA techniques including distribution plots and complex faceted layouts.",
     tags: ["R", "ggplot2", "EDA"],
-    link: "https://github.com/Mujtababarsi"
+    link: "https://github.com/mujtababarsi"
   },
   {
     title: "Memory-Efficient scRNA-seq (Scarf)",
     tools: "Python, Scarf, Zarr, Dask",
     desc: "Analysed 10x Genomics 5K PBMC dataset utilizing Zarr and Dask for low-memory data chunking. Performed KNN mapping and cross-dataset cluster similarity inspection.",
     tags: ["Memory Optimization", "Dask", "Zarr"],
-    link: "https://github.com/Mujtababarsi"
+    link: "https://github.com/mujtababarsi"
   },
   {
     title: "Spatial Transcriptomics Integration",
     tools: "Python, Scanpy, Scanorama",
     desc: "Integrated spatial datasets with single-cell RNA-seq references using the Scanorama algorithm to achieve accurate batch correction and cell-type mapping.",
     tags: ["Spatial", "Integration", "Scanorama"],
-    link: "https://github.com/Mujtababarsi"
+    link: "https://github.com/mujtababarsi"
   }
 ];
 
@@ -526,7 +526,7 @@ export default function App() {
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-6">
                 <a href="#projects" className="bg-blue-600 text-white px-8 py-3.5 rounded-xl font-bold shadow-xl shadow-blue-200 hover:bg-blue-700 transition-all w-full sm:w-auto text-center">My Research</a>
-                <a href="https://github.com/Mujtababarsi" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-slate-900 transition-colors flex items-center gap-2">
+                <a href="https://github.com/mujtababarsi" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-slate-900 transition-colors flex items-center gap-2">
                   <Github size={30} />
                   <span className="text-xs font-bold uppercase tracking-widest">Mujtababarsi</span>
                 </a>
@@ -673,12 +673,12 @@ export default function App() {
                 </div>
               </div>
               <div className="bg-white p-10 rounded-3xl text-center border border-slate-100 shadow-sm">
-                 <a href="https://github.com/Mujtababarsi" target="_blank" rel="noopener noreferrer" className="block group mb-6">
+                 <a href="https://github.com/mujtababarsi" target="_blank" rel="noopener noreferrer" className="block group mb-6">
                     <Github size={44} className="mx-auto text-slate-900 group-hover:text-blue-600 transition-colors duration-300" />
                  </a>
-                 <h4 className="text-xl font-bold text-slate-900 mb-2">Technical Repositories</h4>
+                 <h4 className="text-xl font-bold mb-2">Technical Repositories</h4>
                  <p className="text-sm text-slate-500 mb-8 uppercase tracking-widest font-bold">Mujtababarsi</p>
-                 <a href="https://github.com/Mujtababarsi" target="_blank" rel="noopener noreferrer" className="block w-full text-center bg-slate-900 text-white font-bold py-4 rounded-xl hover:bg-blue-600 transition-all shadow-lg active:scale-95">Go to GitHub</a>
+                 <a href="https://github.com/mujtababarsi" target="_blank" rel="noopener noreferrer" className="block w-full text-center bg-slate-900 text-white font-bold py-4 rounded-xl hover:bg-blue-600 transition-all shadow-lg active:scale-95">Go to GitHub</a>
               </div>
             </div>
           </div>
