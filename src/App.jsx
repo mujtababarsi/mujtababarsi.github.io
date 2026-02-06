@@ -14,32 +14,11 @@ import { motion, AnimatePresence, useInView, useScroll, useTransform, useSpring 
 
 // --- CONFIGURATION & CONSTANTS ---
 
-// Using a placeholder image for the preview. In production, replace with "./me.png"
-const PROFILE_IMAGE_URL = "https://images.unsplash.com/photo-1633332755192-727a05c4013d?w=800&auto=format&fit=crop&q=60"; 
+// Path to your local profile picture in the public folder
+const PROFILE_IMAGE_URL = "/me.png"; 
 
-// --------------------------------------------------------------------------
-// API KEY CONFIGURATION
-// restored environment variable checks for GitHub/Vercel deployments
-// --------------------------------------------------------------------------
-const getApiKey = () => {
-  // 1. Check Vite (Standard for your project)
-  try {
-    if (typeof import.meta !== 'undefined' && import.meta.env?.VITE_GEMINI_API_KEY) {
-      return import.meta.env.VITE_GEMINI_API_KEY;
-    }
-  } catch (e) { /* ignore */ }
-  
-  // 2. Check Create-React-App (Fallback support)
-  try {
-    if (typeof process !== 'undefined' && process.env?.REACT_APP_GEMINI_API_KEY) {
-      return process.env.REACT_APP_GEMINI_API_KEY;
-    }
-  } catch (e) { /* ignore */ }
-
-  return ""; 
-};
-
-const apiKey = getApiKey();
+// API Key: Set to empty string. The environment provides the key at runtime.
+const apiKey = ""; 
 
 const GENOMIC_DATA = [
   { pos: 0, depth: 45 }, { pos: 100, depth: 52 }, { pos: 200, depth: 89 },
@@ -195,6 +174,7 @@ const CERTIFICATES_PARTS = [
       "Bioinformatics for Biologists: Linux, BASH Scripting, and R",
       "Kaggle Python Certification: Data science syntax and structures",
       "Introduction to Bioinformatics: Genomic analysis and sequence processing",
+      "Integrate Generative AI Into Data Workflow (In progress)",
       "Google Cloud Digital Leader (Badge): Foundational cloud transformation, infrastructure, and AI/ML innovation",
       "National Bioinformatics Infrastructure Sweden (NBIS): Workshops and Training"
     ]
@@ -274,29 +254,39 @@ async function callGemini(prompt, systemInstruction = "") {
   const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
   
   const payload = {
-    contents: [{ parts: [{ text: prompt }] }]
+    contents: [{ parts: [{ text: prompt }] }],
+    systemInstruction: { parts: [{ text: systemInstruction }] }
   };
 
-  if (systemInstruction) {
-    payload.systemInstruction = { parts: [{ text: systemInstruction }] };
-  }
+  // Exponential backoff retry logic
+  const fetchWithRetry = async (retries = 5, delay = 1000) => {
+    try {
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const result = await response.json();
+      return result.candidates?.[0]?.content?.parts?.[0]?.text || "No response generated.";
+    } catch (err) {
+      if (retries > 0) {
+        await new Promise(resolve => setTimeout(resolve, delay));
+        return fetchWithRetry(retries - 1, delay * 2);
+      }
+      throw err;
+    }
+  };
 
   try {
-    const response = await fetch(url, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
-    });
-
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-
-    const result = await response.json();
-    return result.candidates?.[0]?.content?.parts?.[0]?.text || "No response generated.";
+    return await fetchWithRetry();
   } catch (err) {
     console.error("Gemini API Error:", err);
-    return "The AI assistant is currently unavailable (API Key may be missing or invalid).";
+    return "The AI assistant is currently unavailable. Please try again later.";
   }
 }
 
@@ -496,7 +486,7 @@ function AICopilotModal({ isOpen, onClose }) {
         <div ref={scrollRef} className="flex-grow overflow-y-auto p-6 space-y-6">
           {messages.map((m, i) => (
             <div key={i} className={`flex ${m.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-              <div className={`max-w-[85%] p-4 rounded-2xl text-[16px] leading-relaxed shadow-sm ${m.role === 'user' ? 'bg-[#0071e3] text-white rounded-tr-sm' : 'bg-white text-[#1d1d1f] rounded-tl-sm border border-black/5'}`}>
+              <div className={`max-w-[85%] p-4 rounded-2xl text-[16px] leading-relaxed shadow-sm ${m.role === 'user' ? 'bg-[#0071e3] text-white' : 'bg-white text-[#1d1d1f] rounded-tl-sm border border-black/5'}`}>
                 {m.text}
               </div>
             </div>
@@ -837,9 +827,6 @@ export default function App() {
     
   const visibleProjects = PROJECTS.slice(projectIndex, projectIndex + 2);
 
-  // --- EXPERIENCE LOGIC (INTERVAL BASED CAROUSEL) ---
-  // Re-added for continuous flow
-    
   // Scroll Spy Logic for Active Section
   const handleScroll = (e) => {
     const container = e.target;
@@ -1019,7 +1006,7 @@ export default function App() {
                 </div>
 
                 {/* Description */}
-                <p className="text-[#424245] text-[13px] leading-relaxed mb-6 font-medium">
+                <p className="text-[#424245] text-[13px] rendering-relaxed mb-6 font-medium">
                   {area.description}
                 </p>
 
@@ -1141,7 +1128,7 @@ export default function App() {
                         </div>
                         
                         {/* Reduced description height approx 3 lines */}
-                        <p className="text-[#424245] text-[12px] leading-relaxed line-clamp-2 md:line-clamp-3 mb-3 flex-grow font-medium h-[3.6rem]">
+                        <p className="text-[#424245] text-[12px] rendering-relaxed line-clamp-2 md:line-clamp-3 mb-3 flex-grow font-medium h-[3.6rem]">
                           {p.desc}
                         </p>
                         
@@ -1167,13 +1154,13 @@ export default function App() {
                             </a>
                        </div>
 
-                       {/* Add the AI Insight Component here */}
+                       {/* AI Insight Component */}
                        <AIProjectInsight project={p} onOpenChange={setIsAiModalOpen} />
                    </div>
-                 </div>
-               ))}
-             </motion.div>
-           </AnimatePresence>
+                  </div>
+                ))}
+              </motion.div>
+            </AnimatePresence>
 
             {/* Floating Navigation Button (Blue Accent) */}
             <button 
@@ -1295,7 +1282,7 @@ export default function App() {
                     <span className="w-1 h-4 bg-[#0071e3] rounded-full" />
                     Core Curriculum
                 </p>
-                <p className="text-[#1d1d1f] leading-relaxed text-[15px] font-medium">{edu.details}</p>
+                <p className="text-[#1d1d1f] rendering-relaxed text-[15px] font-medium">{edu.details}</p>
               </div>
             </motion.div>
           ))}
@@ -1465,10 +1452,10 @@ export default function App() {
           <div className="mt-12 pt-8 border-t border-black/5 flex flex-col md:flex-row justify-between items-center md:items-end gap-6 pb-4">
             <div className="flex flex-col gap-2 items-center md:items-start text-center md:text-left">
                <p className="text-[11px] text-[#86868b] font-medium tracking-wide">
-                 Copyright © {new Date().getFullYear()} Mohamed Elmugtaba. All rights reserved.
+                  Copyright © {new Date().getFullYear()} Mohamed Elmugtaba. All rights reserved.
                </p>
                <p className="text-[11px] text-[#86868b] font-medium tracking-wide">
-                 Designed & Developed by M. Elmugtaba
+                  Designed & Developed by M. Elmugtaba
                </p>
                <div className="flex items-center gap-1.5 opacity-80 hover:opacity-100 transition-opacity mt-1">
                  <MapPin size={14} strokeWidth={1.5} className="text-[#1d1d1f]" />
