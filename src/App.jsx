@@ -270,7 +270,6 @@ async function callGemini(prompt, systemInstruction = "") {
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
-
       const result = await response.json();
       return result.candidates?.[0]?.content?.parts?.[0]?.text || "No response generated.";
     } catch (err) {
@@ -446,13 +445,16 @@ function AICopilotModal({ isOpen, onClose }) {
     setInput("");
     setMessages(prev => [...prev, { role: 'user', text: userMsg }]);
     setLoading(true);
+
     const context = `
       Name: Mohamed Elmugtaba
       Role: Bioinformatics Professional & Pharmacist
       Summary: ${EXPERIENCE.map(e => `${e.role} at ${e.org}`).join(", ")}
       Skills: ${SKILLS.map(s => s.items.join(", ")).join(", ")}
     `;
+
     const res = await callGemini(userMsg, `You are the Digital Twin of Mohamed Elmugtaba. Answer questions based on this profile: ${context}. Keep answers professional and concise.`);
+    
     setMessages(prev => [...prev, { role: 'ai', text: res }]);
     setLoading(false);
   }
@@ -623,6 +625,7 @@ function TypewriterText() {
 
   useEffect(() => {
     if (!isInView || textState.segmentIndex >= segments.length) return;
+    
     const timeout = setTimeout(() => {
       setTextState((prev) => {
         const currentSegment = segments[prev.segmentIndex];
@@ -709,6 +712,7 @@ function Dock({ activeSection, scrollTo, isVisible, setIsVisible }) {
 
 function SectionProgress({ activeSection, scrollTo }) {
   const sections = ['home', 'me', 'expertise', 'projects', 'experience', 'education'];
+
   return (
     <div className="fixed right-6 top-1/2 -translate-y-1/2 z-40 hidden lg:flex flex-col gap-4">
       {sections.map((id) => (
@@ -832,6 +836,7 @@ export default function App() {
     const container = e.target;
     const scrollPosition = container.scrollTop + (container.clientHeight / 2); 
     const sections = ['home', 'me', 'expertise', 'projects', 'experience', 'education'];
+
     for (const section of sections) {
       const element = document.getElementById(section);
       if (element) {
@@ -842,7 +847,6 @@ export default function App() {
         }
       }
     }
-
     // Trigger dock visibility on scroll
     showDockTemporarily();
   };
@@ -861,17 +865,20 @@ export default function App() {
       className="h-screen w-full overflow-y-scroll snap-y snap-mandatory scroll-smooth bg-white font-sans text-[#1d1d1f] selection:bg-[#0071e3]/20 relative antialiased"
     >
       <Header />
+
       <Dock 
         activeSection={activeSection} 
         scrollTo={scrollTo} 
         isVisible={controlsVisible} 
         setIsVisible={setControlsVisible} 
       />
+
       <SectionProgress activeSection={activeSection} scrollTo={scrollTo} />
 
       {/* HERO Section */}
       <section id="home" className="snap-start min-h-screen relative pt-32 md:pt-40 pb-20 bg-[#F5F5F7] flex items-start justify-center">
         <ParallaxBackground />
+        
         <div className="max-w-5xl mx-auto px-6 w-full relative z-10">
           <motion.div 
              initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.2 }} variants={containerVariants}
@@ -917,7 +924,6 @@ export default function App() {
                 </div>
               </div>
             </motion.div>
-
           </motion.div>
         </div>
       </section>
@@ -928,6 +934,7 @@ export default function App() {
           
         <div className="max-w-7xl mx-auto px-6 w-full relative z-10">
           <SectionHeading title="At the Intersection of Pharmacy & Bioinformatics" subtitle="Bridging clinical expertise with computational precision." />
+
           <motion.div 
              initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.2 }} variants={containerVariants}
              className="grid lg:grid-cols-2 gap-10 items-start"
@@ -980,9 +987,9 @@ export default function App() {
       {/* AREAS OF EXPERTISE - ENHANCED DESIGN */}
       <section id="expertise" className="snap-start min-h-screen pt-28 pb-16 bg-gradient-to-b from-white to-blue-50/30 flex items-start justify-center relative overflow-hidden">
         <ParallaxBackground />
-
         <div className="max-w-7xl mx-auto px-6 w-full relative z-10">
           <SectionHeading title="Areas of Expertise" />
+          
           <motion.div 
             variants={containerVariants}
             initial="hidden"
@@ -1004,7 +1011,7 @@ export default function App() {
                   </div>
                   <h3 className="text-lg font-bold text-[#1d1d1f] tracking-tight">{area.title}</h3>
                 </div>
-
+                
                 {/* Description */}
                 <p className="text-[#424245] text-[13px] rendering-relaxed mb-6 font-medium">
                   {area.description}
@@ -1032,6 +1039,7 @@ export default function App() {
 
         <div className="max-w-7xl mx-auto px-6 w-full relative z-10">
           <SectionHeading title="Technical Skills" />
+          
           <motion.div 
             variants={stableContainerVariants}
             initial="hidden"
@@ -1047,7 +1055,7 @@ export default function App() {
               >
                 {/* Decorative Corner Gradient */}
                 <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-white/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-bl-[3rem] pointer-events-none" />
-
+                
                 <div className="flex items-center gap-4 mb-6 relative z-10">
                   <div className="w-10 h-10 bg-white rounded-2xl text-[#0071e3] shadow-sm flex items-center justify-center ring-1 ring-black/5 group-hover:scale-105 transition-transform duration-300">
                     {React.cloneElement(skill.icon, { strokeWidth: 1.5, size: 20 })}
@@ -1122,7 +1130,6 @@ export default function App() {
                                 <Code size={14} />
                              </div>
                         </div>
-
                         <div className="mb-2 h-4">
                           <p className="text-[#0071e3] text-[10px] font-bold uppercase tracking-wide truncate">{p.tools}</p>
                         </div>
@@ -1153,7 +1160,7 @@ export default function App() {
                                View Project <ArrowRight size={16} className="group-hover/btn:translate-x-1 transition-transform" />
                             </a>
                        </div>
-
+                       
                        {/* AI Insight Component */}
                        <AIProjectInsight project={p} onOpenChange={setIsAiModalOpen} />
                    </div>
@@ -1177,6 +1184,7 @@ export default function App() {
       {/* EXPERIENCE - ENHANCED VISUALS */}
       <section id="experience" className="snap-start min-h-screen pt-20 pb-16 bg-white flex items-start justify-center relative">
         <ParallaxBackground />
+
         <div className="max-w-6xl mx-auto px-6 w-full relative z-10">
           <SectionHeading title="Professional Experience" />
 
@@ -1260,8 +1268,10 @@ export default function App() {
       {/* EDUCATION - ENHANCED CARD */}
       <section id="education" className="snap-start min-h-screen pt-28 pb-16 bg-gradient-to-tr from-blue-50/50 via-white to-blue-50/50 flex items-start justify-center">
         <ParallaxBackground />
+        
         <div className="max-w-4xl mx-auto px-6 w-full relative z-10">
           <SectionHeading title="Education" />
+          
           {EDUCATION_DATA.map((edu, idx) => (
             <motion.div 
                key={idx} 
@@ -1277,6 +1287,7 @@ export default function App() {
                 </div>
                 <span className="text-xs font-bold text-[#86868b] bg-[#F5F5F7] px-5 py-2 rounded-full border border-black/5 tracking-wide">{edu.period}</span>
               </div>
+              
               <div className="pt-8 border-t border-black/5 relative z-10">
                 <p className="text-[11px] font-bold text-[#86868b] uppercase tracking-widest mb-4 flex items-center gap-2">
                     <span className="w-1 h-4 bg-[#0071e3] rounded-full" />
@@ -1296,6 +1307,7 @@ export default function App() {
           
         <div className="max-w-7xl mx-auto px-6 w-full relative z-10">
           <SectionHeading title="Certifications & Professional Development" />
+          
           <motion.div 
             variants={stableContainerVariants}
             initial="hidden"
@@ -1317,6 +1329,7 @@ export default function App() {
                     {part.title}
                   </h3>
                 </div>
+
                 <div className="space-y-2 flex-grow">
                   {part.items.map((cert, i) => (
                     <motion.div 
@@ -1343,7 +1356,7 @@ export default function App() {
               <div className="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] bg-blue-100/40 rounded-full blur-3xl opacity-60" />
               <div className="absolute bottom-[-10%] left-[-10%] w-[600px] h-[600px] bg-indigo-50/40 rounded-full blur-3xl opacity-60" />
         </div>
-
+        
         <div className="max-w-5xl mx-auto px-6 w-full relative z-10 flex flex-col h-full justify-between">
           <div>
             <SectionHeading title="Personal Details" />
@@ -1444,6 +1457,7 @@ export default function App() {
                           </div>
                       </div>
                   </motion.div>
+
               </div>
             </motion.div>
           </div>
