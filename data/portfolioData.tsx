@@ -136,31 +136,36 @@ export const EXPERIENCE: Experience[] = [
     role: "Operations Coordinator",
     org: "Dukhan Group",
     period: "2024 - 2025",
-    description: "Acted as a strategic liaison across business units, diagnosing and resolving operational bottlenecks to ensure seamless service delivery. Audited corporate contracts and operational data to ensure 100% accuracy, maintaining rigorous cross-departmental cycles. Led high-level initiatives to optimize workflows, applying risk assessments to secure contract renewals and elevate corporate standards."
+    description: "Acted as a strategic liaison across business units, diagnosing and resolving operational bottlenecks to ensure seamless service delivery. Audited corporate contracts and operational data to ensure 100% accuracy, maintaining rigorous cross-departmental cycles. Led high-level initiatives to optimize workflows, applying risk assessments to secure contract renewals and elevate corporate standards.",
+    location: "Doha, Qatar"
   },
   {
     role: "Scientific Engagement Officer",
     org: "Salmawit Co. Ltd",
     period: "2021 - 2022",
-    description: "Synthesised complex clinical trial data and mechanism-of-action studies for healthcare professionals. Evaluated peer-reviewed medical literature and genomic studies to provide technical insights on drug efficacy. Served as a technical liaison, translating biological findings into therapeutic insights for clinical practice."
+    description: "Synthesised complex clinical trial data and mechanism-of-action studies for healthcare professionals. Evaluated peer-reviewed medical literature and genomic studies to provide technical insights on drug efficacy. Served as a technical liaison, translating biological findings into therapeutic insights for clinical practice.",
+    location: "Khartoum, Sudan"
   },
   {
     role: "Production Supervisor",
     org: "Blue Nile Pharmaceutical Factory",
     period: "2019 - 2021",
-    description: "Engineered a 4x increase in manufacturing throughput by optimising production cycles and workflows. Led cross-functional teams to troubleshoot complex bottlenecks during high-volume scaling. Managed end-to-end manufacturing processes in strict adherence to GMP standards."
+    description: "Engineered a 4x increase in manufacturing throughput by optimising production cycles and workflows. Led cross-functional teams to troubleshoot complex bottlenecks during high-volume scaling. Managed end-to-end manufacturing processes in strict adherence to GMP standards.",
+    location: "Khartoum, Sudan"
   },
   {
     role: "Medical Representative",
     org: "Aurobindo Pharma and Bioderma",
     period: "2016 - 2018",
-    description: "Communicated technical product features and clinical benefits to healthcare professionals through scientific presentations. Interpreted multidimensional clinical studies to resolve complex medical inquiries regarding therapeutic data. Conducted systematic analysis of healthcare data to identify emerging clinical trends."
+    description: "Communicated technical product features and clinical benefits to healthcare professionals through scientific presentations. Interpreted multidimensional clinical studies to resolve complex medical inquiries regarding therapeutic data. Conducted systematic analysis of healthcare data to identify emerging clinical trends.",
+    location: "Khartoum, Sudan"
   },
   {
     role: "Clinical Pharmacist",
     org: "Sudan Military Hospital & Wenji Pharmacy",
     period: "2015 - 2016",
-    description: "Processed and dispensed prescription medications with 100% accuracy, verifying dosages and interactions. Provided clinical counselling to patients on medication use and side effect management to ensure adherence. Monitored pharmaceutical inventory and controlled substances in coordination with medical professionals."
+    description: "Processed and dispensed prescription medications with 100% accuracy, verifying dosages and interactions. Provided clinical counselling to patients on medication use and side effect management to ensure adherence. Monitored pharmaceutical inventory and controlled substances in coordination with medical professionals.",
+    location: "Khartoum, Sudan"
   }
 ];
 
