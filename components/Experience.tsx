@@ -71,7 +71,7 @@ export default function Experience() {
                     
                      <div className="mt-5 pt-4 border-t border-dashed border-black/5 flex items-center gap-2 text-[#86868b] text-xs font-medium">
                         <MapPin size={12} />
-                        <span>Khartoum, Sudan</span>
+                        <span>{exp.location}</span>
                      </div>
                  </div>
               </motion.div>
@@ -146,7 +146,7 @@ export default function Experience() {
                          <Calendar size={14} className="text-[#86868b]" /> {EXPERIENCE[selectedExpIndex].period}
                       </span>
                       <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white text-[#1d1d1f] text-xs font-semibold border border-black/5 shadow-sm">
-                         <MapPin size={14} className="text-[#86868b]" /> Khartoum, Sudan
+                         <MapPin size={14} className="text-[#86868b]" /> {EXPERIENCE[selectedExpIndex].location}
                       </span>
                   </div>
                 </motion.div>
