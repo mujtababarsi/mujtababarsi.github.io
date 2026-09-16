@@ -4,7 +4,7 @@ import {
 } from 'lucide-react';
 import { AreaOfExpertise, Skill, Project, Experience, Education, CertificatePart, GenomicDataPoint } from '../types';
 
-export const PROFILE_IMAGE_URL = "/me.png"; 
+export const PROFILE_IMAGE_URL = "/me.jpg";
 
 export const GENOMIC_DATA: GenomicDataPoint[] = [
   { pos: 0, depth: 45 }, { pos: 100, depth: 52 }, { pos: 200, depth: 89 },
