@@ -30,8 +30,7 @@ jobs:
       - name: Build
         run: npm run build
         env:
-          # If you use secrets, add them to your repository secrets
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_API_KEY: ${{ secrets.VITE_GEMINI_API_KEY }}
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
