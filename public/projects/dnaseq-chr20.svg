@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-label="Human DNA-seq chr20 variant calling pipeline">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#eef2ff"/>
+      <stop offset="100%" stop-color="#dbeafe"/>
+    </linearGradient>
+    <linearGradient id="strand" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0071e3"/>
+      <stop offset="100%" stop-color="#4f46e5"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#bg)"/>
+
+  <g opacity="0.9" stroke-linecap="round">
+    <!-- double helix -->
+    <path d="M 260 60 C 420 160, 420 260, 260 360 C 100 460, 100 560, 260 660"
+          fill="none" stroke="url(#strand)" stroke-width="10"/>
+    <path d="M 620 60 C 460 160, 460 260, 620 360 C 780 460, 780 560, 620 660"
+          fill="none" stroke="url(#strand)" stroke-width="10" opacity="0.55"/>
+
+    <!-- rungs -->
+    <g stroke="#0071e3" stroke-width="6" opacity="0.5">
+      <line x1="290" y1="95" x2="590" y2="95"/>
+      <line x1="330" y1="150" x2="550" y2="150"/>
+      <line x1="360" y1="205" x2="520" y2="205"/>
+      <line x1="330" y1="260" x2="550" y2="260"/>
+      <line x1="290" y1="315" x2="590" y2="315"/>
+      <line x1="290" y1="405" x2="590" y2="405"/>
+      <line x1="330" y1="460" x2="550" y2="460"/>
+      <line x1="360" y1="515" x2="520" y2="515"/>
+      <line x1="330" y1="570" x2="550" y2="570"/>
+      <line x1="290" y1="625" x2="590" y2="625"/>
+    </g>
+  </g>
+
+  <g transform="translate(720,230)">
+    <rect x="0" y="0" width="380" height="220" rx="24" fill="#ffffff" opacity="0.7"/>
+    <text x="32" y="56" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="700" fill="#1d1d1f">chr20 Germline</text>
+    <text x="32" y="94" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="700" fill="#1d1d1f">Variant Calling</text>
+    <text x="32" y="140" font-family="Inter, Arial, sans-serif" font-size="20" fill="#4f46e5" font-weight="600">Nextflow DSL2 · GATK4</text>
+    <text x="32" y="172" font-family="Inter, Arial, sans-serif" font-size="20" fill="#4f46e5" font-weight="600">Samtools · MultiQC</text>
+  </g>
+</svg>
