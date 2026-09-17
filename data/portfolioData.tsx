@@ -85,6 +85,15 @@ export const SKILLS: Skill[] = [
 
 export const PROJECTS: Project[] = [
   {
+    title: "Human DNA-seq chr20 Variant Calling (Nextflow DSL2)",
+    tools: "Nextflow | DSL2 | GATK4 | Samtools | Docker",
+    desc: "Built a portable germline short-variant calling pipeline that wraps Samtools and GATK4 to call SNPs and indels from mapped whole-genome sequencing data, with automated QC via MultiQC.",
+    tags: ["Nextflow", "Variant Calling", "GATK4"],
+    features: ["Modular DSL2 Workflow", "Joint Genotyping", "Automated MultiQC Reports"],
+    image: "/projects/dnaseq-chr20.svg",
+    link: "https://github.com/mujtababarsi/Human-DNAseq-chr20-nf-dsl2"
+  },
+  {
     title: "Human RNA-seq Pipeline (Nextflow DSL2)",
     tools: "Nextflow | DSL2 | Docker | Singularity",
     desc: "Developed a scalable, reproducible RNA-seq analysis pipeline using Nextflow DSL2, ensuring portability across HPC and cloud environments.",
