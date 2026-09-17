@@ -82,24 +82,22 @@ function AIProjectInsight({ project, onOpenChange }: { project: Project; onOpenC
 }
 
 function ProjectDetailsModal({ project, isOpen, onClose }: { project: Project | null; isOpen: boolean; onClose: () => void }) {
-  if (!project) return null;
-
   return (
     <AnimatePresence>
-      {isOpen && (
-        <>
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={onClose}
-            className="fixed inset-0 bg-black/30 backdrop-blur-sm z-[60] flex items-center justify-center p-4"
-          />
+      {isOpen && project && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          onClick={onClose}
+          className="fixed inset-0 z-[60] bg-black/30 backdrop-blur-sm flex items-center justify-center p-4"
+        >
           <motion.div
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
-            className="fixed z-[70] bg-white w-full max-w-2xl max-h-[85vh] rounded-[2rem] shadow-2xl overflow-hidden flex flex-col top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+            onClick={(e) => e.stopPropagation()}
+            className="relative z-[70] bg-white w-full max-w-2xl max-h-[85vh] rounded-[2rem] shadow-2xl overflow-hidden flex flex-col"
           >
             <div className="relative h-48 sm:h-64 w-full shrink-0">
               {project.image ? (
@@ -164,7 +162,7 @@ function ProjectDetailsModal({ project, isOpen, onClose }: { project: Project | 
               </div>
             </div>
           </motion.div>
-        </>
+        </motion.div>
       )}
     </AnimatePresence>
   );
