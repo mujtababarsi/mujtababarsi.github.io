@@ -324,26 +324,15 @@ function ProjectDockCarousel({ onOpenAi }: { onOpenAi?: (isOpen: boolean) => voi
           })}
         </div>
 
-        {/* Navigation Dots */}
-        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-20">
-          {PROJECTS.map((_, idx) => (
-            <button
-              key={idx}
-              onClick={() => setActiveIndex(idx)}
-              className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${activeIndex === idx ? 'bg-[#0071e3] w-4' : 'bg-gray-300 hover:bg-gray-400'}`}
-            />
-          ))}
-        </div>
-        
          {/* Arrow Controls */}
          <div className="absolute inset-0 pointer-events-none flex items-center justify-between px-4 md:px-12 z-10">
-            <button 
+            <button
               onClick={() => setActiveIndex((prev) => (prev - 1 + PROJECTS.length) % PROJECTS.length)}
               className="w-10 h-10 rounded-full bg-white/80 backdrop-blur shadow-md flex items-center justify-center text-[#1d1d1f] hover:scale-110 active:scale-95 transition-all pointer-events-auto border border-white/50"
             >
                <ChevronLeft size={20} />
             </button>
-            <button 
+            <button
               onClick={() => setActiveIndex((prev) => (prev + 1) % PROJECTS.length)}
               className="w-10 h-10 rounded-full bg-white/80 backdrop-blur shadow-md flex items-center justify-center text-[#1d1d1f] hover:scale-110 active:scale-95 transition-all pointer-events-auto border border-white/50"
             >
@@ -352,7 +341,18 @@ function ProjectDockCarousel({ onOpenAi }: { onOpenAi?: (isOpen: boolean) => voi
          </div>
       </div>
 
-      <ProjectDetailsModal 
+      {/* Navigation Dots */}
+      <div className="flex justify-center gap-2 mt-6">
+        {PROJECTS.map((_, idx) => (
+          <button
+            key={idx}
+            onClick={() => setActiveIndex(idx)}
+            className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${activeIndex === idx ? 'bg-[#0071e3] w-4' : 'bg-gray-300 hover:bg-gray-400'}`}
+          />
+        ))}
+      </div>
+
+      <ProjectDetailsModal
         project={selectedProject} 
         isOpen={!!selectedProject} 
         onClose={() => {
