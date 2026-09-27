@@ -15,7 +15,7 @@ const sectionVariants = {
 
 export default function Education() {
     return (
-        <section id="education" className="min-h-screen pt-28 pb-16 bg-gradient-to-tr from-blue-50/50 via-white to-blue-50/50 flex items-start justify-center">
+        <section id="education" className="py-20 md:py-24 bg-gradient-to-tr from-blue-50/50 via-white to-blue-50/50 flex items-start justify-center">
         <ParallaxBackground />
         
         <div className="max-w-4xl mx-auto px-6 w-full relative z-10">
@@ -38,7 +38,7 @@ export default function Education() {
               </div>
               
               <div className="pt-8 border-t border-black/5 relative z-10">
-                <p className="text-[11px] font-bold text-[#86868b] uppercase tracking-widest mb-4 flex items-center gap-2">
+                <p className="text-[12px] font-bold text-[#86868b] uppercase tracking-widest mb-4 flex items-center gap-2">
                     <span className="w-1 h-4 bg-[#0071e3] rounded-full" />
                     Core Curriculum
                 </p>

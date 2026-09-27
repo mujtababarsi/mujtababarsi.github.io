@@ -63,6 +63,8 @@ export default function Navbar({ activeSection, scrollTo }: NavbarProps) {
         {/* Mobile Toggle */}
         <button 
           className="md:hidden p-2 text-[#1d1d1f]"
+          aria-label={isMobileOpen ? "Close menu" : "Open menu"}
+          aria-expanded={isMobileOpen}
           onClick={() => setIsMobileOpen(!isMobileOpen)}
         >
           {isMobileOpen ? <X size={20} /> : <Menu size={20} />}

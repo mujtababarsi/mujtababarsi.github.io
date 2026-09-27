@@ -33,13 +33,13 @@ function ExpertiseCard({ data, delay }: { data: AreaOfExpertise; delay: number }
                     <h3 className="text-sm md:text-base font-bold text-[#1d1d1f] tracking-tight leading-tight">{data.title}</h3>
                 </div>
                 
-                <p className="text-[#424245] text-[11px] md:text-[12px] leading-relaxed font-medium mb-3 flex-grow line-clamp-3 md:line-clamp-none">
+                <p className="text-[#424245] text-[12px] md:text-[12px] leading-relaxed font-medium mb-3 flex-grow line-clamp-3 md:line-clamp-none">
                     {data.description}
                 </p>
 
                 <div className="flex flex-wrap gap-1.5 mt-auto">
                     {data.items.map((item, i) => ( 
-                        <div key={i} className="flex items-center gap-1 text-[9px] font-semibold text-[#86868b] bg-[#F5F5F7] px-2 py-0.5 rounded border border-black/5 whitespace-nowrap">
+                        <div key={i} className="flex items-center gap-1 text-[12px] font-semibold text-[#86868b] bg-[#F5F5F7] px-2 py-0.5 rounded border border-black/5 whitespace-nowrap">
                             <div className={`w-1 h-1 rounded-full ${data.accent.replace('text', 'bg')}`} />
                             {item}
                         </div>
@@ -52,7 +52,7 @@ function ExpertiseCard({ data, delay }: { data: AreaOfExpertise; delay: number }
 
 export default function ExpertiseAndSkillsSection() {
     return (
-        <section id="expertise" className="min-h-screen py-16 md:py-20 bg-[#F5F5F7] flex items-center justify-center relative overflow-hidden">
+        <section id="expertise" className="py-20 md:py-24 bg-[#F5F5F7] flex items-start justify-center relative overflow-hidden">
             <ParallaxBackground />
             
             <div className="max-w-7xl mx-auto px-4 md:px-6 w-full relative z-10 flex flex-col gap-3 md:gap-5 justify-center h-full">
@@ -83,7 +83,7 @@ export default function ExpertiseAndSkillsSection() {
                             </div>
                             <div>
                                 <h3 className="text-sm md:text-base font-bold text-[#1d1d1f]">Technical Arsenal</h3>
-                                <p className="text-[9px] md:text-[10px] text-[#86868b] font-medium uppercase tracking-wider">Operational Capabilities</p>
+                                <p className="text-[12px] md:text-[12px] text-[#86868b] font-medium uppercase tracking-wider">Operational Capabilities</p>
                             </div>
                         </div>
 
@@ -101,7 +101,7 @@ export default function ExpertiseAndSkillsSection() {
                                             <motion.span 
                                                 key={i} 
                                                 whileHover={{ scale: 1.05, y: -2 }}
-                                                className="px-2 py-0.5 rounded-md bg-white border border-black/10 text-[10px] md:text-[11px] font-medium text-[#424245] shadow-sm hover:border-[#0071e3]/30 hover:bg-blue-50/50 hover:text-[#0071e3] hover:shadow-md transition-all cursor-default inline-block"
+                                                className="px-2 py-0.5 rounded-md bg-white border border-black/10 text-[12px] md:text-[12px] font-medium text-[#424245] shadow-sm hover:border-[#0071e3]/30 hover:bg-blue-50/50 hover:text-[#0071e3] hover:shadow-md transition-all cursor-default inline-block"
                                             >
                                                 {item}
                                             </motion.span>

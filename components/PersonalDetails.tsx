@@ -27,7 +27,7 @@ const itemVariants = {
 
 export default function PersonalDetails() {
     return (
-        <section className="min-h-screen pt-28 pb-10 bg-gradient-to-br from-slate-50 to-gray-100 flex items-start justify-center relative overflow-hidden">
+        <section className="pt-20 md:pt-24 pb-10 bg-gradient-to-br from-slate-50 to-gray-100 flex items-start justify-center relative overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
               <div className="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] bg-blue-100/40 rounded-full blur-3xl opacity-60" />
               <div className="absolute bottom-[-10%] left-[-10%] w-[600px] h-[600px] bg-indigo-50/40 rounded-full blur-3xl opacity-60" />
@@ -62,10 +62,10 @@ export default function PersonalDetails() {
                   <p className="text-xs font-medium text-[#0071e3] mt-1 mb-6">Bioinformatician & Pharmacist</p>
                   
                   <div className="flex gap-3 w-full justify-center relative z-10">
-                    <a href="mailto:Mujtababarci@gmail.com" className="p-3 rounded-full bg-white text-[#1d1d1f] hover:bg-[#0071e3] hover:text-white transition-all duration-300 shadow-sm border border-black/5">
+                    <a href="mailto:Mujtababarci@gmail.com" aria-label="Email" className="p-3 rounded-full bg-white text-[#1d1d1f] hover:bg-[#0071e3] hover:text-white transition-all duration-300 shadow-sm border border-black/5">
                       <Mail size={18} strokeWidth={2} />
                     </a>
-                    <a href="https://github.com/mujtababarsi" target="_blank" className="p-3 rounded-full bg-white text-[#1d1d1f] hover:bg-[#0071e3] hover:text-white transition-all duration-300 shadow-sm border border-black/5">
+                    <a href="https://github.com/mujtababarsi" target="_blank" rel="noreferrer" aria-label="GitHub" className="p-3 rounded-full bg-white text-[#1d1d1f] hover:bg-[#0071e3] hover:text-white transition-all duration-300 shadow-sm border border-black/5">
                       <Github size={18} strokeWidth={2} />
                     </a>
                   </div>
@@ -85,7 +85,7 @@ export default function PersonalDetails() {
                           <MapPin size={20} strokeWidth={2} />
                       </div>
                       <div>
-                          <span className="text-[10px] font-bold text-[#86868b] uppercase tracking-widest">Location</span>
+                          <span className="text-[12px] font-bold text-[#86868b] uppercase tracking-widest">Location</span>
                           <p className="text-lg font-bold text-[#1d1d1f] mt-1 tracking-tight">{ADDITIONAL_INFO.location}</p>
                           <p className="text-[12px] text-[#86868b] font-medium mt-1">Open to Relocation</p>
                       </div>
@@ -102,7 +102,7 @@ export default function PersonalDetails() {
                           <Globe size={20} strokeWidth={2} />
                       </div>
                       <div>
-                          <span className="text-[10px] font-bold text-[#86868b] uppercase tracking-widest">Languages</span>
+                          <span className="text-[12px] font-bold text-[#86868b] uppercase tracking-widest">Languages</span>
                           <p className="text-lg font-bold text-[#1d1d1f] mt-1 tracking-tight">{ADDITIONAL_INFO.languages}</p>
                           <p className="text-[12px] text-[#86868b] font-medium mt-1">Native & Professional</p>
                       </div>
@@ -119,7 +119,7 @@ export default function PersonalDetails() {
                           <Activity size={24} strokeWidth={2} />
                       </div>
                       <div>
-                          <span className="text-[10px] font-bold text-[#86868b] uppercase tracking-widest">Professional Status</span>
+                          <span className="text-[12px] font-bold text-[#86868b] uppercase tracking-widest">Professional Status</span>
                           <div className="flex flex-col sm:flex-row sm:items-center sm:gap-8 mt-2">
                               <div className="flex items-center gap-3">
                                 <div className="w-2 h-2 rounded-full bg-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.4)]" />
@@ -141,15 +141,15 @@ export default function PersonalDetails() {
           {/* Integrated Footer Content */}
           <div className="mt-12 pt-8 border-t border-black/5 flex flex-col md:flex-row justify-between items-center md:items-end gap-6 pb-4">
             <div className="flex flex-col gap-2 items-center md:items-start text-center md:text-left">
-               <p className="text-[11px] text-[#86868b] font-medium tracking-wide">
+               <p className="text-[12px] text-[#86868b] font-medium tracking-wide">
                   Copyright © {new Date().getFullYear()} Mohamed Elmugtaba. All rights reserved.
                </p>
-               <p className="text-[11px] text-[#86868b] font-medium tracking-wide">
+               <p className="text-[12px] text-[#86868b] font-medium tracking-wide">
                   Designed & Developed by M. Elmugtaba
                </p>
                <div className="flex items-center gap-1.5 opacity-80 hover:opacity-100 transition-opacity mt-1">
                  <MapPin size={14} strokeWidth={1.5} className="text-[#1d1d1f]" />
-                 <span className="text-[11px] text-[#424245] font-medium">Riyadh, KSA</span>
+                 <span className="text-[12px] text-[#424245] font-medium">Riyadh, KSA</span>
                </div>
             </div>
             <div className="flex items-center gap-5">

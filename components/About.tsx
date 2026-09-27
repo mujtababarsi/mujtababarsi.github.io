@@ -29,7 +29,7 @@ const itemVariants = {
 
 export default function About() {
     return (
-        <section id="me" className="min-h-screen pt-28 pb-16 bg-gradient-to-br from-white via-indigo-50/10 to-blue-50/10 flex items-start justify-center relative overflow-hidden">
+        <section id="me" className="py-20 md:py-24 bg-gradient-to-br from-white via-indigo-50/10 to-blue-50/10 flex items-start justify-center relative overflow-hidden">
             <ParallaxBackground />
             
             <div className="max-w-7xl mx-auto px-6 w-full relative z-10">
@@ -57,7 +57,7 @@ export default function About() {
                     <div className="bg-[#0071e3] p-1.5 rounded-md text-white"><Terminal size={16} /></div>
                     <span className="font-semibold text-[15px] text-[#1d1d1f]">Sequencing Depth</span>
                     </div>
-                    <span className="text-[12px] font-medium text-[#86868b] uppercase tracking-wide">Real-time</span>
+                    <span className="text-[12px] font-medium text-[#86868b] uppercase tracking-wide">Illustrative</span>
                 </div>
                 <div className="h-52" style={{ height: 208, width: '100%' }}>
                     <ResponsiveContainer width="100%" height="100%">

@@ -30,7 +30,7 @@ export default function Experience() {
     const [selectedExpIndex, setSelectedExpIndex] = useState(0);
 
     return (
-        <section id="experience" className="min-h-screen pt-20 pb-16 bg-white flex items-start justify-center relative">
+        <section id="experience" className="py-20 md:py-24 bg-white flex items-start justify-center relative">
         <ParallaxBackground />
 
         <div className="max-w-6xl mx-auto px-6 w-full relative z-10">
@@ -55,7 +55,7 @@ export default function Experience() {
                  <div className="relative z-10">
                     <div className="flex flex-col gap-1 mb-4">
                         <div className="flex items-center justify-between mb-2">
-                             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#F5F5F7] text-[#0071e3] text-[10px] font-bold uppercase tracking-wider border border-black/5">
+                             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#F5F5F7] text-[#0071e3] text-[12px] font-bold uppercase tracking-wider border border-black/5">
                                 <Calendar size={10} /> {exp.period}
                              </span>
                         </div>
@@ -97,14 +97,14 @@ export default function Experience() {
                 >
                   <div className="flex items-center gap-3 mb-1.5">
                     <div className={`w-2 h-2 rounded-full transition-colors ${selectedExpIndex === idx ? 'bg-[#0071e3] ring-4 ring-[#0071e3]/20' : 'bg-[#d2d2d7] group-hover:bg-[#86868b]'}`} />
-                    <span className={`text-[10px] font-bold uppercase tracking-wider ${selectedExpIndex === idx ? 'text-[#0071e3]' : 'text-[#86868b]'}`}>
+                    <span className={`text-[12px] font-bold uppercase tracking-wider ${selectedExpIndex === idx ? 'text-[#0071e3]' : 'text-[#86868b]'}`}>
                       {exp.period}
                     </span>
                   </div>
                   <h4 className={`text-[15px] font-bold ${selectedExpIndex === idx ? 'text-[#1d1d1f]' : 'text-[#424245]'}`}>
                     {exp.role}
                   </h4>
-                  <p className="text-[11px] text-[#86868b] truncate font-medium">{exp.org}</p>
+                  <p className="text-[12px] text-[#86868b] truncate font-medium">{exp.org}</p>
                 </button>
               ))}
             </motion.div>

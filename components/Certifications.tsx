@@ -38,7 +38,7 @@ const itemVariants = {
 
 export default function Certifications() {
     return (
-        <section className="min-h-screen pt-16 pb-32 bg-white relative flex items-start justify-center overflow-hidden">
+        <section className="py-20 md:py-24 bg-white relative flex items-start justify-center overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:20px_20px] opacity-40 pointer-events-none" />
         <ParallaxBackground />
           
