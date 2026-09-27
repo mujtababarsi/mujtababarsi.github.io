@@ -41,6 +41,10 @@ Add an entry to `PROJECTS` in `data/portfolioData.tsx` (newest first). Prefer a 
 - **Keep `AnimatePresence` mounted.** Don't early-return `null` above an `AnimatePresence`; put the condition inside it, or exit animations are skipped.
 - **Projects carousel** (`components/Projects.tsx`): cards and the container are both `h-[400px]`, so anything absolutely positioned at the container's bottom overlaps card content. The navigation dots sit in normal flow below the carousel for this reason.
 
+## Design skills
+
+`.claude/skills/` holds two third-party design skills (MIT, from tasteskill): `design-taste-frontend` for general UI quality and `redesign-existing-projects` for auditing and upgrading this existing site. They discourage Inter and lucide-react, both of which this site currently uses, so treat those as deliberate choices to revisit rather than rules already applied.
+
 ## Open ideas
 
 - Code-split the ~1MB JS bundle (Vite warns on every build)
