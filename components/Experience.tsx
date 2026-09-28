@@ -26,7 +26,15 @@ export default function Experience() {
               <div className="md:col-span-9">
                 <h3 className="text-xl md:text-2xl font-semibold tracking-tight text-[#1d1d1f]">{exp.role}</h3>
                 <p className="mt-1 text-base font-medium text-[#6e6e73]">{exp.org}</p>
-                <p className="mt-4 text-base text-[#424245] leading-relaxed max-w-[70ch]">{exp.description}</p>
+                {exp.summary && <p className="mt-4 text-base text-[#424245] leading-relaxed max-w-[70ch]">{exp.summary}</p>}
+                <ul className="mt-4 space-y-2.5 max-w-[70ch]">
+                  {exp.highlights.map(item => (
+                    <li key={item} className="flex gap-3 text-base text-[#424245] leading-relaxed">
+                      <span className="mt-[0.65rem] w-1.5 h-1.5 rounded-full bg-[#0071e3] shrink-0" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
               </div>
             </motion.li>
           ))}

@@ -6,8 +6,8 @@ import { SectionHeading } from './ui/SectionHeading';
 
 const facts = [
   { label: 'Location', value: ADDITIONAL_INFO.location, note: 'Open to relocation' },
-  { label: 'Languages', value: ADDITIONAL_INFO.languages, note: 'Native and professional' },
-  { label: 'Status', value: 'Transferable Iqama', note: 'Valid driver license' },
+  { label: 'Languages', value: ADDITIONAL_INFO.languages, note: 'Native · fluent' },
+  { label: 'Status', value: 'Transferable Iqama', note: 'Available immediately · Valid driver license' },
 ];
 
 export default function PersonalDetails() {

@@ -1,6 +1,6 @@
 import React from 'react';
-import { 
-  Dna, FlaskConical, Cloud, Code2, Microscope, Database
+import {
+  Dna, FlaskConical, Cloud, Code2, Microscope, Workflow
 } from 'lucide-react';
 import { AreaOfExpertise, Skill, Project, Experience, Education, CertificatePart, GenomicDataPoint } from '../types';
 
@@ -12,17 +12,11 @@ export const GENOMIC_DATA: GenomicDataPoint[] = [
   { pos: 600, depth: 150 }, { pos: 700, depth: 95 }, { pos: 800, depth: 30 }
 ];
 
-export const summaryBrief = (
-  <>
-    <span className="font-semibold text-black">Bioinformatics Professional & Pharmacist</span> bridging clinical science and computational data. I aim to redefine the frontier of discovery using <span className="font-semibold text-black">pharmaceutical insight</span> to frame the essential biological questions and <span className="font-semibold text-black">computational innovation</span> to manifest the data-driven answers that make <span className="font-semibold text-black">precision medicine a reality</span>.
-  </>
-);
-
 export const summaryFull = (
   <>
-    I am a <span className="font-bold">Bioinformatics Professional and Pharmacist</span> bridging clinical science and computational data. My career is built on a unique feedback loop: leveraging <span className="font-bold">pharmaceutical expertise</span> to frame critical biological questions and utilising <span className="font-bold">advanced bioinformatics</span> to manifest the data-driven answers that make <span className="font-bold">precision medicine a reality</span>.
+    Pharmacist with <span className="font-bold">over 7 years</span> across clinical practice, GMP-certified pharmaceutical manufacturing (4× increase in production throughput), and scientific engagement, now working in bioinformatics.
     <br /><br />
-    I specialise in the development of <span className="font-bold">scalable Single-Cell and NGS workflows</span>, with a focus on transforming complex genomic datasets into <span className="font-bold">actionable therapeutic insights</span>. My goal is to stay at the leading edge of <span className="font-bold">global computational trends</span>—harnessing tools like <span className="font-bold">Nextflow</span> and high-performance pipelines to accelerate discovery and drive the future of personalised healthcare.
+    I build <span className="font-bold">reproducible NGS pipelines in Nextflow DSL2</span>, including a CI-tested GATK germline variant calling and joint genotyping pipeline, alongside RNA-seq, single-cell, and spatial transcriptomics analysis. My pharmacy background gives me a practical sense of <span className="font-bold">why a genetic variant matters clinically</span>, not just how to call it. I'm looking to contribute to precision medicine and genomics work here in Saudi Arabia.
   </>
 );
 
@@ -30,8 +24,8 @@ export const AREAS_OF_EXPERTISE: AreaOfExpertise[] = [
   {
     id: "exp1",
     title: "Genomic data science",
-    description: "Unraveling cellular heterogeneity through high-dimensional single-cell and spatial transcriptomics to map the fundamental architecture of disease.",
-    items: ["Single-Cell RNA-seq", "NGS Workflows", "Spatial Transcriptomics", "Multi-omic Analysis"],
+    description: "Reproducible NGS pipelines, from germline variant calling to single-cell and spatial transcriptomics, each framed around a biological question.",
+    items: ["Germline Variant Calling", "Bulk RNA-seq", "Single-Cell RNA-seq", "Spatial Transcriptomics"],
     icon: <Dna className="w-6 h-6" />,
     gradient: "from-blue-50 to-white",
     accent: "text-[#0071e3]"
@@ -57,73 +51,81 @@ export const AREAS_OF_EXPERTISE: AreaOfExpertise[] = [
 ];
 
 export const SKILLS: Skill[] = [
-  { 
+  {
     id: "skill1",
-    category: "Languages and scripting", 
+    category: "Languages",
     description: "The syntax of discovery.",
-    icon: <Code2 className="w-5 h-5" />, 
-    items: ["Python", "R Language", "Bash Scripting", "Linux CLI"],
+    icon: <Code2 className="w-5 h-5" />,
+    items: ["Python", "R", "Bash", "Linux CLI"],
     color: "bg-blue-50 text-[#0071e3]"
   },
-  { 
+  {
     id: "skill2",
-    category: "Bioinformatics tools", 
-    description: "Instruments of precision.",
-    icon: <Microscope className="w-5 h-5" />, 
-    items: ["Scanpy", "Scarf", "Scanorama", "Nextflow", "Zarr", "Dask"],
+    category: "scRNA-seq and spatial",
+    description: "Single-cell and spatial analysis.",
+    icon: <Microscope className="w-5 h-5" />,
+    items: ["Scanpy", "Scarf", "Scanorama", "AnnData", "Zarr / Dask"],
     color: "bg-blue-50 text-[#0071e3]"
   },
-  { 
+  {
     id: "skill3",
-    category: "Data environments", 
-    description: "Platforms for scale.",
-    icon: <Database className="w-5 h-5" />, 
-    items: ["Jupyter Notebook", "RStudio", "Conda", "GCP Foundations"],
+    category: "Bulk RNA-seq and NGS",
+    description: "Alignment, QC and variant calling.",
+    icon: <Dna className="w-5 h-5" />,
+    items: ["GATK4", "STAR", "HISAT2", "SAMtools", "bcftools", "FeatureCounts", "FastQC", "fastp", "MultiQC"],
+    color: "bg-blue-50 text-[#0071e3]"
+  },
+  {
+    id: "skill4",
+    category: "Pipelines and cloud",
+    description: "Reproducible, portable workflows.",
+    icon: <Workflow className="w-5 h-5" />,
+    items: ["Nextflow DSL2", "nf-core", "nf-test", "Docker", "Conda", "Git / GitHub", "GCP"],
     color: "bg-blue-50 text-[#0071e3]"
   }
 ];
 
 export const PROJECTS: Project[] = [
   {
-    title: "Human DNA-seq chr20 Variant Calling (Nextflow DSL2)",
-    tools: "Nextflow | DSL2 | GATK4 | Samtools | Docker",
-    desc: "Built a portable germline short-variant calling pipeline that wraps Samtools and GATK4 to call SNPs and indels from mapped whole-genome sequencing data, with automated QC via MultiQC.",
+    title: "Germline Variant Calling & Joint Genotyping",
+    tools: "Nextflow DSL2 | GATK4 | bcftools | nf-test | CI",
+    desc: "Cohort-level joint genotyping on a chr20 trio (mother, father, son), starting from aligned BAMs and following the GATK best-practices workflow. Fully automated and CI-tested, with every GitHub Actions run passing.",
     tags: ["Nextflow", "Variant Calling", "GATK4"],
-    features: ["Modular DSL2 Workflow", "Joint Genotyping", "Automated MultiQC Reports"],
+    features: ["HaplotypeCaller → GenomicsDBImport → GenotypeGVCFs", "nf-test suite with GitHub Actions CI", "Docker, Singularity and Conda profiles"],
     image: "/projects/dnaseq-chr20.svg",
     link: "https://github.com/mujtababarsi/Human-DNAseq-chr20-nf-dsl2"
   },
   {
-    title: "Human RNA-seq Pipeline (Nextflow DSL2)",
-    tools: "Nextflow | DSL2 | Docker | Singularity",
-    desc: "Developed a scalable, reproducible RNA-seq analysis pipeline using Nextflow DSL2, ensuring portability across HPC and cloud environments.",
+    title: "Reproducible Human RNA-seq Pipeline",
+    tools: "Nextflow DSL2 | STAR | fastp | Docker",
+    desc: "Automates raw FASTQ to BAM and count matrix with full reproducibility. Validated on human chr22 across local, HPC and cloud environments, and designed for full-genome scale.",
     tags: ["Nextflow", "RNA-seq", "Reproducibility"],
-    features: ["Modular Architecture", "Containerization", "Process Parallelization"],
+    features: ["FastQC → fastp → STAR → FeatureCounts → MultiQC", "Docker and Conda dual execution", "Fail-fast input validation"],
     image: "https://images.unsplash.com/photo-1614935151651-0bea6508db6b?q=80&w=800&auto=format&fit=crop",
     link: "https://github.com/mujtababarsi/Human-RNAseq-nf-dsl2"
   },
   {
-    title: "Scanpy Single-Cell Analysis",
-    tools: "Python | Scanpy | Jupyter Notebook",
-    desc: "Conducted scRNA-seq downstream analysis on six PBMC samples to identify transcriptomic differences between COVID-19 patients and healthy controls.",
+    title: "COVID-19 Single-Cell Immune Atlas",
+    tools: "Python | Scanpy | AnnData | Jupyter",
+    desc: "Compared PBMCs from COVID-19 patients and healthy controls across 9,000 cells from six 10x Genomics samples. Identified 12 immune populations and disease-specific transcriptomic signatures. Built in an NBIS project-based workshop.",
     tags: ["scRNA-seq", "COVID-19", "Scanpy"],
-    features: ["Quality Control Pipeline", "Dimensionality Reduction", "Cell-type Prediction"],
+    features: ["QC, normalisation, PCA and UMAP", "Leiden clustering and marker-based annotation", "Wilcoxon differential expression with BH correction"],
     image: "https://images.unsplash.com/photo-1576086213369-97a306d36557?q=80&w=800&auto=format&fit=crop",
-    link: "https://github.com/mujtababarsi/Scanpy-scRNA-seq-Analysis" 
+    link: "https://github.com/mujtababarsi/Covid-19-single-cell-analysis-Scanpy"
   },
   {
-    title: "Covid 19 scRNA-seq & Spatial Transcriptomics Integration",
-    tools: "Python | Scanpy | Scanorama",
-    desc: "Integrated spatial datasets with single-cell RNA-seq references using the Scanorama algorithm for accurate batch correction and cell-type mapping.",
+    title: "Spatial Transcriptomics & scRNA-seq Integration",
+    tools: "Python | Scanpy | Scanorama | AnnData",
+    desc: "Mapped single-cell references onto spatial tissue sections to keep anatomical context. Batch-corrected integration aligned the datasets, and cell-type identities were projected onto spatial coordinates, preserving tissue architecture.",
     tags: ["Spatial", "Integration", "Scanorama"],
-    features: ["Batch Correction", "Tissue Mapping", "High-Performance Vis"],
+    features: ["Scanorama batch correction", "KNN mapping and majority-vote label transfer", "Unified UMAP embedding"],
     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop",
-    link: "https://github.com/mujtababarsi/Covid-19-single-cell-analysis-Scanpy"
+    link: "https://github.com/mujtababarsi/spatial-omics"
   },
   {
     title: "Memory-Efficient scRNA-seq (Scarf)",
     tools: "Python | Scarf | Zarr | Dask",
-    desc: "Optimised analysis for a 10x Genomics 5K PBMC dataset using the Scarf package, leveraging Zarr and Dask for low-memory data chunking.",
+    desc: "Analysed a 10x Genomics 5K PBMC dataset with the Scarf package, using Zarr and Dask chunking to keep memory use low at scale.",
     tags: ["Big Data", "Dask", "Zarr"],
     features: ["Low-Memory Chunking", "KNN Mapping", "Reference Projection"],
     image: "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?q=80&w=800&auto=format&fit=crop",
@@ -132,9 +134,9 @@ export const PROJECTS: Project[] = [
   {
     title: "Data Visualisation with ggplot2",
     tools: "R | RStudio | ggplot2 | Tidyverse",
-    desc: "Generated publication-quality visualisations using the \"Grammar of Graphics\" framework to translate raw data into insightful graphical representations.",
+    desc: "Distribution plots, correlation analysis and faceted layouts built with the Grammar of Graphics, turning raw data into clear graphical summaries.",
     tags: ["R", "ggplot2", "EDA"],
-    features: ["Publication Quality", "Exploratory Analysis", "Complex Faceting"],
+    features: ["Distribution Plots", "Correlation Analysis", "Faceted Layouts"],
     image: "https://images.unsplash.com/photo-1543286386-2e659306cd6c?q=80&w=800&auto=format&fit=crop",
     link: "https://github.com/mujtababarsi/R-and-rstudio-Data-visualisation-with-ggplot2"
   }
@@ -142,39 +144,68 @@ export const PROJECTS: Project[] = [
 
 export const EXPERIENCE: Experience[] = [
   {
+    role: "Self-directed retraining in computational biology",
+    org: "Career transition",
+    period: "2022 – Present",
+    summary: "After relocating from Sudan during a period of regional instability, I used the transition for a deliberate move into computational biology: self-funded, and built without institutional lab access or supervision.",
+    highlights: [
+      "Built end-to-end bioinformatics projects on GitHub since June 2022, each framed around a distinct biological question",
+      "Completed foundational and applied coursework in Linux, R, Python and pipeline engineering",
+      "Since 2025: structured pipeline-engineering training, including a hands-on GATK germline variant-calling pipeline through Seqera's Nextflow for Genomics course",
+      "In progress: Integrating Generative AI into Data Workflows (BigQuery ML, predictive modelling)"
+    ]
+  },
+  {
     role: "Operations Coordinator",
     org: "Dukhan Group",
-    period: "2024 - 2025",
-    description: "Acted as a strategic liaison across business units, diagnosing and resolving operational bottlenecks to ensure seamless service delivery. Audited corporate contracts and operational data to ensure 100% accuracy, maintaining rigorous cross-departmental cycles. Led high-level initiatives to optimize workflows, applying risk assessments to secure contract renewals and elevate corporate standards.",
-    location: "Doha, Qatar"
+    period: "May 2024 – Jul 2025",
+    location: "Doha, Qatar",
+    highlights: [
+      "Designed and maintained structured operational datasets tracking contract status, SLA compliance and recovery outcomes, applying systematic data verification across business units",
+      "Resolved cross-departmental workflow bottlenecks through root-cause analysis, coordinating multi-stakeholder processes to keep services running"
+    ]
   },
   {
     role: "Scientific Engagement Officer",
     org: "Salmawit Co. Ltd",
-    period: "2021 - 2022",
-    description: "Synthesised complex clinical trial data and mechanism-of-action studies for healthcare professionals. Evaluated peer-reviewed medical literature and genomic studies to provide technical insights on drug efficacy. Served as a technical liaison, translating biological findings into therapeutic insights for clinical practice.",
-    location: "Khartoum, Sudan"
+    period: "Feb 2021 – Nov 2022",
+    location: "Khartoum, Sudan",
+    highlights: [
+      "Synthesised clinical trial data and molecular mechanism-of-action studies for healthcare professionals, translating biological findings into actionable clinical insights",
+      "Evaluated peer-reviewed literature on genomics-related drug efficacy and safety to provide evidence-based scientific guidance",
+      "Acted as a clinical-to-research liaison between experimental biology and therapeutic practice"
+    ]
   },
   {
     role: "Production Supervisor",
     org: "Blue Nile Pharmaceutical Factory",
-    period: "2019 - 2021",
-    description: "Engineered a 4x increase in manufacturing throughput by optimising production cycles and workflows. Led cross-functional teams to troubleshoot complex bottlenecks during high-volume scaling. Managed end-to-end manufacturing processes in strict adherence to GMP standards.",
-    location: "Khartoum, Sudan"
+    period: "Sep 2019 – Dec 2020",
+    location: "Khartoum, Sudan",
+    highlights: [
+      "Increased manufacturing throughput 4× (15K → 65K units/month) through data-driven process optimisation",
+      "Managed GMP-compliant end-to-end pharmaceutical manufacturing, ensuring data integrity, batch traceability and regulatory compliance",
+      "Led cross-functional technical teams in diagnosing production bottlenecks during high-volume scaling"
+    ]
   },
   {
-    role: "Medical Representative",
+    role: "Medical Representative, Territory Lead",
     org: "Aurobindo Pharma and Bioderma",
-    period: "2016 - 2018",
-    description: "Communicated technical product features and clinical benefits to healthcare professionals through scientific presentations. Interpreted multidimensional clinical studies to resolve complex medical inquiries regarding therapeutic data. Conducted systematic analysis of healthcare data to identify emerging clinical trends.",
-    location: "Khartoum, Sudan"
+    period: "Feb 2016 – Oct 2018",
+    location: "Khartoum, Sudan",
+    highlights: [
+      "Secured a government formulary listing for Aurobindo's antibiotic product line through scientific KOL engagement and data-driven presentations",
+      "Interpreted multidimensional clinical studies to answer complex medical inquiries and support evidence-based prescribing",
+      "Promoted Bioderma's OTC dermatology and skincare portfolio across pharmacy and clinic channels, building relationships with pharmacy buyers and dermatology KOLs"
+    ]
   },
   {
-    role: "Clinical Pharmacist",
+    role: "Pharmacist",
     org: "Sudan Military Hospital & Wenji Pharmacy",
-    period: "2015 - 2016",
-    description: "Processed and dispensed prescription medications with 100% accuracy, verifying dosages and interactions. Provided clinical counselling to patients on medication use and side effect management to ensure adherence. Monitored pharmaceutical inventory and controlled substances in coordination with medical professionals.",
-    location: "Khartoum, Sudan"
+    period: "May 2015 – Feb 2016",
+    location: "Khartoum, Sudan",
+    highlights: [
+      "Clinical pharmacology practice across hospital and community settings: drug verification, patient counselling, controlled substance management and interaction screening"
+    ]
   }
 ];
 
@@ -190,15 +221,25 @@ export const EDUCATION_DATA: Education[] = [
 
 export const CERTIFICATES_PARTS: CertificatePart[] = [
   {
-    title: "Bioinformatics and computational science",
+    title: "Pipelines and cloud",
     items: [
-      "Bioinformatics for Biologists: Linux, BASH Scripting, and R",
-      "Kaggle Python Certification: Data science syntax and structures",
-      "Introduction to Bioinformatics: Genomic analysis and sequence processing",
-      "Integrate Generative AI Into Data Workflow (In progress)",
-      "Google Cloud Digital Leader (Badge): Foundational cloud transformation, infrastructure, and AI/ML innovation",
-      "National Bioinformatics Infrastructure Sweden (NBIS): Workshops and Training",
-      "Seqera Nextflow Training"
+      "Nextflow for RNA-seq & Genomics (5 certificates) · Seqera · Feb 2026",
+      "Google Cloud Digital Leader · Google Cloud · Jan 2026"
+    ]
+  },
+  {
+    title: "Bioinformatics",
+    items: [
+      "Bioinformatics for Biologists: Linux, Bash and R · Wellcome / FutureLearn · Jul 2022",
+      "NBIS Workshop: scRNA-seq · National Bioinformatics Infrastructure Sweden",
+      "Bioinformatics Under Spotlight: Introduction to genomic analysis and sequence processing · 7VISION · Dec 2015"
+    ]
+  },
+  {
+    title: "Data science",
+    items: [
+      "Python Certification · Kaggle · Feb 2022",
+      "Integrating Generative AI into Data Workflows: BigQuery ML, predictive modelling (in progress)"
     ]
   },
   {
