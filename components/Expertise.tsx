@@ -81,7 +81,7 @@ export default function ExpertiseAndSkillsSection() {
             <h3 className="text-xl font-semibold tracking-tight text-[#1d1d1f]">Tools</h3>
             <p className="mt-1 text-base text-[#6e6e73]">Languages, software and platforms.</p>
           </div>
-          <div className="grid md:grid-cols-3 gap-10">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
             {SKILLS.map(skill => (
               <div key={skill.id}>
                 <div className="flex items-center gap-2.5 mb-4">
