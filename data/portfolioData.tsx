@@ -232,8 +232,7 @@ export const CERTIFICATES_PARTS: CertificatePart[] = [
     items: [
       "Bioinformatics for Biologists: Linux, Bash and R · Wellcome / FutureLearn · Jul 2022",
       "NBIS Workshop: scRNA-seq · National Bioinformatics Infrastructure Sweden",
-      "Bioinformatics Under Spotlight · 7VISION · Dec 2015",
-      "Introduction to Bioinformatics: Genomic analysis and sequence processing"
+      "Bioinformatics Under Spotlight: Introduction to genomic analysis and sequence processing · 7VISION · Dec 2015"
     ]
   },
   {
