@@ -159,7 +159,7 @@ export default function Hero({ scrollTo }: HeroProps) {
                     </button>
                     <div className="flex gap-3">
                     <a href="https://github.com/mujtababarsi" target="_blank" rel="noreferrer" aria-label="GitHub" className="w-12 h-12 flex items-center justify-center bg-white rounded-full text-[#1d1d1f] hover:text-[#0071e3] transition-colors border border-black/5 hover:border-[#0071e3]/20 shadow-sm"><Github size={22} /></a>
-                    <a href="mailto:Mujtababarsi@mail.com" aria-label="Email" className="w-12 h-12 flex items-center justify-center bg-white rounded-full text-[#1d1d1f] hover:text-[#0071e3] transition-colors border border-black/5 hover:border-[#0071e3]/20 shadow-sm"><Mail size={22} /></a>
+                    <a href="mailto:Mujtababarci@gmail.com" aria-label="Email" className="w-12 h-12 flex items-center justify-center bg-white rounded-full text-[#1d1d1f] hover:text-[#0071e3] transition-colors border border-black/5 hover:border-[#0071e3]/20 shadow-sm"><Mail size={22} /></a>
                     </div>
                 </div>
                 </motion.div>
