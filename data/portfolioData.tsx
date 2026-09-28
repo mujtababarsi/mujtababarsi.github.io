@@ -180,8 +180,8 @@ export const EXPERIENCE: Experience[] = [
 
 export const EDUCATION_DATA: Education[] = [
   {
-    degree: "Bachelor of science: Pharmacy",
-    school: "NATIONAL RIBAT UNIVERSITY",
+    degree: "Bachelor of Science: Pharmacy",
+    school: "National Ribat University",
     location: "Khartoum, Sudan",
     period: "2010 - 2015",
     details: "Pharmacology, Clinical Pharmacology, Biochemistry, Pharmacognosy, Pharmaceutics, Pharmaceutical Management, Microbiology, Organic Chemistry and Analytical Chemistry."

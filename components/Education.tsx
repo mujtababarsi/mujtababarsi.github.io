@@ -1,52 +1,38 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { EDUCATION_DATA } from '../data/portfolioData';
-import { ParallaxBackground } from './ui/ParallaxBackground';
 import { SectionHeading } from './ui/SectionHeading';
 
-const sectionVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { 
-    opacity: 1, 
-    y: 0,
-    transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] as const } 
-  }
-};
-
 export default function Education() {
-    return (
-        <section id="education" className="py-20 md:py-24 bg-gradient-to-tr from-blue-50/50 via-white to-blue-50/50 flex items-start justify-center">
-        <ParallaxBackground />
-        
-        <div className="max-w-7xl mx-auto px-6 w-full relative z-10">
-          <SectionHeading title="Education" />
-          
-          {EDUCATION_DATA.map((edu, idx) => (
-            <motion.div 
-               key={idx} 
-               initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.2 }} variants={sectionVariants}
-               className="max-w-4xl bg-white/80 backdrop-blur-xl p-10 rounded-[3rem] shadow-[0_20px_60px_-15px_rgba(0,0,0,0.05)] border border-white/50 text-left relative overflow-hidden group"
+  return (
+    <section id="education" className="py-8 md:py-12">
+      <div className="max-w-7xl mx-auto px-6 w-full">
+        <SectionHeading title="Education" />
+
+        <ol className="divide-y divide-black/10">
+          {EDUCATION_DATA.map(edu => (
+            <motion.li
+              key={`${edu.school}-${edu.period}`}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+              className="grid md:grid-cols-12 gap-3 md:gap-8 py-8 md:py-10 first:pt-0"
             >
-              <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-blue-50/50 to-transparent rounded-bl-full pointer-events-none" />
-              
-              <div className="flex flex-col md:flex-row justify-between mb-8 items-start gap-4 relative z-10">
-                <div>
-                  <h3 className="text-2xl font-bold text-[#1d1d1f] tracking-tight">{edu.degree}</h3>
-                  <p className="text-[#0071e3] font-semibold mt-1.5 text-lg">{edu.school} | {edu.location}</p>
-                </div>
-                <span className="text-xs font-bold text-[#86868b] bg-[#F5F5F7] px-5 py-2 rounded-full border border-black/5 tracking-wide">{edu.period}</span>
+              <div className="md:col-span-3 flex md:flex-col gap-x-3 gap-y-1 text-sm">
+                <span className="font-medium text-[#1d1d1f] tabular-nums">{edu.period}</span>
+                <span className="text-[#6e6e73]">{edu.location}</span>
               </div>
-              
-              <div className="pt-8 border-t border-black/5 relative z-10">
-                <p className="text-[12px] font-bold text-[#86868b] uppercase tracking-widest mb-4 flex items-center gap-2">
-                    <span className="w-1 h-4 bg-[#0071e3] rounded-full" />
-                    Core Curriculum
-                </p>
-                <p className="text-[#1d1d1f] rendering-relaxed text-[15px] font-medium">{edu.details}</p>
+              <div className="md:col-span-9">
+                <h3 className="text-xl md:text-2xl font-semibold tracking-tight text-[#1d1d1f]">{edu.degree}</h3>
+                <p className="mt-1 text-base font-medium text-[#6e6e73]">{edu.school}</p>
+                <p className="mt-6 text-sm font-medium text-[#6e6e73]">Core curriculum</p>
+                <p className="mt-2 text-base text-[#424245] leading-relaxed max-w-[70ch]">{edu.details}</p>
               </div>
-            </motion.div>
+            </motion.li>
           ))}
-        </div>
-      </section>
-    );
+        </ol>
+      </div>
+    </section>
+  );
 }
