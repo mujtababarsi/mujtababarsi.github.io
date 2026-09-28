@@ -10,18 +10,14 @@ const fadeUp = (delay: number) => ({
 });
 
 const statement: { text: string; emphasis?: boolean }[] = [
-  { text: 'Bridging ' },
-  { text: 'clinical science', emphasis: true },
-  { text: ' and ' },
-  { text: 'computational data', emphasis: true },
-  { text: '. I aim to redefine the frontier of discovery using ' },
-  { text: 'pharmaceutical insight', emphasis: true },
-  { text: ' to frame the essential biological questions and ' },
-  { text: 'computational innovation', emphasis: true },
-  { text: ' to manifest the data-driven answers that make ' },
-  { text: 'medicine a reality', emphasis: true },
-  { text: '.' },
-];
+  { text: 'From ' },
+  { text: 'dispensing medications', emphasis: true },
+  { text: ' to ' },
+  { text: 'analysing genomes', emphasis: true },
+  { text: ': a move I have been working toward since 2015. I now build ' },
+  { text: 'reproducible NGS pipelines', emphasis: true },
+  { text: ' for genomics and precision medicine.' },
+]
 
 function Portrait({ className }: { className: string }) {
   const [imgError, setImgError] = useState(false);
@@ -70,7 +66,7 @@ export default function Hero({ scrollTo }: HeroProps) {
             </motion.h1>
 
             <motion.p {...fadeUp(0.1)} className="mt-5 text-xl md:text-2xl font-medium tracking-tight text-[#1d1d1f]">
-              Bioinformatician <span className="text-[#86868b]">·</span> Pharmacist
+              <span className="block sm:inline">Bioinformatics Practitioner</span><span className="hidden sm:inline text-[#86868b]"> · </span><span className="block sm:inline">Clinical Pharmacist</span>
             </motion.p>
 
             <motion.p {...fadeUp(0.15)} className="order-1 lg:order-none mt-8 lg:mt-6 text-base sm:text-lg text-[#424245] leading-relaxed max-w-[56ch]">

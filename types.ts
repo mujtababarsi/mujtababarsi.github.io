@@ -33,7 +33,8 @@ export interface Experience {
   role: string;
   org: string;
   period: string;
-  description: string;
+  summary?: string;
+  highlights: string[];
   location?: string;
 }
 
