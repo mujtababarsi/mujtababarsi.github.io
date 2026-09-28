@@ -30,10 +30,10 @@ export default function PersonalDetails() {
         <section className="pt-20 md:pt-24 pb-10 bg-gradient-to-br from-slate-50 to-gray-100 flex items-start justify-center relative overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
               <div className="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] bg-blue-100/40 rounded-full blur-3xl opacity-60" />
-              <div className="absolute bottom-[-10%] left-[-10%] w-[600px] h-[600px] bg-indigo-50/40 rounded-full blur-3xl opacity-60" />
+              <div className="absolute bottom-[-10%] left-[-10%] w-[600px] h-[600px] bg-blue-50/40 rounded-full blur-3xl opacity-60" />
         </div>
         
-        <div className="max-w-5xl mx-auto px-6 w-full relative z-10 flex flex-col h-full justify-between">
+        <div className="max-w-7xl mx-auto px-6 w-full relative z-10 flex flex-col h-full justify-between">
           <div>
             <SectionHeading title="Personal Details" />
             
@@ -98,7 +98,7 @@ export default function PersonalDetails() {
                     transition={{ type: "spring", stiffness: 300, damping: 20 }}
                     className="bg-white/80 backdrop-blur-xl rounded-[2.5rem] p-6 flex flex-col justify-between shadow-[0_20px_40px_-12px_rgba(0,0,0,0.05)] border border-white/60 ring-1 ring-black/5 group"
                   >
-                        <div className="w-10 h-10 rounded-2xl bg-indigo-50 text-indigo-500 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                        <div className="w-10 h-10 rounded-2xl bg-blue-50 text-[#0071e3] flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
                           <Globe size={20} strokeWidth={2} />
                       </div>
                       <div>
@@ -115,19 +115,19 @@ export default function PersonalDetails() {
                     transition={{ type: "spring", stiffness: 300, damping: 20 }}
                     className="sm:col-span-2 bg-white/80 backdrop-blur-xl rounded-[2.5rem] p-6 flex flex-col sm:flex-row sm:items-center gap-6 sm:gap-8 shadow-[0_20px_40px_-12px_rgba(0,0,0,0.05)] border border-white/60 ring-1 ring-black/5 group"
                   >
-                        <div className="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-600 flex-shrink-0 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                        <div className="w-12 h-12 rounded-2xl bg-blue-50 text-[#0071e3] flex-shrink-0 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                           <Activity size={24} strokeWidth={2} />
                       </div>
                       <div>
                           <span className="text-[12px] font-bold text-[#86868b] uppercase tracking-widest">Professional Status</span>
                           <div className="flex flex-col sm:flex-row sm:items-center sm:gap-8 mt-2">
                               <div className="flex items-center gap-3">
-                                <div className="w-2 h-2 rounded-full bg-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.4)]" />
+                                <div className="w-2 h-2 rounded-full bg-[#0071e3]" />
                                 <p className="text-[14px] font-semibold text-[#1d1d1f]">Transferable Iqama</p>
                               </div>
                               <div className="hidden sm:block w-px h-5 bg-black/10" />
                               <div className="flex items-center gap-3">
-                                <div className="w-2 h-2 rounded-full bg-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.4)]" />
+                                <div className="w-2 h-2 rounded-full bg-[#0071e3]" />
                                 <p className="text-[14px] font-semibold text-[#1d1d1f]">Valid Driver License</p>
                               </div>
                           </div>

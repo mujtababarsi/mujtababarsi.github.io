@@ -18,18 +18,18 @@ export default function Education() {
         <section id="education" className="py-20 md:py-24 bg-gradient-to-tr from-blue-50/50 via-white to-blue-50/50 flex items-start justify-center">
         <ParallaxBackground />
         
-        <div className="max-w-4xl mx-auto px-6 w-full relative z-10">
+        <div className="max-w-7xl mx-auto px-6 w-full relative z-10">
           <SectionHeading title="Education" />
           
           {EDUCATION_DATA.map((edu, idx) => (
             <motion.div 
                key={idx} 
                initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.2 }} variants={sectionVariants}
-               className="bg-white/80 backdrop-blur-xl p-10 rounded-[3rem] shadow-[0_20px_60px_-15px_rgba(0,0,0,0.05)] border border-white/50 text-center md:text-left relative overflow-hidden group"
+               className="max-w-4xl bg-white/80 backdrop-blur-xl p-10 rounded-[3rem] shadow-[0_20px_60px_-15px_rgba(0,0,0,0.05)] border border-white/50 text-left relative overflow-hidden group"
             >
               <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-blue-50/50 to-transparent rounded-bl-full pointer-events-none" />
               
-              <div className="flex flex-col md:flex-row justify-between mb-8 items-center md:items-start gap-4 relative z-10">
+              <div className="flex flex-col md:flex-row justify-between mb-8 items-start gap-4 relative z-10">
                 <div>
                   <h3 className="text-2xl font-bold text-[#1d1d1f] tracking-tight">{edu.degree}</h3>
                   <p className="text-[#0071e3] font-semibold mt-1.5 text-lg">{edu.school} | {edu.location}</p>

@@ -39,6 +39,7 @@ Add an entry to `PROJECTS` in `data/portfolioData.tsx` (newest first). Prefer a 
 - **Gemini key is public.** The workflow passes the repo secret `VITE_GEMINI_API_KEY` into the build as `GEMINI_API_KEY`, and `vite.config.ts` inlines it into the client bundle via `define`. Anyone can read it from the deployed JS. Fixing this needs a server-side proxy; it has not been done.
 - **Framer Motion owns `transform`.** On a `motion.div` that animates `x`/`y`/`scale`/`rotate`, Framer Motion writes an inline `transform` that overrides Tailwind `translate-*`/`scale-*` classes. Center or position such elements with flexbox or a wrapper instead.
 - **Keep `AnimatePresence` mounted.** Don't early-return `null` above an `AnimatePresence`; put the condition inside it, or exit animations are skipped.
+- **Font and icon weight are global.** The font (Geist) is set as `fontFamily.sans` in `tailwind.config.js`, because the root element's `font-sans` class overrides anything on `body`. `index.css` sets `.lucide { stroke-width: 1.5 }`, which overrides the `strokeWidth` prop; use a class like `![stroke-width:0.5]` for a deliberate exception.
 - **Projects carousel** (`components/Projects.tsx`): cards and the container are both `h-[400px]`, so anything absolutely positioned at the container's bottom overlaps card content. The navigation dots sit in normal flow below the carousel for this reason.
 
 ## Open ideas

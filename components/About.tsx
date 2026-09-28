@@ -29,7 +29,7 @@ const itemVariants = {
 
 export default function About() {
     return (
-        <section id="me" className="py-20 md:py-24 bg-gradient-to-br from-white via-indigo-50/10 to-blue-50/10 flex items-start justify-center relative overflow-hidden">
+        <section id="me" className="py-20 md:py-24 bg-gradient-to-br from-white to-blue-50/10 flex items-start justify-center relative overflow-hidden">
             <ParallaxBackground />
             
             <div className="max-w-7xl mx-auto px-6 w-full relative z-10">

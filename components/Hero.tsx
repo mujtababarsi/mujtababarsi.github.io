@@ -49,9 +49,6 @@ function ProfilePicHolder() {
           )}
         </div>
       </motion.div>
-      <div className="absolute -bottom-1 -right-1 bg-white p-1.5 rounded-full shadow-lg z-20 border border-slate-50">
-        <div className="bg-[#34C759] w-3.5 h-3.5 rounded-full ring-2 ring-white animate-pulse" />
-      </div>
     </div>
   );
 }

@@ -91,8 +91,8 @@ export default function ExpertiseAndSkillsSection() {
                             {SKILLS.map((skill, idx) => (
                                 <div key={skill.id} className={`flex flex-col ${idx !== 0 ? 'md:pl-6' : ''}`}>
                                     <div className="flex items-center gap-2 mb-2">
-                                        <div className={`w-5 h-5 rounded-full flex items-center justify-center text-white shadow-sm ${skill.color}`}>
-                                            {React.cloneElement(skill.icon as any, { size: 12, strokeWidth: 2 })}
+                                        <div className={`w-6 h-6 rounded-lg flex items-center justify-center ${skill.color}`}>
+                                            {React.cloneElement(skill.icon as any, { size: 14 })}
                                         </div>
                                         <h4 className="font-bold text-[#1d1d1f] text-[12px] md:text-[13px]">{skill.category}</h4>
                                     </div>

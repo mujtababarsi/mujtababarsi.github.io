@@ -33,7 +33,7 @@ export default function Experience() {
         <section id="experience" className="py-20 md:py-24 bg-white flex items-start justify-center relative">
         <ParallaxBackground />
 
-        <div className="max-w-6xl mx-auto px-6 w-full relative z-10">
+        <div className="max-w-7xl mx-auto px-6 w-full relative z-10">
           <SectionHeading title="Professional Experience" />
 
           {/* MOBILE VIEW: Vertical Stack of Detail Cards */}
@@ -49,7 +49,7 @@ export default function Experience() {
               >
                  {/* Decorative Icon */}
                  <div className="absolute -top-2 -right-2 text-gray-50 opacity-50 transform rotate-12 pointer-events-none">
-                    <Briefcase size={80} strokeWidth={0.5} />
+                    <Briefcase size={80} strokeWidth={0.5} className="![stroke-width:0.5]" />
                  </div>
                  
                  <div className="relative z-10">
@@ -122,7 +122,7 @@ export default function Experience() {
                 >
                   {/* Decorative Background Icon */}
                   <div className="absolute -bottom-10 -right-10 text-gray-50 opacity-50 transform rotate-12 pointer-events-none">
-                      <Briefcase size={200} strokeWidth={0.5} />
+                      <Briefcase size={200} strokeWidth={0.5} className="![stroke-width:0.5]" />
                   </div>
 
                   <div className="flex items-center gap-4 mb-6 relative z-10">

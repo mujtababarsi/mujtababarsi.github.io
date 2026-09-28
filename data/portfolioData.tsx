@@ -33,8 +33,8 @@ export const AREAS_OF_EXPERTISE: AreaOfExpertise[] = [
     description: "Unraveling cellular heterogeneity through high-dimensional single-cell and spatial transcriptomics to map the fundamental architecture of disease.",
     items: ["Single-Cell RNA-seq", "NGS Workflows", "Spatial Transcriptomics", "Multi-omic Analysis"],
     icon: <Dna className="w-6 h-6" />,
-    gradient: "from-blue-50 to-indigo-50",
-    accent: "text-blue-600"
+    gradient: "from-blue-50 to-white",
+    accent: "text-[#0071e3]"
   },
   {
     id: "exp2",
@@ -42,8 +42,8 @@ export const AREAS_OF_EXPERTISE: AreaOfExpertise[] = [
     description: "Bridging the gap between molecular mechanisms and therapeutic outcomes to accelerate the discovery of safer, more effective drugs.",
     items: ["Clinical Pharmacology", "Precision Medicine", "Mechanism of Action", "Drug Efficacy & Safety"],
     icon: <FlaskConical className="w-6 h-6" />,
-    gradient: "from-emerald-50 to-teal-50",
-    accent: "text-emerald-600"
+    gradient: "from-blue-50 to-white",
+    accent: "text-[#0071e3]"
   },
   {
     id: "exp3",
@@ -51,8 +51,8 @@ export const AREAS_OF_EXPERTISE: AreaOfExpertise[] = [
     description: "Architecting scalable, secure computational environments that drive digital transformation and ensure reproducibility in research.",
     items: ["Digital Transformation", "Process Optimisation", "Data Governance", "AI/ML Innovation"],
     icon: <Cloud className="w-6 h-6" />,
-    gradient: "from-purple-50 to-fuchsia-50",
-    accent: "text-purple-600"
+    gradient: "from-blue-50 to-white",
+    accent: "text-[#0071e3]"
   }
 ];
 
@@ -63,7 +63,7 @@ export const SKILLS: Skill[] = [
     description: "The syntax of discovery.",
     icon: <Code2 className="w-5 h-5" />, 
     items: ["Python", "R Language", "Bash Scripting", "Linux CLI"],
-    color: "bg-orange-500"
+    color: "bg-blue-50 text-[#0071e3]"
   },
   { 
     id: "skill2",
@@ -71,7 +71,7 @@ export const SKILLS: Skill[] = [
     description: "Instruments of precision.",
     icon: <Microscope className="w-5 h-5" />, 
     items: ["Scanpy", "Scarf", "Scanorama", "Nextflow", "Zarr", "Dask"],
-    color: "bg-blue-500"
+    color: "bg-blue-50 text-[#0071e3]"
   },
   { 
     id: "skill3",
@@ -79,7 +79,7 @@ export const SKILLS: Skill[] = [
     description: "Platforms for scale.",
     icon: <Database className="w-5 h-5" />, 
     items: ["Jupyter Notebook", "RStudio", "Conda", "GCP Foundations"],
-    color: "bg-indigo-500"
+    color: "bg-blue-50 text-[#0071e3]"
   }
 ];
 
