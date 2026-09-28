@@ -19,13 +19,17 @@ export interface Skill {
   color: string;
 }
 
+export type ProjectCover = 'variants' | 'pipeline' | 'umap' | 'spatial' | 'chunks' | 'facets';
+
 export interface Project {
   title: string;
   tools: string;
   desc: string;
   tags: string[];
   features: string[];
-  image: string;
+  kind: 'pipeline' | 'analysis';
+  cover: ProjectCover;
+  stats: string[];
   link: string;
 }
 

@@ -13,13 +13,13 @@ export function SectionHeading({ title, subtitle }: SectionHeadingProps) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.6 }}
       transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-      className="border-t border-black/10 pt-10 md:pt-12 mb-8 md:mb-12"
+      className="border-t border-black/10 pt-8 md:pt-10 mb-8 md:mb-10"
     >
-      <h2 className="text-3xl md:text-4xl font-semibold text-[#1d1d1f] tracking-tight leading-tight [text-wrap:balance]">
+      <h2 className="text-2xl md:text-[1.875rem] font-semibold text-ink tracking-tight leading-tight [text-wrap:balance]">
         {title}
       </h2>
       {subtitle && (
-        <p className="mt-3 text-[#6e6e73] max-w-[60ch] text-base leading-relaxed">
+        <p className="mt-2 text-muted max-w-[60ch] text-[15px] leading-relaxed">
           {subtitle}
         </p>
       )}
