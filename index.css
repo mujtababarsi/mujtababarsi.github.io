@@ -5,18 +5,18 @@
 /* Theme: every colour and font on the site comes from these variables.
    Colours are space-separated RGB channels so Tailwind opacity modifiers work. */
 :root {
-  --c-canvas: 245 245 247;
+  --c-canvas: 243 246 249;
   --c-surface: 255 255 255;
-  --c-ink: 29 29 31;
-  --c-body: 66 66 69;
-  --c-muted: 110 110 115;
-  --c-subtle: 134 134 139;
-  --c-line: 210 210 215;
-  --c-accent: 0 102 204;
-  --c-accent-hover: 0 85 170;
-  --c-accent-soft: 239 246 255;
-  --font-body: 'Geist';
-  --font-display: 'Geist';
+  --c-ink: 11 27 43;
+  --c-body: 51 65 85;
+  --c-muted: 91 107 124;
+  --c-subtle: 123 138 153;
+  --c-line: 203 213 225;
+  --c-accent: 3 105 161;
+  --c-accent-hover: 7 89 133;
+  --c-accent-soft: 227 241 250;
+  --font-body: 'Space Grotesk';
+  --font-display: 'Archivo';
 }
 
 h1, h2, h3, h4 {

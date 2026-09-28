@@ -20,7 +20,7 @@ export default function Navbar({ activeSection, scrollTo }: NavbarProps) {
   ];
 
   return (
-    <nav className="fixed top-0 left-0 w-full z-50 transition-all duration-300 border-b border-black/5 bg-[rgba(255,255,255,0.72)] backdrop-blur-xl saturate-[180%] supports-[backdrop-filter]:bg-[rgba(255,255,255,0.6)]">
+    <nav className="fixed top-0 left-0 w-full z-50 transition-all duration-300 border-b border-black/5 bg-[rgba(255,255,255,0.72)] backdrop-blur-xl backdrop-saturate-[180%] supports-[backdrop-filter]:bg-[rgba(255,255,255,0.6)]">
       <div className="max-w-6xl mx-auto px-6 h-14 md:h-16 flex items-center justify-between">
         {/* Brand */}
         <div 

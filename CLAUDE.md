@@ -6,6 +6,7 @@ Personal portfolio site for Mohamed Elmugtaba (bioinformatics / pharmacy), serve
 
 - React 19 + TypeScript, built with Vite 6
 - Tailwind CSS 3 via PostCSS (`tailwind.config.js`, `postcss.config.js`, `index.css`) — a real build step, not the CDN script
+- Fonts self-hosted with `@fontsource` (Archivo headings, Space Grotesk text), imported in `index.tsx`
 - Framer Motion for animation, lucide-react for icons, Recharts for the genomic coverage chart
 - `@google/genai` for the "Ask AI" copilot and per-project "AI Insight"
 
