@@ -384,7 +384,7 @@ export default function Projects({ onOpenAi }: { onOpenAi?: (isOpen: boolean) =>
         <ParallaxBackground />
           
         <div className="max-w-7xl mx-auto px-6 w-full relative z-10 flex flex-col justify-center">
-          <SectionHeading title="Selected Projects" />
+          <SectionHeading title="Selected projects" />
             
           <motion.div
             initial={{ opacity: 0, y: 30 }}

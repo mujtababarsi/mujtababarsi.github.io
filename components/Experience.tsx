@@ -34,7 +34,7 @@ export default function Experience() {
         <ParallaxBackground />
 
         <div className="max-w-7xl mx-auto px-6 w-full relative z-10">
-          <SectionHeading title="Professional Experience" />
+          <SectionHeading title="Experience" />
 
           {/* MOBILE VIEW: Vertical Stack of Detail Cards */}
           <div className="md:hidden flex flex-col gap-6">

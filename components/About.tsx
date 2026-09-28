@@ -33,7 +33,7 @@ export default function About() {
             <ParallaxBackground />
             
             <div className="max-w-7xl mx-auto px-6 w-full relative z-10">
-            <SectionHeading title="At the Intersection of Pharmacy & Bioinformatics" subtitle="Bridging clinical expertise with computational precision." />
+            <SectionHeading title="At the intersection of pharmacy and bioinformatics" subtitle="Bridging clinical expertise with computational precision." />
 
             <motion.div 
                 initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.2 }} variants={containerVariants}

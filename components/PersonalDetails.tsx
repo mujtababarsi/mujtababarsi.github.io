@@ -35,7 +35,7 @@ export default function PersonalDetails() {
         
         <div className="max-w-7xl mx-auto px-6 w-full relative z-10 flex flex-col h-full justify-between">
           <div>
-            <SectionHeading title="Personal Details" />
+            <SectionHeading title="Personal details" />
             
             <motion.div 
               initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.2 }} variants={containerVariants}
@@ -87,7 +87,7 @@ export default function PersonalDetails() {
                       <div>
                           <span className="text-[12px] font-bold text-[#86868b] uppercase tracking-widest">Location</span>
                           <p className="text-lg font-bold text-[#1d1d1f] mt-1 tracking-tight">{ADDITIONAL_INFO.location}</p>
-                          <p className="text-[12px] text-[#86868b] font-medium mt-1">Open to Relocation</p>
+                          <p className="text-[12px] text-[#86868b] font-medium mt-1">Open to relocation</p>
                       </div>
                   </motion.div>
 
@@ -104,7 +104,7 @@ export default function PersonalDetails() {
                       <div>
                           <span className="text-[12px] font-bold text-[#86868b] uppercase tracking-widest">Languages</span>
                           <p className="text-lg font-bold text-[#1d1d1f] mt-1 tracking-tight">{ADDITIONAL_INFO.languages}</p>
-                          <p className="text-[12px] text-[#86868b] font-medium mt-1">Native & Professional</p>
+                          <p className="text-[12px] text-[#86868b] font-medium mt-1">Native and professional</p>
                       </div>
                   </motion.div>
 

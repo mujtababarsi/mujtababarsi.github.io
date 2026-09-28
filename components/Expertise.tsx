@@ -57,8 +57,8 @@ export default function ExpertiseAndSkillsSection() {
             
             <div className="max-w-7xl mx-auto px-4 md:px-6 w-full relative z-10 flex flex-col gap-3 md:gap-5 justify-center h-full">
                 <SectionHeading 
-                    title="Professional Ecosystem" 
-                    subtitle="Strategic domain expertise integrated with a robust technical arsenal."
+                    title="Expertise" 
+                    subtitle="Research areas and the tools I work with."
                 />
 
                 <div className="flex flex-col gap-3 md:gap-4 h-full">
@@ -82,8 +82,8 @@ export default function ExpertiseAndSkillsSection() {
                                 <LucideChip size={16} />
                             </div>
                             <div>
-                                <h3 className="text-sm md:text-base font-bold text-[#1d1d1f]">Technical Arsenal</h3>
-                                <p className="text-[12px] md:text-[12px] text-[#86868b] font-medium uppercase tracking-wider">Operational Capabilities</p>
+                                <h3 className="text-sm md:text-base font-bold text-[#1d1d1f]">Tools</h3>
+                                <p className="text-[12px] md:text-[12px] text-[#86868b] font-medium uppercase tracking-wider">Languages, software and platforms</p>
                             </div>
                         </div>
 

@@ -43,7 +43,7 @@ export default function Certifications() {
         <ParallaxBackground />
           
         <div className="max-w-7xl mx-auto px-6 w-full relative z-10">
-          <SectionHeading title="Certifications & Professional Development" />
+          <SectionHeading title="Certifications and training" />
           
           <motion.div 
             variants={stableContainerVariants}

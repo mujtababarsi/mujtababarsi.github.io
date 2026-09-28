@@ -136,7 +136,7 @@ export default function Hero({ scrollTo }: HeroProps) {
                     
                     <div className="flex items-center gap-2 bg-white px-3 py-1.5 rounded-full shadow-sm border border-black/5 mt-2">
                     <span className="w-2 h-2 rounded-full bg-[#34C759]" />
-                    <span className="text-[12px] font-medium text-[#1d1d1f] tracking-wide">Available for Collaboration</span>
+                    <span className="text-[12px] font-medium text-[#1d1d1f] tracking-wide">Available for collaboration</span>
                     </div>
                 </div>
                 </motion.div>
