@@ -1,167 +1,103 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import { User, ChevronRight, Github, Mail } from 'lucide-react';
 import { PROFILE_IMAGE_URL } from '../data/portfolioData';
-import { ParallaxBackground } from './ui/ParallaxBackground';
 
-// Animation Variants
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: { 
-    opacity: 1,
-    transition: { 
-      staggerChildren: 0.1,
-      delayChildren: 0.1
-    }
-  }
-};
+const fadeUp = (delay: number) => ({
+  initial: { opacity: 0, y: 16 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.6, delay, ease: [0.16, 1, 0.3, 1] as const },
+});
 
-const itemVariants = {
-  hidden: { opacity: 0, y: 15, x: -10 },
-  visible: { 
-    opacity: 1, 
-    y: 0, 
-    x: 0,
-    transition: { type: "spring" as const, stiffness: 100, damping: 20 }
-  }
-};
+const statement: { text: string; emphasis?: boolean }[] = [
+  { text: 'Bridging ' },
+  { text: 'clinical science', emphasis: true },
+  { text: ' and ' },
+  { text: 'computational data', emphasis: true },
+  { text: '. I aim to redefine the frontier of discovery using ' },
+  { text: 'pharmaceutical insight', emphasis: true },
+  { text: ' to frame the essential biological questions and ' },
+  { text: 'computational innovation', emphasis: true },
+  { text: ' to manifest the data-driven answers that make ' },
+  { text: 'medicine a reality', emphasis: true },
+  { text: '.' },
+];
 
-function ProfilePicHolder() {
+function Portrait({ className }: { className: string }) {
   const [imgError, setImgError] = useState(false);
 
   return (
-    <div className="relative w-40 h-48 md:w-56 md:h-64 shrink-0">
-      <motion.div 
-        whileHover={{ scale: 1.02 }}
-        transition={{ type: "spring", stiffness: 300, damping: 20 }}
-        className="relative w-full h-full bg-white rounded-[2rem] shadow-[0_20px_40px_-12px_rgba(0,0,0,0.12)] overflow-hidden p-2 ring-1 ring-black/5"
-      >
-        <div className="w-full h-full bg-[#F5F5F7] rounded-[1.5rem] overflow-hidden relative">
-          {PROFILE_IMAGE_URL && !imgError ? (
-            <img 
-              src={PROFILE_IMAGE_URL} 
-              alt="Mohamed Elmugtaba" 
-              onError={() => setImgError(true)}
-              className="w-full h-full object-cover grayscale-[10%] hover:grayscale-0 transition-all duration-700 ease-out" 
-            />
-          ) : (
-            <div className="w-full h-full flex items-center justify-center text-[#86868b]"><User size={50} strokeWidth={1.5} /></div>
-          )}
-        </div>
-      </motion.div>
-    </div>
-  );
-}
-
-function TypewriterText() {
-  const segments = [
-    { text: '"Bridging ', bold: false },
-    { text: "clinical science", bold: true },
-    { text: " and ", bold: false },
-    { text: "computational data", bold: true },
-    { text: ". I aim to redefine the frontier of discovery using ", bold: false },
-    { text: "pharmaceutical insight", bold: true },
-    { text: " to frame the essential biological questions and ", bold: false },
-    { text: "computational innovation", bold: true },
-    { text: " to manifest the data-driven answers that make ", bold: false },
-    { text: "medicine a reality", bold: true },
-    { text: '."', bold: false },
-  ];
-
-  const [textState, setTextState] = useState({ segmentIndex: 0, charIndex: 0 });
-  const containerRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(containerRef, { amount: 0.5 });
-
-  useEffect(() => { if (!isInView) setTextState({ segmentIndex: 0, charIndex: 0 }); }, [isInView]);
-
-  useEffect(() => {
-    if (!isInView || textState.segmentIndex >= segments.length) return;
-    
-    const timeout = setTimeout(() => {
-      setTextState((prev) => {
-        const currentSegment = segments[prev.segmentIndex];
-        if (prev.charIndex < currentSegment.text.length) {
-          return { ...prev, charIndex: prev.charIndex + 1 };
-        } else {
-          return { segmentIndex: prev.segmentIndex + 1, charIndex: 0 };
-        }
-      });
-    }, 15);
-    return () => clearTimeout(timeout);
-  }, [textState, segments.length, isInView]);
-
-  return (
-    <div ref={containerRef} className="relative">
-      <div className="invisible pointer-events-none select-none" aria-hidden="true">
-        {segments.map((seg, i) => <span key={`ghost-${i}`} className={seg.bold ? "font-semibold" : ""}>{seg.text}</span>)}
-      </div>
-      <div className="absolute top-0 left-0 w-full h-full">
-        {segments.map((seg, i) => {
-          if (i < textState.segmentIndex) return <span key={i} className={seg.bold ? "font-semibold text-black" : ""}>{seg.text}</span>;
-          if (i === textState.segmentIndex) return <span key={i} className={seg.bold ? "font-semibold text-black" : ""}>{seg.text.slice(0, textState.charIndex)}<span className="animate-pulse inline-block w-0.5 h-5 bg-[#0071e3] align-middle ml-0.5"></span></span>;
-          return null;
-        })}
-      </div>
+    <div className={`${className} overflow-hidden bg-white ring-1 ring-black/5`}>
+      {PROFILE_IMAGE_URL && !imgError ? (
+        <img
+          src={PROFILE_IMAGE_URL}
+          alt="Mohamed Elmugtaba"
+          onError={() => setImgError(true)}
+          className="w-full h-full object-cover"
+        />
+      ) : (
+        <div className="w-full h-full flex items-center justify-center text-[#86868b]"><User size={32} /></div>
+      )}
     </div>
   );
 }
 
 interface HeroProps {
-    scrollTo: (id: string) => void;
+  scrollTo: (id: string) => void;
 }
 
 export default function Hero({ scrollTo }: HeroProps) {
-    return (
-        <section id="home" className="min-h-[100dvh] relative pt-24 md:pt-40 pb-20 bg-[#F5F5F7] flex items-start justify-center">
-            <ParallaxBackground />
-            
-            <div className="max-w-5xl mx-auto px-6 w-full relative z-10">
-            <motion.div 
-                initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.2 }} variants={containerVariants}
-                className="grid lg:grid-cols-2 gap-8 items-center"
-            >
-                
-                {/* Left Side */}
-                <motion.div variants={itemVariants} className="flex flex-col items-center lg:items-start text-center lg:text-left">
-                <ProfilePicHolder />
-                
-                <div className="mt-6 flex flex-col items-center lg:items-start w-full space-y-3">
-                    <h1 className="text-3xl md:text-4xl font-bold text-[#1d1d1f] tracking-tight leading-[1.05]">
-                    Mohamed <span className="text-[#86868b]">Elmugtaba</span>
-                    </h1>
-                    
-                    <p className="text-lg md:text-xl font-medium text-[#1d1d1f] tracking-tight">
-                    Bioinformatician | Pharmacist
-                    </p>
-                    
-                    <div className="flex items-center gap-2 bg-white px-3 py-1.5 rounded-full shadow-sm border border-black/5 mt-2">
-                    <span className="w-2 h-2 rounded-full bg-[#34C759]" />
-                    <span className="text-[12px] font-medium text-[#1d1d1f] tracking-wide">Available for collaboration</span>
-                    </div>
-                </div>
-                </motion.div>
-
-                {/* Right Side - Justified Brief Content */}
-                <motion.div variants={itemVariants} className="flex flex-col items-center lg:items-start text-center lg:text-left">
-                <div className="order-2 lg:order-1 text-base md:text-xl text-[#1d1d1f] font-normal leading-relaxed tracking-tight max-w-lg lg:mb-8">
-                    <TypewriterText />
-                </div>
-                
-                <div className="order-1 lg:order-2 flex flex-wrap justify-center lg:justify-start gap-4 w-full mb-8 lg:mb-0">
-                    <button 
-                    onClick={() => scrollTo('me')} 
-                    className="bg-[#0071e3] text-white px-8 py-4 rounded-full font-medium text-[16px] hover:bg-[#0077ED] transition-all flex items-center gap-2 active:scale-[0.98]"
-                    >
-                    Meet Me <ChevronRight size={18} />
-                    </button>
-                    <div className="flex gap-3">
-                    <a href="https://github.com/mujtababarsi" target="_blank" rel="noreferrer" aria-label="GitHub" className="w-12 h-12 flex items-center justify-center bg-white rounded-full text-[#1d1d1f] hover:text-[#0071e3] transition-colors border border-black/5 hover:border-[#0071e3]/20 shadow-sm"><Github size={22} /></a>
-                    <a href="mailto:Mujtababarci@gmail.com" aria-label="Email" className="w-12 h-12 flex items-center justify-center bg-white rounded-full text-[#1d1d1f] hover:text-[#0071e3] transition-colors border border-black/5 hover:border-[#0071e3]/20 shadow-sm"><Mail size={22} /></a>
-                    </div>
-                </div>
-                </motion.div>
+  return (
+    <section id="home" className="lg:min-h-[100dvh] flex items-center pt-28 pb-8 lg:pt-32 lg:pb-16">
+      <div className="max-w-7xl mx-auto px-6 w-full">
+        <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+          <div className="lg:col-span-7 flex flex-col items-start">
+            <motion.div {...fadeUp(0)} className="flex items-center gap-4 mb-8 lg:mb-6">
+              <Portrait className="lg:hidden w-16 h-16 rounded-2xl shrink-0" />
+              <div>
+                <p className="inline-flex items-center gap-2 text-sm font-medium text-[#424245]">
+                  <span className="w-2 h-2 rounded-full bg-[#34C759]" />
+                  Available for collaboration
+                </p>
+                <p className="lg:hidden mt-0.5 text-sm text-[#6e6e73]">Riyadh, KSA</p>
+              </div>
             </motion.div>
-            </div>
-        </section>
-    );
+
+            <motion.h1 {...fadeUp(0.05)} className="text-[3.5rem] sm:text-6xl lg:text-7xl font-semibold tracking-tighter leading-[0.95] text-[#1d1d1f]">
+              Mohamed
+              <br />
+              <span className="text-[#86868b]">Elmugtaba</span>
+            </motion.h1>
+
+            <motion.p {...fadeUp(0.1)} className="mt-5 text-xl md:text-2xl font-medium tracking-tight text-[#1d1d1f]">
+              Bioinformatician <span className="text-[#86868b]">·</span> Pharmacist
+            </motion.p>
+
+            <motion.p {...fadeUp(0.15)} className="order-1 lg:order-none mt-8 lg:mt-6 text-base sm:text-lg text-[#424245] leading-relaxed max-w-[56ch]">
+              {statement.map((part, i) =>
+                part.emphasis
+                  ? <span key={i} className="font-medium text-[#1d1d1f]">{part.text}</span>
+                  : <React.Fragment key={i}>{part.text}</React.Fragment>
+              )}
+            </motion.p>
+
+            <motion.div {...fadeUp(0.2)} className="mt-8 lg:mt-10 flex flex-wrap items-center gap-3">
+              <button
+                onClick={() => scrollTo('me')}
+                className="bg-[#0071e3] text-white pl-7 pr-6 py-3.5 rounded-full font-medium text-base hover:bg-[#0077ED] transition-colors flex items-center gap-2 active:scale-[0.98]"
+              >
+                Meet Me <ChevronRight size={18} />
+              </button>
+              <a href="https://github.com/mujtababarsi" target="_blank" rel="noreferrer" aria-label="GitHub" className="w-12 h-12 flex items-center justify-center bg-white rounded-full text-[#1d1d1f] hover:text-[#0071e3] transition-colors ring-1 ring-black/10 active:scale-[0.98]"><Github size={20} /></a>
+              <a href="mailto:Mujtababarci@gmail.com" aria-label="Email" className="w-12 h-12 flex items-center justify-center bg-white rounded-full text-[#1d1d1f] hover:text-[#0071e3] transition-colors ring-1 ring-black/10 active:scale-[0.98]"><Mail size={20} /></a>
+            </motion.div>
+          </div>
+
+          <motion.div {...fadeUp(0.1)} className="hidden lg:flex lg:col-span-5 justify-end">
+            <Portrait className="w-full max-w-sm aspect-[4/5] rounded-3xl shadow-[0_30px_60px_-30px_rgba(29,29,31,0.35)]" />
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
 }

@@ -116,7 +116,7 @@ export default function App() {
   return (
     <div 
       ref={mainContainerRef}
-      className="min-h-screen w-full bg-white font-sans text-[#1d1d1f] selection:bg-[#0071e3]/20 relative antialiased"
+      className="min-h-screen w-full bg-[#F5F5F7] font-sans text-[#1d1d1f] selection:bg-[#0071e3]/20 relative antialiased"
     >
       <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:bg-white focus:text-[#1d1d1f] focus:px-4 focus:py-2 focus:rounded-full focus:shadow-lg">Skip to content</a>
       <Navbar activeSection={activeSection} scrollTo={scrollTo} />

@@ -34,6 +34,7 @@ export interface Experience {
   org: string;
   period: string;
   description: string;
+  location?: string;
 }
 
 export interface Education {

@@ -4,7 +4,6 @@ import { Globe, Github, Sparkles, Loader2, X, ChevronLeft, ChevronRight } from '
 import { PROJECTS } from '../data/portfolioData';
 import { Project } from '../types';
 import { callGemini } from '../services/gemini';
-import { ParallaxBackground } from './ui/ParallaxBackground';
 import { SectionHeading } from './ui/SectionHeading';
 
 function AIProjectInsight({ project, onOpenChange, focusable = true }: { project: Project; onOpenChange?: (isOpen: boolean) => void; focusable?: boolean }) {
@@ -51,7 +50,7 @@ function AIProjectInsight({ project, onOpenChange, focusable = true }: { project
             initial={{ opacity: 0, backdropFilter: "blur(0px)" }}
             animate={{ opacity: 1, backdropFilter: "blur(12px)" }}
             exit={{ opacity: 0, backdropFilter: "blur(0px)" }}
-            className="absolute inset-0 z-50 bg-white/95 p-6 flex flex-col text-left rounded-[2.5rem]"
+            className="absolute inset-0 z-50 bg-white/95 p-6 flex flex-col text-left rounded-3xl"
           >
              <div className="flex justify-between items-center mb-4 border-b border-black/5 pb-2">
                 <div className="flex items-center gap-2 text-[#0071e3]">
@@ -99,7 +98,7 @@ function ProjectDetailsModal({ project, isOpen, onClose }: { project: Project | 
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             onClick={(e) => e.stopPropagation()}
-            className="relative z-[70] bg-white w-full max-w-2xl max-h-[85vh] rounded-[2rem] shadow-2xl overflow-hidden flex flex-col"
+            className="relative z-[70] bg-white w-full max-w-2xl max-h-[85vh] rounded-3xl shadow-2xl overflow-hidden flex flex-col"
           >
             <div className="relative h-48 sm:h-64 w-full shrink-0">
               {project.image ? (
@@ -262,7 +261,7 @@ function ProjectDockCarousel({ onOpenAi }: { onOpenAi?: (isOpen: boolean) => voi
                 }}
                 onClick={() => handleCardClick(index, isCenter)}
                 aria-hidden={!isCenter}
-                className={`absolute w-[300px] md:w-[360px] h-[400px] bg-white rounded-[2rem] shadow-xl border border-white/50 overflow-hidden cursor-pointer ${isCenter ? 'pointer-events-auto' : 'pointer-events-none md:pointer-events-auto'}`}
+                className={`absolute w-[300px] md:w-[360px] h-[400px] bg-white rounded-3xl shadow-xl border border-white/50 overflow-hidden cursor-pointer ${isCenter ? 'pointer-events-auto' : 'pointer-events-none md:pointer-events-auto'}`}
                 style={{
                   transformStyle: 'preserve-3d',
                   boxShadow: isCenter 
@@ -380,8 +379,7 @@ function ProjectDockCarousel({ onOpenAi }: { onOpenAi?: (isOpen: boolean) => voi
 
 export default function Projects({ onOpenAi }: { onOpenAi?: (isOpen: boolean) => void }) {
     return (
-        <section id="projects" className="py-20 md:py-24 bg-[#F5F5F7] flex items-start justify-center relative overflow-hidden">
-        <ParallaxBackground />
+        <section id="projects" className="py-8 md:py-12 flex items-start justify-center relative overflow-hidden">
           
         <div className="max-w-7xl mx-auto px-6 w-full relative z-10 flex flex-col justify-center">
           <SectionHeading title="Selected projects" />
