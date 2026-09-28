@@ -60,7 +60,7 @@ export default function AICopilotModal({ isOpen, onClose }: AICopilotModalProps)
             </div>
             <h3 className="font-semibold text-[15px] text-[#1d1d1f]">Research Assistant</h3>
           </div>
-          <button onClick={onClose} className="p-2 bg-[#F5F5F7] rounded-full text-[#86868b] hover:bg-[#e8e8ed] transition-colors"><X size={18} /></button>
+          <button onClick={onClose} aria-label="Close" className="p-2 bg-[#F5F5F7] rounded-full text-[#86868b] hover:bg-[#e8e8ed] transition-colors"><X size={18} /></button>
         </div>
         
         <div ref={scrollRef} className="flex-grow overflow-y-auto p-6 space-y-6">
@@ -85,6 +85,7 @@ export default function AICopilotModal({ isOpen, onClose }: AICopilotModalProps)
             />
             <button 
               onClick={handleSend} 
+              aria-label="Send message"
               disabled={!input.trim()}
               className="absolute right-2 top-2 p-1.5 bg-[#0071e3] text-white rounded-full hover:bg-[#005bb5] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >

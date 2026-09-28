@@ -29,57 +29,57 @@ export const summaryFull = (
 export const AREAS_OF_EXPERTISE: AreaOfExpertise[] = [
   {
     id: "exp1",
-    title: "Genomic Data Science",
+    title: "Genomic data science",
     description: "Unraveling cellular heterogeneity through high-dimensional single-cell and spatial transcriptomics to map the fundamental architecture of disease.",
     items: ["Single-Cell RNA-seq", "NGS Workflows", "Spatial Transcriptomics", "Multi-omic Analysis"],
     icon: <Dna className="w-6 h-6" />,
-    gradient: "from-blue-50 to-indigo-50",
-    accent: "text-blue-600"
+    gradient: "from-blue-50 to-white",
+    accent: "text-[#0071e3]"
   },
   {
     id: "exp2",
-    title: "Precision Pharmacology",
+    title: "Precision pharmacology",
     description: "Bridging the gap between molecular mechanisms and therapeutic outcomes to accelerate the discovery of safer, more effective drugs.",
     items: ["Clinical Pharmacology", "Precision Medicine", "Mechanism of Action", "Drug Efficacy & Safety"],
     icon: <FlaskConical className="w-6 h-6" />,
-    gradient: "from-emerald-50 to-teal-50",
-    accent: "text-emerald-600"
+    gradient: "from-blue-50 to-white",
+    accent: "text-[#0071e3]"
   },
   {
     id: "exp3",
-    title: "Digital Infrastructure",
+    title: "Digital infrastructure",
     description: "Architecting scalable, secure computational environments that drive digital transformation and ensure reproducibility in research.",
     items: ["Digital Transformation", "Process Optimisation", "Data Governance", "AI/ML Innovation"],
     icon: <Cloud className="w-6 h-6" />,
-    gradient: "from-purple-50 to-fuchsia-50",
-    accent: "text-purple-600"
+    gradient: "from-blue-50 to-white",
+    accent: "text-[#0071e3]"
   }
 ];
 
 export const SKILLS: Skill[] = [
   { 
     id: "skill1",
-    category: "Languages & Scripting", 
+    category: "Languages and scripting", 
     description: "The syntax of discovery.",
     icon: <Code2 className="w-5 h-5" />, 
     items: ["Python", "R Language", "Bash Scripting", "Linux CLI"],
-    color: "bg-orange-500"
+    color: "bg-blue-50 text-[#0071e3]"
   },
   { 
     id: "skill2",
-    category: "Bioinformatics Tools", 
+    category: "Bioinformatics tools", 
     description: "Instruments of precision.",
     icon: <Microscope className="w-5 h-5" />, 
     items: ["Scanpy", "Scarf", "Scanorama", "Nextflow", "Zarr", "Dask"],
-    color: "bg-blue-500"
+    color: "bg-blue-50 text-[#0071e3]"
   },
   { 
     id: "skill3",
-    category: "Data Environments", 
+    category: "Data environments", 
     description: "Platforms for scale.",
     icon: <Database className="w-5 h-5" />, 
     items: ["Jupyter Notebook", "RStudio", "Conda", "GCP Foundations"],
-    color: "bg-indigo-500"
+    color: "bg-blue-50 text-[#0071e3]"
   }
 ];
 
@@ -190,7 +190,7 @@ export const EDUCATION_DATA: Education[] = [
 
 export const CERTIFICATES_PARTS: CertificatePart[] = [
   {
-    title: "Bioinformatics & Computational Science",
+    title: "Bioinformatics and computational science",
     items: [
       "Bioinformatics for Biologists: Linux, BASH Scripting, and R",
       "Kaggle Python Certification: Data science syntax and structures",
@@ -202,7 +202,7 @@ export const CERTIFICATES_PARTS: CertificatePart[] = [
     ]
   },
   {
-    title: "Pharmaceutical Operations & Strategy",
+    title: "Pharmaceutical operations and strategy",
     items: [
       "Drug Information Resources: Evidence-based research and clinical databases",
       "Total Quality Management: Process optimisation and quality standards",
