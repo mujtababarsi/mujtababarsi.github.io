@@ -23,11 +23,11 @@ const statement: { text: string; emphasis?: boolean }[] = [
   { text: '.' },
 ];
 
-function Portrait() {
+function Portrait({ className }: { className: string }) {
   const [imgError, setImgError] = useState(false);
 
   return (
-    <div className="w-40 sm:w-52 lg:w-full lg:max-w-sm aspect-[4/5] rounded-3xl overflow-hidden bg-white ring-1 ring-black/5 shadow-[0_30px_60px_-30px_rgba(29,29,31,0.35)]">
+    <div className={`${className} overflow-hidden bg-white ring-1 ring-black/5`}>
       {PROFILE_IMAGE_URL && !imgError ? (
         <img
           src={PROFILE_IMAGE_URL}
@@ -36,7 +36,7 @@ function Portrait() {
           className="w-full h-full object-cover"
         />
       ) : (
-        <div className="w-full h-full flex items-center justify-center text-[#86868b]"><User size={50} /></div>
+        <div className="w-full h-full flex items-center justify-center text-[#86868b]"><User size={32} /></div>
       )}
     </div>
   );
@@ -48,16 +48,22 @@ interface HeroProps {
 
 export default function Hero({ scrollTo }: HeroProps) {
   return (
-    <section id="home" className="min-h-[100dvh] flex items-center pt-24 pb-16 md:pt-32">
+    <section id="home" className="lg:min-h-[100dvh] flex items-center pt-28 pb-8 lg:pt-32 lg:pb-16">
       <div className="max-w-7xl mx-auto px-6 w-full">
         <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
-          <div className="lg:col-span-7 order-2 lg:order-1 flex flex-col items-start">
-            <motion.div {...fadeUp(0)} className="inline-flex items-center gap-2 text-sm font-medium text-[#424245] mb-6">
-              <span className="w-2 h-2 rounded-full bg-[#34C759]" />
-              Available for collaboration
+          <div className="lg:col-span-7 flex flex-col items-start">
+            <motion.div {...fadeUp(0)} className="flex items-center gap-4 mb-8 lg:mb-6">
+              <Portrait className="lg:hidden w-16 h-16 rounded-2xl shrink-0" />
+              <div>
+                <p className="inline-flex items-center gap-2 text-sm font-medium text-[#424245]">
+                  <span className="w-2 h-2 rounded-full bg-[#34C759]" />
+                  Available for collaboration
+                </p>
+                <p className="lg:hidden mt-0.5 text-sm text-[#6e6e73]">Riyadh, KSA</p>
+              </div>
             </motion.div>
 
-            <motion.h1 {...fadeUp(0.05)} className="text-5xl sm:text-6xl lg:text-7xl font-semibold tracking-tighter leading-[0.95] text-[#1d1d1f]">
+            <motion.h1 {...fadeUp(0.05)} className="text-[3.5rem] sm:text-6xl lg:text-7xl font-semibold tracking-tighter leading-[0.95] text-[#1d1d1f]">
               Mohamed
               <br />
               <span className="text-[#86868b]">Elmugtaba</span>
@@ -87,8 +93,8 @@ export default function Hero({ scrollTo }: HeroProps) {
             </motion.div>
           </div>
 
-          <motion.div {...fadeUp(0.1)} className="lg:col-span-5 order-1 lg:order-2 flex lg:justify-end">
-            <Portrait />
+          <motion.div {...fadeUp(0.1)} className="hidden lg:flex lg:col-span-5 justify-end">
+            <Portrait className="w-full max-w-sm aspect-[4/5] rounded-3xl shadow-[0_30px_60px_-30px_rgba(29,29,31,0.35)]" />
           </motion.div>
         </div>
       </div>
