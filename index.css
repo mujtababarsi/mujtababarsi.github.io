@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Geist', ui-sans-serif, system-ui, sans-serif;
 }
 
 /* Custom scrollbar for webkit */
@@ -16,4 +16,15 @@ body {
 .custom-scrollbar::-webkit-scrollbar-thumb {
   background-color: rgba(0, 0, 0, 0.1);
   border-radius: 20px;
+}
+
+/* Visible keyboard focus for all interactive elements */
+:focus-visible {
+  outline: 2px solid #0071e3;
+  outline-offset: 3px;
+}
+
+/* One stroke weight for every lucide icon */
+.lucide {
+  stroke-width: 1.5;
 }

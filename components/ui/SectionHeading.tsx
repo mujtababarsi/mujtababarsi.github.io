@@ -23,14 +23,13 @@ export function SectionHeading({ title, subtitle }: SectionHeadingProps) {
       whileInView="visible"
       viewport={{ once: false, amount: 0.5 }}
       variants={sectionVariants}
-      className="mb-6 text-center px-4"
+      className="mb-8 md:mb-10"
     >
-      <h2 className="text-xl md:text-2xl font-bold text-[#1d1d1f] tracking-tight">
+      <h2 className="text-2xl md:text-3xl font-semibold text-[#1d1d1f] tracking-tight leading-tight [text-wrap:balance]">
         {title}
       </h2>
-      <div className="w-12 h-1 bg-[#0071e3]/20 mx-auto rounded-full my-3" />
       {subtitle && (
-        <p className="text-[#86868b] max-w-lg mx-auto text-xs md:text-sm font-medium leading-relaxed">
+        <p className="mt-2 text-[#6e6e73] max-w-[60ch] text-sm md:text-base leading-relaxed">
           {subtitle}
         </p>
       )}

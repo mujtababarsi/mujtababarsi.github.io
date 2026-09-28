@@ -30,7 +30,7 @@ function ProfilePicHolder() {
   const [imgError, setImgError] = useState(false);
 
   return (
-    <div className="relative w-48 h-56 md:w-56 md:h-64 shrink-0">
+    <div className="relative w-40 h-48 md:w-56 md:h-64 shrink-0">
       <motion.div 
         whileHover={{ scale: 1.02 }}
         transition={{ type: "spring", stiffness: 300, damping: 20 }}
@@ -49,9 +49,6 @@ function ProfilePicHolder() {
           )}
         </div>
       </motion.div>
-      <div className="absolute -bottom-1 -right-1 bg-white p-1.5 rounded-full shadow-lg z-20 border border-slate-50">
-        <div className="bg-[#34C759] w-3.5 h-3.5 rounded-full ring-2 ring-white animate-pulse" />
-      </div>
     </div>
   );
 }
@@ -115,7 +112,7 @@ interface HeroProps {
 
 export default function Hero({ scrollTo }: HeroProps) {
     return (
-        <section id="home" className="min-h-screen relative pt-32 md:pt-40 pb-20 bg-[#F5F5F7] flex items-start justify-center">
+        <section id="home" className="min-h-[100dvh] relative pt-24 md:pt-40 pb-20 bg-[#F5F5F7] flex items-start justify-center">
             <ParallaxBackground />
             
             <div className="max-w-5xl mx-auto px-6 w-full relative z-10">
@@ -139,18 +136,18 @@ export default function Hero({ scrollTo }: HeroProps) {
                     
                     <div className="flex items-center gap-2 bg-white px-3 py-1.5 rounded-full shadow-sm border border-black/5 mt-2">
                     <span className="w-2 h-2 rounded-full bg-[#34C759]" />
-                    <span className="text-[12px] font-medium text-[#1d1d1f] tracking-wide">Available for Collaboration</span>
+                    <span className="text-[12px] font-medium text-[#1d1d1f] tracking-wide">Available for collaboration</span>
                     </div>
                 </div>
                 </motion.div>
 
                 {/* Right Side - Justified Brief Content */}
                 <motion.div variants={itemVariants} className="flex flex-col items-center lg:items-start text-center lg:text-left">
-                <div className="text-lg md:text-xl text-[#1d1d1f] font-normal leading-relaxed tracking-tight max-w-lg mb-8 text-justify hyphens-auto">
+                <div className="order-2 lg:order-1 text-base md:text-xl text-[#1d1d1f] font-normal leading-relaxed tracking-tight max-w-lg lg:mb-8">
                     <TypewriterText />
                 </div>
                 
-                <div className="flex flex-wrap justify-center lg:justify-start gap-4 w-full">
+                <div className="order-1 lg:order-2 flex flex-wrap justify-center lg:justify-start gap-4 w-full mb-8 lg:mb-0">
                     <button 
                     onClick={() => scrollTo('me')} 
                     className="bg-[#0071e3] text-white px-8 py-4 rounded-full font-medium text-[16px] hover:bg-[#0077ED] transition-all flex items-center gap-2 active:scale-[0.98]"
@@ -158,8 +155,8 @@ export default function Hero({ scrollTo }: HeroProps) {
                     Meet Me <ChevronRight size={18} />
                     </button>
                     <div className="flex gap-3">
-                    <a href="https://github.com/mujtababarsi" target="_blank" className="w-12 h-12 flex items-center justify-center bg-white rounded-full text-[#1d1d1f] hover:text-[#0071e3] transition-colors border border-black/5 hover:border-[#0071e3]/20 shadow-sm"><Github size={22} /></a>
-                    <a href="mailto:Mujtababarsi@mail.com" className="w-12 h-12 flex items-center justify-center bg-white rounded-full text-[#1d1d1f] hover:text-[#0071e3] transition-colors border border-black/5 hover:border-[#0071e3]/20 shadow-sm"><Mail size={22} /></a>
+                    <a href="https://github.com/mujtababarsi" target="_blank" rel="noreferrer" aria-label="GitHub" className="w-12 h-12 flex items-center justify-center bg-white rounded-full text-[#1d1d1f] hover:text-[#0071e3] transition-colors border border-black/5 hover:border-[#0071e3]/20 shadow-sm"><Github size={22} /></a>
+                    <a href="mailto:Mujtababarci@gmail.com" aria-label="Email" className="w-12 h-12 flex items-center justify-center bg-white rounded-full text-[#1d1d1f] hover:text-[#0071e3] transition-colors border border-black/5 hover:border-[#0071e3]/20 shadow-sm"><Mail size={22} /></a>
                     </div>
                 </div>
                 </motion.div>

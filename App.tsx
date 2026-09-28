@@ -19,7 +19,7 @@ function SectionProgress({ activeSection, scrollTo }: { activeSection: string; s
   return (
     <div className="fixed right-6 top-1/2 -translate-y-1/2 z-40 hidden lg:flex flex-col gap-4">
       {sections.map((id) => (
-        <button key={id} onClick={() => scrollTo(id)} className="group relative flex items-center justify-center w-3 h-3">
+        <button key={id} onClick={() => scrollTo(id)} aria-label={`Go to ${id === 'me' ? 'bio' : id} section`} className="group relative flex items-center justify-center w-3 h-3">
           <div className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${activeSection === id ? 'bg-[#0071e3] scale-150' : 'bg-[#d2d2d7] group-hover:bg-[#86868b]'}`} />
         </button>
       ))}
@@ -118,9 +118,11 @@ export default function App() {
       ref={mainContainerRef}
       className="min-h-screen w-full bg-white font-sans text-[#1d1d1f] selection:bg-[#0071e3]/20 relative antialiased"
     >
+      <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:bg-white focus:text-[#1d1d1f] focus:px-4 focus:py-2 focus:rounded-full focus:shadow-lg">Skip to content</a>
       <Navbar activeSection={activeSection} scrollTo={scrollTo} />
       <SectionProgress activeSection={activeSection} scrollTo={scrollTo} />
 
+      <main id="main" tabIndex={-1} className="focus:outline-none">
       {/* HERO Section */}
       <Hero scrollTo={scrollTo} />
 
@@ -144,6 +146,7 @@ export default function App() {
 
       {/* ADDITIONAL INFO - VISUALLY ENHANCED BENTO LAYOUT */}
       <PersonalDetails />
+      </main>
 
       {/* Floating Action Button - Apple Style */}
       <motion.button 
