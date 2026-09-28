@@ -92,7 +92,9 @@ export const PROJECTS: Project[] = [
     desc: "Cohort-level joint genotyping on a chr20 trio (mother, father, son), starting from aligned BAMs and following the GATK best-practices workflow. Fully automated and CI-tested, with every GitHub Actions run passing.",
     tags: ["Nextflow", "Variant Calling", "GATK4"],
     features: ["HaplotypeCaller → GenomicsDBImport → GenotypeGVCFs", "nf-test suite with GitHub Actions CI", "Docker, Singularity and Conda profiles"],
-    image: "/projects/dnaseq-chr20.svg",
+    kind: "pipeline",
+    cover: "variants",
+    stats: ["chr20 trio", "GATK best practices", "CI-tested"],
     link: "https://github.com/mujtababarsi/Human-DNAseq-chr20-nf-dsl2"
   },
   {
@@ -101,7 +103,9 @@ export const PROJECTS: Project[] = [
     desc: "Automates raw FASTQ to BAM and count matrix with full reproducibility. Validated on human chr22 across local, HPC and cloud environments, and designed for full-genome scale.",
     tags: ["Nextflow", "RNA-seq", "Reproducibility"],
     features: ["FastQC → fastp → STAR → FeatureCounts → MultiQC", "Docker and Conda dual execution", "Fail-fast input validation"],
-    image: "https://images.unsplash.com/photo-1614935151651-0bea6508db6b?q=80&w=800&auto=format&fit=crop",
+    kind: "pipeline",
+    cover: "pipeline",
+    stats: ["FASTQ → counts", "Local · HPC · cloud", "chr22 validated"],
     link: "https://github.com/mujtababarsi/Human-RNAseq-nf-dsl2"
   },
   {
@@ -110,7 +114,9 @@ export const PROJECTS: Project[] = [
     desc: "Compared PBMCs from COVID-19 patients and healthy controls across 9,000 cells from six 10x Genomics samples. Identified 12 immune populations and disease-specific transcriptomic signatures. Built in an NBIS project-based workshop.",
     tags: ["scRNA-seq", "COVID-19", "Scanpy"],
     features: ["QC, normalisation, PCA and UMAP", "Leiden clustering and marker-based annotation", "Wilcoxon differential expression with BH correction"],
-    image: "https://images.unsplash.com/photo-1576086213369-97a306d36557?q=80&w=800&auto=format&fit=crop",
+    kind: "analysis",
+    cover: "umap",
+    stats: ["9,000 cells", "6 samples", "12 immune populations"],
     link: "https://github.com/mujtababarsi/Covid-19-single-cell-analysis-Scanpy"
   },
   {
@@ -119,7 +125,9 @@ export const PROJECTS: Project[] = [
     desc: "Mapped single-cell references onto spatial tissue sections to keep anatomical context. Batch-corrected integration aligned the datasets, and cell-type identities were projected onto spatial coordinates, preserving tissue architecture.",
     tags: ["Spatial", "Integration", "Scanorama"],
     features: ["Scanorama batch correction", "KNN mapping and majority-vote label transfer", "Unified UMAP embedding"],
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop",
+    kind: "analysis",
+    cover: "spatial",
+    stats: ["scRNA-seq → spatial", "Label transfer"],
     link: "https://github.com/mujtababarsi/spatial-omics"
   },
   {
@@ -128,7 +136,9 @@ export const PROJECTS: Project[] = [
     desc: "Analysed a 10x Genomics 5K PBMC dataset with the Scarf package, using Zarr and Dask chunking to keep memory use low at scale.",
     tags: ["Big Data", "Dask", "Zarr"],
     features: ["Low-Memory Chunking", "KNN Mapping", "Reference Projection"],
-    image: "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?q=80&w=800&auto=format&fit=crop",
+    kind: "analysis",
+    cover: "chunks",
+    stats: ["5K PBMCs", "Out-of-core"],
     link: "https://github.com/mujtababarsi/Scarf-workflow-PBMC"
   },
   {
@@ -137,7 +147,9 @@ export const PROJECTS: Project[] = [
     desc: "Distribution plots, correlation analysis and faceted layouts built with the Grammar of Graphics, turning raw data into clear graphical summaries.",
     tags: ["R", "ggplot2", "EDA"],
     features: ["Distribution Plots", "Correlation Analysis", "Faceted Layouts"],
-    image: "https://images.unsplash.com/photo-1543286386-2e659306cd6c?q=80&w=800&auto=format&fit=crop",
+    kind: "analysis",
+    cover: "facets",
+    stats: ["Grammar of Graphics", "Faceted layouts"],
     link: "https://github.com/mujtababarsi/R-and-rstudio-Data-visualisation-with-ggplot2"
   }
 ];

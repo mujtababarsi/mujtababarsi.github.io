@@ -2,8 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  font-family: 'Geist', ui-sans-serif, system-ui, sans-serif;
+/* Theme: every colour and font on the site comes from these variables.
+   Colours are space-separated RGB channels so Tailwind opacity modifiers work. */
+:root {
+  --c-canvas: 245 245 247;
+  --c-surface: 255 255 255;
+  --c-ink: 29 29 31;
+  --c-body: 66 66 69;
+  --c-muted: 110 110 115;
+  --c-subtle: 134 134 139;
+  --c-line: 210 210 215;
+  --c-accent: 0 102 204;
+  --c-accent-hover: 0 85 170;
+  --c-accent-soft: 239 246 255;
+  --font-body: 'Geist';
+  --font-display: 'Geist';
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display), ui-sans-serif, system-ui, sans-serif;
 }
 
 /* Custom scrollbar for webkit */
@@ -20,7 +37,7 @@ body {
 
 /* Visible keyboard focus for all interactive elements */
 :focus-visible {
-  outline: 2px solid #0071e3;
+  outline: 2px solid rgb(var(--c-accent));
   outline-offset: 3px;
 }
 

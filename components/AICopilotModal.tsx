@@ -55,23 +55,23 @@ export default function AICopilotModal({ isOpen, onClose }: AICopilotModalProps)
       >
         <div className="bg-white/50 border-b border-black/5 p-5 flex justify-between items-center">
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-[#0071e3] to-[#40a0ff] flex items-center justify-center text-white shadow-lg shadow-blue-500/30">
+            <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-accent to-accent flex items-center justify-center text-white shadow-lg shadow-blue-500/30">
               <BrainCircuit size={16} />
             </div>
-            <h3 className="font-semibold text-[15px] text-[#1d1d1f]">Research Assistant</h3>
+            <h3 className="font-semibold text-[15px] text-ink">Research Assistant</h3>
           </div>
-          <button onClick={onClose} aria-label="Close" className="p-2 bg-[#F5F5F7] rounded-full text-[#86868b] hover:bg-[#e8e8ed] transition-colors"><X size={18} /></button>
+          <button onClick={onClose} aria-label="Close" className="p-2 bg-canvas rounded-full text-subtle hover:bg-ink/10 transition-colors"><X size={18} /></button>
         </div>
         
         <div ref={scrollRef} className="flex-grow overflow-y-auto p-6 space-y-6">
           {messages.map((m, i) => (
             <div key={i} className={`flex ${m.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-              <div className={`max-w-[85%] p-4 rounded-2xl text-[16px] leading-relaxed shadow-sm ${m.role === 'user' ? 'bg-[#0071e3] text-white' : 'bg-white text-[#1d1d1f] rounded-tl-sm border border-black/5'}`}>
+              <div className={`max-w-[85%] p-4 rounded-2xl text-[16px] leading-relaxed shadow-sm ${m.role === 'user' ? 'bg-accent text-white' : 'bg-white text-ink rounded-tl-sm border border-black/5'}`}>
                 {m.text}
               </div>
             </div>
           ))}
-          {loading && (<div className="flex items-center gap-2 text-[#86868b] text-[13px] px-2"><Loader2 size={14} className="animate-spin" /> Thinking...</div>)}
+          {loading && (<div className="flex items-center gap-2 text-muted text-[13px] px-2"><Loader2 size={14} className="animate-spin" /> Thinking...</div>)}
         </div>
         
         <div className="p-5 border-t border-black/5 bg-white/50">
@@ -81,13 +81,13 @@ export default function AICopilotModal({ isOpen, onClose }: AICopilotModalProps)
               onChange={(e) => setInput(e.target.value)} 
               onKeyPress={(e) => e.key === 'Enter' && handleSend()} 
               placeholder="Ask about my research..." 
-              className="w-full pl-5 pr-12 py-3.5 rounded-full border-none bg-white ring-1 ring-black/10 focus:ring-2 focus:ring-[#0071e3] focus:outline-none text-[16px] text-[#1d1d1f] shadow-sm placeholder:text-[#86868b]" 
+              className="w-full pl-5 pr-12 py-3.5 rounded-full border-none bg-white ring-1 ring-black/10 focus:ring-2 focus:ring-accent focus:outline-none text-[16px] text-ink shadow-sm placeholder:text-subtle" 
             />
             <button 
               onClick={handleSend} 
               aria-label="Send message"
               disabled={!input.trim()}
-              className="absolute right-2 top-2 p-1.5 bg-[#0071e3] text-white rounded-full hover:bg-[#005bb5] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              className="absolute right-2 top-2 p-1.5 bg-accent text-white rounded-full hover:bg-accent-hover transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
               <Send size={16} className="ml-0.5" />
             </button>

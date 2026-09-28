@@ -21,20 +21,20 @@ export default function Navbar({ activeSection, scrollTo }: NavbarProps) {
 
   return (
     <nav className="fixed top-0 left-0 w-full z-50 transition-all duration-300 border-b border-black/5 bg-[rgba(255,255,255,0.72)] backdrop-blur-xl saturate-[180%] supports-[backdrop-filter]:bg-[rgba(255,255,255,0.6)]">
-      <div className="max-w-7xl mx-auto px-6 h-14 md:h-16 flex items-center justify-between">
+      <div className="max-w-6xl mx-auto px-6 h-14 md:h-16 flex items-center justify-between">
         {/* Brand */}
         <div 
           onClick={() => scrollTo('home')}
           className="flex items-center gap-2 cursor-pointer group"
         >
-          <div className="bg-[#0071e3] p-1.5 rounded-lg text-white group-hover:scale-105 transition-transform">
+          <div className="bg-accent p-1.5 rounded-lg text-white group-hover:scale-105 transition-transform">
              <Dna size={18} strokeWidth={2.5} />
           </div>
-          <span className="font-semibold text-[13px] tracking-wide uppercase text-[#1d1d1f]">M. Elmugtaba</span>
+          <span className="font-semibold text-[13px] tracking-wide uppercase text-ink">M. Elmugtaba</span>
         </div>
 
         {/* Desktop Navigation - Apple Style Tabs */}
-        <div className="hidden md:flex items-center bg-[#1d1d1f]/5 p-1 rounded-full backdrop-blur-md">
+        <div className="hidden md:flex items-center bg-ink/5 p-1 rounded-full backdrop-blur-md">
           {links.map((link) => (
             <button
               key={link.id}
@@ -42,7 +42,7 @@ export default function Navbar({ activeSection, scrollTo }: NavbarProps) {
               className={`relative px-4 py-1.5 rounded-full text-[13px] font-medium transition-all duration-500 ease-out ${
                 activeSection === link.id
                   ? 'text-black shadow-sm bg-white'
-                  : 'text-[#86868b] hover:text-[#1d1d1f]'
+                  : 'text-muted hover:text-ink'
               }`}
             >
               {link.label}
@@ -54,7 +54,7 @@ export default function Navbar({ activeSection, scrollTo }: NavbarProps) {
         <div className="hidden md:flex items-center">
             <a 
               href="mailto:Mujtababarci@gmail.com"
-              className="px-4 py-1.5 bg-[#1d1d1f] text-white text-[12px] font-medium rounded-full hover:bg-[#0071e3] transition-colors shadow-sm"
+              className="px-4 py-1.5 bg-ink text-white text-[12px] font-medium rounded-full hover:bg-accent transition-colors shadow-sm"
             >
               Contact
             </a>
@@ -62,7 +62,7 @@ export default function Navbar({ activeSection, scrollTo }: NavbarProps) {
 
         {/* Mobile Toggle */}
         <button 
-          className="md:hidden p-2 text-[#1d1d1f]"
+          className="md:hidden p-2 text-ink"
           aria-label={isMobileOpen ? "Close menu" : "Open menu"}
           aria-expanded={isMobileOpen}
           onClick={() => setIsMobileOpen(!isMobileOpen)}
@@ -90,8 +90,8 @@ export default function Navbar({ activeSection, scrollTo }: NavbarProps) {
                   }}
                   className={`p-3 text-left rounded-xl text-[14px] font-medium transition-colors ${
                     activeSection === link.id
-                      ? 'bg-[#F5F5F7] text-[#0071e3]'
-                      : 'text-[#1d1d1f] hover:bg-[#F5F5F7]'
+                      ? 'bg-canvas text-accent'
+                      : 'text-ink hover:bg-canvas'
                   }`}
                 >
                   {link.label}
