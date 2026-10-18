@@ -21,6 +21,7 @@ export default {
         muted: token('muted'),
         subtle: token('subtle'),
         line: token('line'),
+        success: token('success'),
         accent: {
           DEFAULT: token('accent'),
           hover: token('accent-hover'),

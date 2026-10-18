@@ -13,20 +13,6 @@ import Certifications from './components/Certifications';
 import PersonalDetails from './components/PersonalDetails';
 import AICopilotModal from './components/AICopilotModal';
 
-function SectionProgress({ activeSection, scrollTo }: { activeSection: string; scrollTo: (id: string) => void }) {
-  const sections = ['home', 'me', 'expertise', 'projects', 'experience', 'education'];
-
-  return (
-    <div className="fixed right-6 top-1/2 -translate-y-1/2 z-40 hidden lg:flex flex-col gap-4">
-      {sections.map((id) => (
-        <button key={id} onClick={() => scrollTo(id)} aria-label={`Go to ${id === 'me' ? 'bio' : id} section`} className="group relative flex items-center justify-center w-3 h-3">
-          <div className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${activeSection === id ? 'bg-accent scale-150' : 'bg-line group-hover:bg-subtle'}`} />
-        </button>
-      ))}
-    </div>
-  );
-}
-
 export default function App() {
   const [isAiOpen, setIsAiOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
@@ -118,7 +104,6 @@ export default function App() {
     >
       <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:bg-white focus:text-ink focus:px-4 focus:py-2 focus:rounded-full focus:shadow-lg">Skip to content</a>
       <Navbar activeSection={activeSection} scrollTo={scrollTo} />
-      <SectionProgress activeSection={activeSection} scrollTo={scrollTo} />
 
       <main id="main" tabIndex={-1} className="focus:outline-none">
       {/* HERO Section */}
@@ -149,18 +134,19 @@ export default function App() {
       {/* Floating Action Button - Apple Style */}
       <motion.button 
         initial={{ opacity: 0, y: 20 }}
-        animate={{ 
-          opacity: 1, 
-          y: 0,
-          pointerEvents: 'auto'
+        animate={{
+          opacity: activeSection === 'home' ? 0 : 1,
+          y: activeSection === 'home' ? 20 : 0,
+          pointerEvents: activeSection === 'home' ? 'none' : 'auto'
         }}
         transition={{ duration: 0.4, ease: "easeInOut" }}
         onMouseEnter={() => setControlsVisible(true)}
+        tabIndex={activeSection === 'home' ? -1 : 0}
         onClick={() => setIsAiOpen(true)} 
-        className="fixed bottom-5 right-5 z-40 bg-black/80 backdrop-blur-md text-white p-4 rounded-full shadow-[0_20px_40px_-10px_rgba(0,0,0,0.3)] hover:scale-105 active:scale-95 transition-all group flex items-center gap-0 overflow-hidden hover:pr-6 border border-white/10"
+        className="fixed bottom-5 right-5 z-40 bg-black/80 backdrop-blur-md text-white rounded-full shadow-[0_20px_40px_-10px_rgba(0,0,0,0.3)] hover:bg-black active:scale-95 transition-colors flex items-center gap-2 pl-4 pr-5 py-3 border border-white/10"
       >
-        <Sparkles size={22} />
-        <span className="max-w-0 group-hover:max-w-xs transition-all duration-300 overflow-hidden whitespace-nowrap font-medium text-[15px] pl-0 group-hover:pl-3">Ask AI</span>
+        <Sparkles size={18} />
+        <span className="font-medium text-[14px] whitespace-nowrap">Ask AI</span>
       </motion.button>
 
       <AICopilotModal isOpen={isAiOpen} onClose={() => setIsAiOpen(false)} />

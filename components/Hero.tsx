@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { User, ChevronRight, Github, Mail } from 'lucide-react';
-import { PROFILE_IMAGE_URL } from '../data/portfolioData';
+import { User, ChevronRight, Github, Mail, ArrowUpRight } from 'lucide-react';
+import { PROFILE_IMAGE_URL, PROJECTS } from '../data/portfolioData';
+import { ProjectCover } from './ui/ProjectCover';
 
 const fadeUp = (delay: number) => ({
   initial: { opacity: 0, y: 16 },
@@ -14,10 +15,19 @@ const statement: { text: string; emphasis?: boolean }[] = [
   { text: 'dispensing medications', emphasis: true },
   { text: ' to ' },
   { text: 'analysing genomes', emphasis: true },
-  { text: ': a move I have been working toward since 2015. I now build ' },
+  { text: '. I build ' },
   { text: 'reproducible NGS pipelines', emphasis: true },
-  { text: ' for genomics and precision medicine.' },
-]
+  { text: ' in Nextflow DSL2 and analyse single-cell and spatial transcriptomics data.' },
+];
+
+// Counts come from PROJECTS so the row stays true as projects are added.
+const facts = [
+  { value: String(PROJECTS.filter(p => p.kind === 'pipeline').length), label: 'Nextflow pipelines' },
+  { value: String(PROJECTS.filter(p => p.kind === 'analysis').length), label: 'analysis projects' },
+  { value: '7+', label: 'years in pharma' },
+];
+
+const featured = PROJECTS[0];
 
 function Portrait({ className }: { className: string }) {
   const [imgError, setImgError] = useState(false);
@@ -38,6 +48,37 @@ function Portrait({ className }: { className: string }) {
   );
 }
 
+function FeaturedProject({ scrollTo }: { scrollTo: (id: string) => void }) {
+  return (
+    <article className="bg-surface rounded-2xl ring-1 ring-black/5 overflow-hidden shadow-[0_24px_48px_-28px_rgba(29,29,31,0.35)]">
+      <ProjectCover kind={featured.cover} className="block w-full aspect-[16/9]" />
+      <div className="p-5">
+        <p className="text-[12px] font-medium text-muted uppercase tracking-wide">Featured pipeline</p>
+        <h2 className="mt-1.5 text-base font-semibold tracking-tight text-ink leading-snug">{featured.title}</h2>
+        <ul className="mt-3 flex flex-wrap gap-1.5">
+          {featured.stats.map(item => (
+            <li key={item} className="px-2 py-0.5 rounded-md bg-canvas text-[12px] font-medium text-body tabular-nums">{item}</li>
+          ))}
+        </ul>
+        <div className="mt-5 flex items-center gap-4 text-sm font-medium">
+          <a
+            href={featured.link}
+            target="_blank"
+            rel="noreferrer"
+            aria-label={`Source code for ${featured.title} on GitHub`}
+            className="inline-flex items-center gap-1.5 text-accent hover:text-accent-hover transition-colors"
+          >
+            <Github size={15} /> View code
+          </a>
+          <button onClick={() => scrollTo('projects')} className="inline-flex items-center gap-1 text-muted hover:text-ink transition-colors">
+            All projects <ArrowUpRight size={15} />
+          </button>
+        </div>
+      </div>
+    </article>
+  );
+}
+
 interface HeroProps {
   scrollTo: (id: string) => void;
 }
@@ -49,13 +90,13 @@ export default function Hero({ scrollTo }: HeroProps) {
         <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
           <div className="lg:col-span-7 flex flex-col items-start">
             <motion.div {...fadeUp(0)} className="flex items-center gap-4 mb-8 lg:mb-6">
-              <Portrait className="lg:hidden w-16 h-16 rounded-2xl shrink-0" />
+              <Portrait className="w-16 h-16 rounded-2xl shrink-0" />
               <div>
                 <p className="inline-flex items-center gap-2 text-sm font-medium text-body">
-                  <span className="w-2 h-2 rounded-full bg-[#34C759]" />
+                  <span className="w-2 h-2 rounded-full bg-success" />
                   Available for collaboration
                 </p>
-                <p className="lg:hidden mt-0.5 text-sm text-muted">Riyadh, KSA</p>
+                <p className="mt-0.5 text-sm text-muted">Riyadh, KSA</p>
               </div>
             </motion.div>
 
@@ -69,7 +110,7 @@ export default function Hero({ scrollTo }: HeroProps) {
               <span className="block sm:inline">Bioinformatics Practitioner</span><span className="hidden sm:inline text-subtle"> · </span><span className="block sm:inline">Clinical Pharmacist</span>
             </motion.p>
 
-            <motion.p {...fadeUp(0.15)} className="order-1 lg:order-none mt-8 lg:mt-6 text-base lg:text-[17px] text-body leading-relaxed max-w-[54ch]">
+            <motion.p {...fadeUp(0.15)} className="mt-6 text-base lg:text-[17px] text-body leading-relaxed max-w-[54ch]">
               {statement.map((part, i) =>
                 part.emphasis
                   ? <span key={i} className="font-medium text-ink">{part.text}</span>
@@ -77,20 +118,29 @@ export default function Hero({ scrollTo }: HeroProps) {
               )}
             </motion.p>
 
-            <motion.div {...fadeUp(0.2)} className="mt-8 flex flex-wrap items-center gap-3">
+            <motion.dl {...fadeUp(0.2)} className="mt-7 grid grid-cols-3 gap-x-6 sm:flex sm:gap-x-8">
+              {facts.map(f => (
+                <div key={f.label} className="flex flex-col-reverse">
+                  <dt className="text-sm text-muted">{f.label}</dt>
+                  <dd className="font-display text-2xl font-semibold tracking-tight text-ink tabular-nums">{f.value}</dd>
+                </div>
+              ))}
+            </motion.dl>
+
+            <motion.div {...fadeUp(0.25)} className="mt-8 flex flex-wrap items-center gap-3">
               <button
-                onClick={() => scrollTo('me')}
-                className="bg-accent text-white pl-5 pr-4 py-2.5 rounded-full font-medium text-[15px] hover:bg-accent-hover transition-colors flex items-center gap-2 active:scale-[0.98]"
+                onClick={() => scrollTo('projects')}
+                className="bg-accent text-white pl-5 pr-4 py-3 rounded-full font-medium text-[15px] hover:bg-accent-hover transition-colors flex items-center gap-2 active:scale-[0.98]"
               >
-                Meet Me <ChevronRight size={16} />
+                View projects <ChevronRight size={16} />
               </button>
               <a href="https://github.com/mujtababarsi" target="_blank" rel="noreferrer" aria-label="GitHub" className="w-11 h-11 flex items-center justify-center bg-surface rounded-full text-ink hover:text-accent transition-colors ring-1 ring-black/10 active:scale-[0.98]"><Github size={18} /></a>
               <a href="mailto:Mujtababarci@gmail.com" aria-label="Email" className="w-11 h-11 flex items-center justify-center bg-surface rounded-full text-ink hover:text-accent transition-colors ring-1 ring-black/10 active:scale-[0.98]"><Mail size={18} /></a>
             </motion.div>
           </div>
 
-          <motion.div {...fadeUp(0.1)} className="hidden lg:flex lg:col-span-5 justify-end">
-            <Portrait className="w-full max-w-[300px] aspect-[4/5] rounded-2xl shadow-[0_24px_48px_-28px_rgba(29,29,31,0.35)]" />
+          <motion.div {...fadeUp(0.1)} className="hidden lg:block lg:col-span-5">
+            <FeaturedProject scrollTo={scrollTo} />
           </motion.div>
         </div>
       </div>
