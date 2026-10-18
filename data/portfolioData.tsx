@@ -14,9 +14,9 @@ export const GENOMIC_DATA: GenomicDataPoint[] = [
 
 export const summaryFull = (
   <>
-    Pharmacist with <span className="font-bold">over 7 years</span> across clinical practice, GMP-certified pharmaceutical manufacturing (4× increase in production throughput), and scientific engagement, now working in bioinformatics.
+    Pharmacist with <span className="font-bold">7+ years</span> across clinical practice, GMP-regulated pharmaceutical manufacturing (monthly output roughly quadrupled), and medical and scientific sales, retrained in bioinformatics.
     <br /><br />
-    I build <span className="font-bold">reproducible NGS pipelines in Nextflow DSL2</span>, including a CI-tested GATK germline variant calling and joint genotyping pipeline, alongside RNA-seq, single-cell, and spatial transcriptomics analysis. My pharmacy background gives me a practical sense of <span className="font-bold">why a genetic variant matters clinically</span>, not just how to call it. I'm looking to contribute to precision medicine and genomics work here in Saudi Arabia.
+    I build <span className="font-bold">reproducible NGS pipelines in Nextflow DSL2</span>, including a CI-tested GATK germline variant calling and joint genotyping pipeline, alongside RNA-seq, single-cell, and spatial transcriptomics analysis. My pharmacy background gives me a practical sense of <span className="font-bold">why a genetic variant matters clinically</span>, not just how to call it. I'm looking to contribute to genomics and NGS data analysis in a research or clinical setting, and I'm open to relocation.
   </>
 );
 
@@ -72,7 +72,7 @@ export const SKILLS: Skill[] = [
     category: "Bulk RNA-seq and NGS",
     description: "Alignment, QC and variant calling.",
     icon: <Dna className="w-5 h-5" />,
-    items: ["GATK4", "STAR", "HISAT2", "SAMtools", "bcftools", "FeatureCounts", "FastQC", "fastp", "MultiQC"],
+    items: ["GATK4", "STAR", "SAMtools", "bcftools", "FeatureCounts", "FastQC", "fastp", "MultiQC"],
     color: "bg-blue-50 text-[#0071e3]"
   },
   {
@@ -80,7 +80,7 @@ export const SKILLS: Skill[] = [
     category: "Pipelines and cloud",
     description: "Reproducible, portable workflows.",
     icon: <Workflow className="w-5 h-5" />,
-    items: ["Nextflow DSL2", "nf-core", "nf-test", "Docker", "Conda", "Git / GitHub", "GCP"],
+    items: ["Nextflow DSL2", "nf-core", "nf-test", "Docker", "Conda", "Git / GitHub", "Google Cloud (Digital Leader)"],
     color: "bg-blue-50 text-[#0071e3]"
   }
 ];
@@ -89,56 +89,56 @@ export const PROJECTS: Project[] = [
   {
     title: "Germline Variant Calling & Joint Genotyping",
     tools: "Nextflow DSL2 | GATK4 | bcftools | nf-test | CI",
-    desc: "Cohort-level joint genotyping on a chr20 trio (mother, father, son), starting from aligned BAMs and following the GATK best-practices workflow. Fully automated and CI-tested, with every GitHub Actions run passing.",
+    desc: "Cohort-level joint genotyping on a chr20 family trio, starting from aligned BAMs: per-sample HaplotypeCaller GVCFs, then GenomicsDBImport and GenotypeGVCFs, with Samtools and bcftools QC in MultiQC. Built following Seqera's Nextflow for Science: Genomics course, with an nf-test suite and GitHub Actions CI.",
     tags: ["Nextflow", "Variant Calling", "GATK4"],
-    features: ["HaplotypeCaller → GenomicsDBImport → GenotypeGVCFs", "nf-test suite with GitHub Actions CI", "Docker, Singularity and Conda profiles"],
+    features: ["HaplotypeCaller → GenomicsDBImport → GenotypeGVCFs", "nf-test suite with GitHub Actions CI", "Run with Docker; Singularity and Conda profiles included"],
     kind: "pipeline",
     cover: "variants",
-    stats: ["chr20 trio", "GATK best practices", "CI-tested"],
+    stats: ["chr20 trio", "GATK4 joint genotyping", "CI passing"],
     link: "https://github.com/mujtababarsi/Human-DNAseq-chr20-nf-dsl2"
   },
   {
     title: "Reproducible Human RNA-seq Pipeline",
     tools: "Nextflow DSL2 | STAR | fastp | Docker",
-    desc: "Automates raw FASTQ to BAM and count matrix with full reproducibility. Validated on human chr22 across local, HPC and cloud environments, and designed for full-genome scale.",
+    desc: "Automates raw FASTQ to BAM and count matrix, with tools run in Docker containers for reproducibility. Validated on human chr22 on a local machine. Containerised so it can move to HPC or cloud later; it has not been run there yet.",
     tags: ["Nextflow", "RNA-seq", "Reproducibility"],
-    features: ["FastQC → fastp → STAR → FeatureCounts → MultiQC", "Docker and Conda dual execution", "Fail-fast input validation"],
+    features: ["FastQC → fastp → STAR → FeatureCounts → MultiQC", "Docker containers; Conda environment files included", "Fail-fast input validation"],
     kind: "pipeline",
     cover: "pipeline",
-    stats: ["FASTQ → counts", "Local · HPC · cloud", "chr22 validated"],
+    stats: ["FASTQ → counts", "Docker · local", "chr22 validated"],
     link: "https://github.com/mujtababarsi/Human-RNAseq-nf-dsl2"
   },
   {
-    title: "COVID-19 Single-Cell Immune Atlas",
+    title: "COVID-19 PBMC Single-Cell Analysis",
     tools: "Python | Scanpy | AnnData | Jupyter",
-    desc: "Compared PBMCs from COVID-19 patients and healthy controls across 9,000 cells from six 10x Genomics samples. Identified 12 immune populations and disease-specific transcriptomic signatures. Built in an NBIS project-based workshop.",
+    desc: "Compared PBMCs from COVID-19 patients and healthy controls across 9,000 cells from six 10x Genomics samples (5,589 after QC). Clustered the cells, annotated them by reference label transfer and marker enrichment, and compared COVID-19 with control cells within clusters. Built following an NBIS project-based workshop.",
     tags: ["scRNA-seq", "COVID-19", "Scanpy"],
-    features: ["QC, normalisation, PCA and UMAP", "Leiden clustering and marker-based annotation", "Wilcoxon differential expression with BH correction"],
+    features: ["QC, doublet removal, normalisation, PCA and UMAP", "Louvain and Leiden clustering, annotation by label transfer", "Wilcoxon differential expression, per cluster and COVID-19 vs control"],
     kind: "analysis",
     cover: "umap",
-    stats: ["9,000 cells", "6 samples", "12 immune populations"],
+    stats: ["9,000 cells", "5,589 after QC", "6 samples"],
     link: "https://github.com/mujtababarsi/Covid-19-single-cell-analysis-Scanpy"
   },
   {
     title: "Spatial Transcriptomics & scRNA-seq Integration",
-    tools: "Python | Scanpy | Scanorama | AnnData",
-    desc: "Mapped single-cell references onto spatial tissue sections to keep anatomical context. Batch-corrected integration aligned the datasets, and cell-type identities were projected onto spatial coordinates, preserving tissue architecture.",
+    tools: "Python | Scanpy | Scanorama | AnnData | SpatialDE",
+    desc: "Integrated mouse-brain Visium sections with a Smart-seq cortex single-cell reference using Scanorama, then transferred cell-type labels onto spatial coordinates to keep anatomical context. Follows the Scanpy spatial tutorials; also includes a human lymph node Visium analysis with spatially variable genes (SpatialDE).",
     tags: ["Spatial", "Integration", "Scanorama"],
-    features: ["Scanorama batch correction", "KNN mapping and majority-vote label transfer", "Unified UMAP embedding"],
+    features: ["Scanorama integration of Visium sections and scRNA-seq", "Cosine-similarity label transfer onto tissue", "Human lymph node Visium: QC, clustering, SpatialDE"],
     kind: "analysis",
     cover: "spatial",
     stats: ["scRNA-seq → spatial", "Label transfer"],
-    link: "https://github.com/mujtababarsi/spatial-omics"
+    link: "https://github.com/mujtababarsi/Scanpy-scRNA-seq-Analysis"
   },
   {
-    title: "Memory-Efficient scRNA-seq (Scarf)",
+    title: "Single-Cell Analysis with Scarf",
     tools: "Python | Scarf | Zarr | Dask",
-    desc: "Analysed a 10x Genomics 5K PBMC dataset with the Scarf package, using Zarr and Dask chunking to keep memory use low at scale.",
-    tags: ["Big Data", "Dask", "Zarr"],
+    desc: "Worked through the Scarf workflow: analysed a 10x Genomics 5K PBMC dataset stored in Zarr and processed in chunks, then projected 14K interferon-β-stimulated PBMCs onto a 15K control reference.",
+    tags: ["Zarr", "Dask", "Label transfer"],
     features: ["Low-Memory Chunking", "KNN Mapping", "Reference Projection"],
     kind: "analysis",
     cover: "chunks",
-    stats: ["5K PBMCs", "Out-of-core"],
+    stats: ["5K PBMCs", "15K / 14K projection"],
     link: "https://github.com/mujtababarsi/Scarf-workflow-PBMC"
   },
   {
@@ -161,14 +161,14 @@ export const EXPERIENCE: Experience[] = [
     period: "2022 – Present",
     summary: "After relocating from Sudan during a period of regional instability, I used the transition for a deliberate move into computational biology: self-funded, and built without institutional lab access or supervision.",
     highlights: [
-      "Built end-to-end bioinformatics projects on GitHub since June 2022, each framed around a distinct biological question",
+      "Built bioinformatics projects on GitHub: single-cell and spatial analyses (2022), and Nextflow RNA-seq and germline variant-calling pipelines (2026)",
       "Completed foundational and applied coursework in Linux, R, Python and pipeline engineering",
-      "Since 2025: structured pipeline-engineering training, including a hands-on GATK germline variant-calling pipeline through Seqera's Nextflow for Genomics course",
+      "2026: Seqera Nextflow training (5 certificates), including the Nextflow for Science: Genomics course that my GATK germline variant-calling pipeline follows",
       "In progress: Integrating Generative AI into Data Workflows (BigQuery ML, predictive modelling)"
     ]
   },
   {
-    role: "Operations Coordinator",
+    role: "Key Account & Operations Coordinator",
     org: "Dukhan Group",
     period: "May 2024 – Jul 2025",
     location: "Doha, Qatar",
@@ -178,36 +178,47 @@ export const EXPERIENCE: Experience[] = [
     ]
   },
   {
-    role: "Scientific Engagement Officer",
+    role: "Scientific Sales Officer",
     org: "Salmawit Co. Ltd",
     period: "Feb 2021 – Nov 2022",
     location: "Khartoum, Sudan",
     highlights: [
-      "Synthesised clinical trial data and molecular mechanism-of-action studies for healthcare professionals, translating biological findings into actionable clinical insights",
-      "Evaluated peer-reviewed literature on genomics-related drug efficacy and safety to provide evidence-based scientific guidance",
-      "Acted as a clinical-to-research liaison between experimental biology and therapeutic practice"
+      "Promoted a GIT/IBS portfolio to healthcare professionals through science-based selling, running a structured call cycle of 120 physicians segmented into A, B and C classes",
+      "Planned and delivered CME events and clinical seminars in gastroenterology, at least once a quarter",
+      "Turned published clinical study data into evidence-based communication on efficacy, safety and appropriate prescribing"
     ]
   },
   {
-    role: "Production Supervisor",
+    role: "Production Pharmacist",
     org: "Blue Nile Pharmaceutical Factory",
     period: "Sep 2019 – Dec 2020",
     location: "Khartoum, Sudan",
     highlights: [
-      "Increased manufacturing throughput 4× (15K → 65K units/month) through data-driven process optimisation",
-      "Managed GMP-compliant end-to-end pharmaceutical manufacturing, ensuring data integrity, batch traceability and regulatory compliance",
-      "Led cross-functional technical teams in diagnosing production bottlenecks during high-volume scaling"
+      "Supervised end-to-end production and a 90-person team; monthly output roughly quadrupled, from 15–17M to 60–65M tablets/month",
+      "Reviewed and approved batch production and manufacturing records before release, with 100% GMP compliance on every product release",
+      "Coordinated QA, QC and maintenance to clear bottlenecks during the scale-up; wrote SOPs and kept deviation reports and traceability logs"
     ]
   },
   {
     role: "Medical Representative, Territory Lead",
-    org: "Aurobindo Pharma and Bioderma",
-    period: "Feb 2016 – Oct 2018",
+    org: "Aurobindo Pharma",
+    period: "Jan 2017 – Oct 2018",
     location: "Khartoum, Sudan",
     highlights: [
-      "Secured a government formulary listing for Aurobindo's antibiotic product line through scientific KOL engagement and data-driven presentations",
-      "Interpreted multidimensional clinical studies to answer complex medical inquiries and support evidence-based prescribing",
-      "Promoted Bioderma's OTC dermatology and skincare portfolio across pharmacy and clinic channels, building relationships with pharmacy buyers and dermatology KOLs"
+      "Led the launch of a new antibiotic brand in a high-priority territory, running the territory independently and mapping its key accounts",
+      "Secured a government formulary listing, putting the product into active dispensing under the national government insurance scheme",
+      "Gave scientific presentations and ran roundtables for KOLs"
+    ]
+  },
+  {
+    role: "Medical Representative",
+    org: "Bioderma",
+    period: "Feb 2016 – Jan 2017",
+    location: "Khartoum, Sudan",
+    highlights: [
+      "Promoted an OTC dermatology and skincare portfolio across pharmacy and clinic channels",
+      "Built relationships with pharmacy buyers and dermatology KOLs, and trained pharmacy staff on the products",
+      "Met sales targets through structured call-cycle management"
     ]
   },
   {
