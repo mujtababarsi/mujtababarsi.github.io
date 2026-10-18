@@ -142,6 +142,7 @@ export default function App() {
         transition={{ duration: 0.4, ease: "easeInOut" }}
         onMouseEnter={() => setControlsVisible(true)}
         tabIndex={activeSection === 'home' ? -1 : 0}
+        aria-hidden={activeSection === 'home'}
         onClick={() => setIsAiOpen(true)} 
         className="fixed bottom-5 right-5 z-40 bg-black/80 backdrop-blur-md text-white rounded-full shadow-[0_20px_40px_-10px_rgba(0,0,0,0.3)] hover:bg-black active:scale-95 transition-colors flex items-center gap-2 pl-4 pr-5 py-3 border border-white/10"
       >
