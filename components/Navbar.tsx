@@ -54,7 +54,7 @@ export default function Navbar({ activeSection, scrollTo }: NavbarProps) {
         <div className="hidden md:flex items-center">
             <a 
               href="mailto:Mujtababarci@gmail.com"
-              className="px-4 py-1.5 bg-ink text-white text-[12px] font-medium rounded-full hover:bg-accent transition-colors shadow-sm"
+              className="px-4 py-1.5 bg-surface text-ink ring-1 ring-black/10 text-[12px] font-medium rounded-full hover:text-accent transition-colors"
             >
               Contact
             </a>
