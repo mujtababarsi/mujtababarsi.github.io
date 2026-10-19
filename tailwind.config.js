@@ -11,6 +11,11 @@ export default {
   ],
   theme: {
     extend: {
+      screens: {
+        // Laptop screens with little vertical room (e.g. 1920x1080 at 150% scaling
+        // leaves about 1280x600 inside Chrome). Used to keep the hero on one screen.
+        short: { raw: '(min-width: 1024px) and (max-height: 820px)' },
+      },
       // Colours and fonts are CSS variables defined in index.css, so the whole
       // site can be re-themed in one place.
       colors: {
