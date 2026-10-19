@@ -14,7 +14,7 @@ export const GENOMIC_DATA: GenomicDataPoint[] = [
 
 export const summaryFull = (
   <>
-    Pharmacist with <span className="font-bold">7+ years</span> across pharmacy practice, GMP-regulated pharmaceutical manufacturing (monthly output roughly quadrupled), and medical and scientific sales, retrained in bioinformatics.
+    Pharmacist with <span className="font-bold">6+ years</span> across pharmacy practice, GMP-regulated pharmaceutical manufacturing (monthly output roughly quadrupled), and medical and scientific sales, retrained in bioinformatics.
     <br /><br />
     I build <span className="font-bold">reproducible NGS pipelines in Nextflow DSL2</span>, including a CI-tested GATK germline variant calling and joint genotyping pipeline, alongside RNA-seq, single-cell, and spatial transcriptomics analysis. My pharmacy background gives me a practical sense of <span className="font-bold">why a genetic variant matters clinically</span>, not just how to call it. I'm looking to contribute to genomics and NGS data analysis in a research or clinical setting, and I'm open to relocation.
   </>

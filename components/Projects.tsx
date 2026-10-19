@@ -160,8 +160,8 @@ function ProjectCard({ project, large, onOpen, delay }: { project: Project; larg
 
         <div className="mt-4"><Stats items={project.stats} /></div>
 
-        <div className="mt-auto pt-5 flex items-center gap-4 text-sm font-medium">
-          <button onClick={onOpen} className="inline-flex items-center gap-1 text-accent hover:text-accent-hover transition-colors">
+        <div className="mt-auto pt-4 flex items-center gap-4 text-sm font-medium">
+          <button onClick={onOpen} className="inline-flex items-center gap-1 py-1 text-accent hover:text-accent-hover transition-colors">
             Details <ArrowUpRight size={15} />
           </button>
           <a
@@ -169,7 +169,7 @@ function ProjectCard({ project, large, onOpen, delay }: { project: Project; larg
             target="_blank"
             rel="noreferrer"
             aria-label={`Source code for ${project.title} on GitHub`}
-            className="inline-flex items-center gap-1.5 text-muted hover:text-ink transition-colors"
+            className="inline-flex items-center gap-1.5 py-1 text-muted hover:text-ink transition-colors"
           >
             <Github size={15} /> Code
           </a>
