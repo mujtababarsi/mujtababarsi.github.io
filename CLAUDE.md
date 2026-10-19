@@ -8,7 +8,6 @@ Personal portfolio site for Mohamed Elmugtaba (bioinformatics / pharmacy), serve
 - Tailwind CSS 3 via PostCSS (`tailwind.config.js`, `postcss.config.js`, `index.css`) — a real build step, not the CDN script
 - Fonts self-hosted with `@fontsource` (Archivo headings, Space Grotesk text), imported in `index.tsx`
 - Framer Motion for animation, lucide-react for icons, Recharts for the genomic coverage chart
-- `@google/genai` for the "Ask AI" copilot and per-project "AI Insight"
 
 ## Commands
 
@@ -24,7 +23,6 @@ There are no tests, linter, or formatter configured. `npm run build` is the chec
 - `components/` — one file per page section; `components/ui/` holds shared pieces
 - `data/portfolioData.tsx` — all portfolio content (projects, experience, education, certificates, profile image path). Edit content here, not in components.
 - `types.ts` — shared data types (`Project`, `Experience`, ...)
-- `services/gemini.ts` — Gemini API wrapper with retry
 - `components/ui/ProjectCover.tsx` — generated SVG cover art for projects, drawn with theme colours
 - `public/` — static assets served at the site root (`me.jpg`, `favicon.svg`, `robots.txt`, `sitemap.xml`)
 
@@ -38,7 +36,7 @@ Add an entry to `PROJECTS` in `data/portfolioData.tsx` (newest first). Set `kind
 
 ## Gotchas
 
-- **Gemini key is public.** The workflow passes the repo secret `VITE_GEMINI_API_KEY` into the build as `GEMINI_API_KEY`, and `vite.config.ts` inlines it into the client bundle via `define`. Anyone can read it from the deployed JS. Fixing this needs a server-side proxy; it has not been done.
+- **No secrets in the client bundle.** Anything Vite inlines (via `define` or `import.meta.env`) ships in the public JS. The site used to inline a Gemini API key this way; the key, the "Ask AI" copilot and the per-project "AI insight" were removed for that reason. Bring AI features back only behind a server-side proxy that holds the key.
 - **Framer Motion owns `transform`.** On a `motion.div` that animates `x`/`y`/`scale`/`rotate`, Framer Motion writes an inline `transform` that overrides Tailwind `translate-*`/`scale-*` classes. Center or position such elements with flexbox or a wrapper instead.
 - **Keep `AnimatePresence` mounted.** Don't early-return `null` above an `AnimatePresence`; put the condition inside it, or exit animations are skipped.
 - **Colours and fonts are theme variables.** `index.css` defines `--c-*` colour channels and `--font-body`/`--font-display`; `tailwind.config.js` maps them to classes (`text-ink`, `text-body`, `text-muted`, `text-subtle`, `bg-canvas`, `bg-surface`, `bg-accent`, `bg-accent-soft`, `bg-success`, ...). Use these, not raw hex, so the site can be re-themed in one place. `text-subtle` is below 4.5:1 contrast: use it only for large or decorative text.
@@ -46,6 +44,7 @@ Add an entry to `PROJECTS` in `data/portfolioData.tsx` (newest first). Set `kind
 
 ## Open ideas
 
-- Code-split the ~1MB JS bundle (Vite warns on every build)
+- Code-split the ~700KB JS bundle (Vite warns on every build)
+- Restore "Ask AI" and "AI insight" behind a server-side proxy (e.g. a Cloudflare Worker); the removed code is in git history before the key-removal commit
 - Dark mode
 - Live GitHub stats (stars, last updated) on project cards
