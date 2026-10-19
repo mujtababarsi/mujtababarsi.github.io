@@ -60,17 +60,17 @@ function FeaturedProject({ scrollTo }: { scrollTo: (id: string) => void }) {
             <li key={item} className="px-2 py-0.5 rounded-md bg-canvas text-[12px] font-medium text-body tabular-nums">{item}</li>
           ))}
         </ul>
-        <div className="mt-5 flex items-center gap-4 text-sm font-medium">
+        <div className="mt-4 flex items-center gap-4 text-sm font-medium">
           <a
             href={featured.link}
             target="_blank"
             rel="noreferrer"
             aria-label={`Source code for ${featured.title} on GitHub`}
-            className="inline-flex items-center gap-1.5 text-accent hover:text-accent-hover transition-colors"
+            className="inline-flex items-center gap-1.5 py-1 text-accent hover:text-accent-hover transition-colors"
           >
             <Github size={15} /> View code
           </a>
-          <button onClick={() => scrollTo('projects')} className="inline-flex items-center gap-1 text-muted hover:text-ink transition-colors">
+          <button onClick={() => scrollTo('projects')} className="inline-flex items-center gap-1 py-1 text-muted hover:text-ink transition-colors">
             All projects <ArrowUpRight size={15} />
           </button>
         </div>

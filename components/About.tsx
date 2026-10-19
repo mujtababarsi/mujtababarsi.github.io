@@ -34,9 +34,9 @@ export default function About() {
               </div>
               <span className="text-[12px] font-medium text-muted uppercase tracking-wide">Illustrative</span>
             </div>
-            <div className="text-accent" style={{ height: 208, width: '100%' }}>
+            <div role="img" aria-label="Illustrative chart of sequencing depth across a genomic region" className="text-accent" style={{ height: 208, width: '100%' }}>
               <ResponsiveContainer width="100%" height="100%">
-                <AreaChart data={GENOMIC_DATA}>
+                <AreaChart data={GENOMIC_DATA} accessibilityLayer={false}>
                   <defs>
                     <linearGradient id="cMe" x1="0" y1="0" x2="0" y2="1">
                       <stop offset="5%" stopColor="currentColor" stopOpacity={0.3} />
