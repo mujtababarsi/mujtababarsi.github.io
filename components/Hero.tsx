@@ -51,7 +51,7 @@ function Portrait({ className }: { className: string }) {
 function FeaturedProject({ scrollTo }: { scrollTo: (id: string) => void }) {
   return (
     <article className="bg-surface rounded-2xl ring-1 ring-black/5 overflow-hidden shadow-[0_24px_48px_-28px_rgba(29,29,31,0.35)]">
-      <ProjectCover kind={featured.cover} className="block w-full aspect-[16/9]" />
+      <ProjectCover kind={featured.cover} className="block w-full aspect-[16/9] short:aspect-[16/8]" />
       <div className="p-5">
         <p className="text-[12px] font-medium text-muted uppercase tracking-wide">Featured pipeline</p>
         <h2 className="mt-1.5 text-base font-semibold tracking-tight text-ink leading-snug">{featured.title}</h2>
@@ -85,12 +85,12 @@ interface HeroProps {
 
 export default function Hero({ scrollTo }: HeroProps) {
   return (
-    <section id="home" className="lg:min-h-[90dvh] flex items-center pt-28 pb-8 lg:pt-28 lg:pb-12">
+    <section id="home" className="lg:min-h-[90dvh] flex items-center pt-28 pb-8 lg:pt-28 lg:pb-12 short:min-h-0 short:pt-[5.5rem] short:pb-8">
       <div className="max-w-6xl mx-auto px-6 w-full">
         <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
           <div className="lg:col-span-7 flex flex-col items-start">
-            <motion.div {...fadeUp(0)} className="flex items-center gap-4 mb-8 lg:mb-6">
-              <Portrait className="w-16 h-16 rounded-2xl shrink-0" />
+            <motion.div {...fadeUp(0)} className="flex items-center gap-4 mb-8 lg:mb-6 short:mb-4">
+              <Portrait className="w-16 h-16 short:w-12 short:h-12 rounded-2xl short:rounded-xl shrink-0" />
               <div>
                 <p className="inline-flex items-center gap-2 text-sm font-medium text-body">
                   <span className="w-2 h-2 rounded-full bg-success" />
@@ -100,17 +100,17 @@ export default function Hero({ scrollTo }: HeroProps) {
               </div>
             </motion.div>
 
-            <motion.h1 {...fadeUp(0.05)} className="text-[3.25rem] sm:text-6xl lg:text-[4rem] font-semibold tracking-tighter leading-[0.95] text-ink">
+            <motion.h1 {...fadeUp(0.05)} className="text-[3.25rem] sm:text-6xl lg:text-[4rem] short:text-[3.25rem] font-semibold tracking-tighter leading-[0.95] text-ink">
               Mohamed
               <br />
               <span className="text-subtle">Elmugtaba</span>
             </motion.h1>
 
-            <motion.p {...fadeUp(0.1)} className="mt-5 text-lg md:text-xl font-medium tracking-tight text-ink">
+            <motion.p {...fadeUp(0.1)} className="mt-5 short:mt-3 text-lg md:text-xl short:text-lg font-medium tracking-tight text-ink">
               <span className="block sm:inline">Bioinformatics Practitioner</span><span className="hidden sm:inline text-subtle"> · </span><span className="block sm:inline">Pharmacist</span>
             </motion.p>
 
-            <motion.p {...fadeUp(0.15)} className="mt-6 text-base lg:text-[17px] text-body leading-relaxed max-w-[54ch]">
+            <motion.p {...fadeUp(0.15)} className="mt-6 short:mt-4 text-base lg:text-[17px] short:text-base text-body leading-relaxed max-w-[54ch]">
               {statement.map((part, i) =>
                 part.emphasis
                   ? <span key={i} className="font-medium text-ink">{part.text}</span>
@@ -118,7 +118,7 @@ export default function Hero({ scrollTo }: HeroProps) {
               )}
             </motion.p>
 
-            <motion.dl {...fadeUp(0.2)} className="mt-7 grid grid-cols-3 gap-x-6 sm:flex sm:gap-x-8">
+            <motion.dl {...fadeUp(0.2)} className="mt-7 short:mt-5 grid grid-cols-3 gap-x-6 sm:flex sm:gap-x-8">
               {facts.map(f => (
                 <div key={f.label} className="flex flex-col-reverse">
                   <dt className="text-sm text-muted">{f.label}</dt>
@@ -127,7 +127,7 @@ export default function Hero({ scrollTo }: HeroProps) {
               ))}
             </motion.dl>
 
-            <motion.div {...fadeUp(0.25)} className="mt-8 flex flex-wrap items-center gap-3">
+            <motion.div {...fadeUp(0.25)} className="mt-8 short:mt-6 flex flex-wrap items-center gap-3">
               <button
                 onClick={() => scrollTo('projects')}
                 className="bg-accent text-white pl-5 pr-4 py-3 rounded-full font-medium text-[15px] hover:bg-accent-hover transition-colors flex items-center gap-2 active:scale-[0.98]"
