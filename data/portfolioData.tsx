@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  Dna, FlaskConical, Cloud, Code2, Microscope, Workflow
+  Dna, FlaskConical, ShieldCheck, Code2, Microscope, Workflow
 } from 'lucide-react';
 import { AreaOfExpertise, Skill, Project, Experience, Education, CertificatePart, GenomicDataPoint } from '../types';
 
@@ -14,7 +14,7 @@ export const GENOMIC_DATA: GenomicDataPoint[] = [
 
 export const summaryFull = (
   <>
-    Pharmacist with <span className="font-bold">7+ years</span> across clinical practice, GMP-regulated pharmaceutical manufacturing (monthly output roughly quadrupled), and medical and scientific sales, retrained in bioinformatics.
+    Pharmacist with <span className="font-bold">7+ years</span> across pharmacy practice, GMP-regulated pharmaceutical manufacturing (monthly output roughly quadrupled), and medical and scientific sales, retrained in bioinformatics.
     <br /><br />
     I build <span className="font-bold">reproducible NGS pipelines in Nextflow DSL2</span>, including a CI-tested GATK germline variant calling and joint genotyping pipeline, alongside RNA-seq, single-cell, and spatial transcriptomics analysis. My pharmacy background gives me a practical sense of <span className="font-bold">why a genetic variant matters clinically</span>, not just how to call it. I'm looking to contribute to genomics and NGS data analysis in a research or clinical setting, and I'm open to relocation.
   </>
@@ -32,19 +32,19 @@ export const AREAS_OF_EXPERTISE: AreaOfExpertise[] = [
   },
   {
     id: "exp2",
-    title: "Precision pharmacology",
-    description: "Bridging the gap between molecular mechanisms and therapeutic outcomes to accelerate the discovery of safer, more effective drugs.",
-    items: ["Clinical Pharmacology", "Precision Medicine", "Mechanism of Action", "Drug Efficacy & Safety"],
+    title: "Clinical and pharmaceutical science",
+    description: "A pharmacist's grounding in how drugs act, interact and are judged on evidence, which shapes how I read genomic results.",
+    items: ["Clinical Pharmacology", "Drug Interactions", "Drug Efficacy & Safety", "Evidence Communication"],
     icon: <FlaskConical className="w-6 h-6" />,
     gradient: "from-blue-50 to-white",
     accent: "text-[#0071e3]"
   },
   {
     id: "exp3",
-    title: "Digital infrastructure",
-    description: "Architecting scalable, secure computational environments that drive digital transformation and ensure reproducibility in research.",
-    items: ["Digital Transformation", "Process Optimisation", "Data Governance", "AI/ML Innovation"],
-    icon: <Cloud className="w-6 h-6" />,
+    title: "Quality and reproducibility",
+    description: "GMP documentation habits carried into analysis: versioned code, automated tests, containerised runs and records you can trace.",
+    items: ["GMP & SOPs", "Version Control", "Automated Testing (CI)", "Containerisation"],
+    icon: <ShieldCheck className="w-6 h-6" />,
     gradient: "from-blue-50 to-white",
     accent: "text-[#0071e3]"
   }
@@ -77,10 +77,10 @@ export const SKILLS: Skill[] = [
   },
   {
     id: "skill4",
-    category: "Pipelines and cloud",
-    description: "Reproducible, portable workflows.",
+    category: "Pipelines and practices",
+    description: "Reproducible, tested workflows.",
     icon: <Workflow className="w-5 h-5" />,
-    items: ["Nextflow DSL2", "nf-core", "nf-test", "Docker", "Conda", "Git / GitHub", "Google Cloud (Digital Leader)"],
+    items: ["Nextflow DSL2", "nf-test", "nf-schema", "nf-core (training)", "Docker", "Conda", "Git / GitHub", "GitHub Actions CI"],
     color: "bg-blue-50 text-[#0071e3]"
   }
 ];
@@ -135,7 +135,7 @@ export const PROJECTS: Project[] = [
     tools: "Python | Scarf | Zarr | Dask",
     desc: "Worked through the Scarf workflow: analysed a 10x Genomics 5K PBMC dataset stored in Zarr and processed in chunks, then projected 14K interferon-β-stimulated PBMCs onto a 15K control reference.",
     tags: ["Zarr", "Dask", "Label transfer"],
-    features: ["Low-Memory Chunking", "KNN Mapping", "Reference Projection"],
+    features: ["Zarr chunked storage", "KNN Mapping", "Reference Projection"],
     kind: "analysis",
     cover: "chunks",
     stats: ["5K PBMCs", "15K / 14K projection"],
@@ -158,12 +158,12 @@ export const EXPERIENCE: Experience[] = [
   {
     role: "Self-directed retraining in computational biology",
     org: "Career transition",
-    period: "2022 – Present",
+    period: "2022 – 2024 · 2025 – Present",
     summary: "After relocating from Sudan during a period of regional instability, I used the transition for a deliberate move into computational biology: self-funded, and built without institutional lab access or supervision.",
     highlights: [
       "Built bioinformatics projects on GitHub: single-cell and spatial analyses (2022), and Nextflow RNA-seq and germline variant-calling pipelines (2026)",
-      "Completed foundational and applied coursework in Linux, R, Python and pipeline engineering",
-      "2026: Seqera Nextflow training (5 certificates), including the Nextflow for Science: Genomics course that my GATK germline variant-calling pipeline follows",
+      "Coursework: Python (Kaggle, Feb 2022); Linux, Bash scripting and R for biologists (Wellcome Connecting Science, 100%, Jul 2023)",
+      "Feb 2026: Seqera Nextflow Training Week (5 certificates), including Nextflow for Genomics, the course my GATK germline variant-calling pipeline follows",
       "In progress: Integrating Generative AI into Data Workflows (BigQuery ML, predictive modelling)"
     ]
   },
@@ -227,7 +227,7 @@ export const EXPERIENCE: Experience[] = [
     period: "May 2015 – Feb 2016",
     location: "Khartoum, Sudan",
     highlights: [
-      "Clinical pharmacology practice across hospital and community settings: drug verification, patient counselling, controlled substance management and interaction screening"
+      "Dispensing, dose verification and drug-interaction screening; patient counselling on adherence and side effects; controlled-substance management"
     ]
   }
 ];
@@ -246,14 +246,14 @@ export const CERTIFICATES_PARTS: CertificatePart[] = [
   {
     title: "Pipelines and cloud",
     items: [
-      "Nextflow for RNA-seq & Genomics (5 certificates) · Seqera · Feb 2026",
-      "Google Cloud Digital Leader · Google Cloud · Jan 2026"
+      "Nextflow Training Week 2026-Q1, 5 certificates (Hello Nextflow, Nextflow Run, Hello nf-core, Nextflow for RNAseq, Nextflow for Genomics) · Seqera · Feb 2026",
+      "Google Cloud Digital Leader (badge) · Google Skills · Jan 2026"
     ]
   },
   {
     title: "Bioinformatics",
     items: [
-      "Bioinformatics for Biologists: Linux, Bash and R · Wellcome / FutureLearn · Jul 2022",
+      "Bioinformatics for Biologists: An Introduction to Linux, Bash Scripting, and R · Wellcome Connecting Science / FutureLearn · Jul 2023 · 100%",
       "NBIS Workshop: scRNA-seq · National Bioinformatics Infrastructure Sweden",
       "Bioinformatics Under Spotlight: Introduction to genomic analysis and sequence processing · 7VISION · Dec 2015"
     ]
@@ -261,7 +261,7 @@ export const CERTIFICATES_PARTS: CertificatePart[] = [
   {
     title: "Data science",
     items: [
-      "Python Certification · Kaggle · Feb 2022",
+      "Python · Kaggle · Feb 2022",
       "Integrating Generative AI into Data Workflows: BigQuery ML, predictive modelling (in progress)"
     ]
   },

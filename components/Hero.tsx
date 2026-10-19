@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { User, ChevronRight, Github, Mail, ArrowUpRight } from 'lucide-react';
+import { User, ChevronRight, Github, Mail, ArrowUpRight, FileDown } from 'lucide-react';
 import { PROFILE_IMAGE_URL, PROJECTS } from '../data/portfolioData';
 import { ProjectCover } from './ui/ProjectCover';
 
@@ -24,7 +24,7 @@ const statement: { text: string; emphasis?: boolean }[] = [
 const facts = [
   { value: String(PROJECTS.filter(p => p.kind === 'pipeline').length), label: 'Nextflow pipelines' },
   { value: String(PROJECTS.filter(p => p.kind === 'analysis').length), label: 'analysis projects' },
-  { value: '7+', label: 'years in pharma' },
+  { value: '6+', label: 'years in pharma' },
 ];
 
 const featured = PROJECTS[0];
@@ -107,7 +107,7 @@ export default function Hero({ scrollTo }: HeroProps) {
             </motion.h1>
 
             <motion.p {...fadeUp(0.1)} className="mt-5 text-lg md:text-xl font-medium tracking-tight text-ink">
-              <span className="block sm:inline">Bioinformatics Practitioner</span><span className="hidden sm:inline text-subtle"> · </span><span className="block sm:inline">Clinical Pharmacist</span>
+              <span className="block sm:inline">Bioinformatics Practitioner</span><span className="hidden sm:inline text-subtle"> · </span><span className="block sm:inline">Pharmacist</span>
             </motion.p>
 
             <motion.p {...fadeUp(0.15)} className="mt-6 text-base lg:text-[17px] text-body leading-relaxed max-w-[54ch]">
@@ -134,6 +134,13 @@ export default function Hero({ scrollTo }: HeroProps) {
               >
                 View projects <ChevronRight size={16} />
               </button>
+              <a
+                href="/Mohamed_Elmugtaba_Bioinformatics_CV.pdf"
+                download
+                className="bg-surface text-ink pl-4 pr-5 py-3 rounded-full font-medium text-[15px] ring-1 ring-black/10 hover:text-accent transition-colors flex items-center gap-2 active:scale-[0.98]"
+              >
+                <FileDown size={16} /> Download CV
+              </a>
               <a href="https://github.com/mujtababarsi" target="_blank" rel="noreferrer" aria-label="GitHub" className="w-11 h-11 flex items-center justify-center bg-surface rounded-full text-ink hover:text-accent transition-colors ring-1 ring-black/10 active:scale-[0.98]"><Github size={18} /></a>
               <a href="mailto:Mujtababarci@gmail.com" aria-label="Email" className="w-11 h-11 flex items-center justify-center bg-surface rounded-full text-ink hover:text-accent transition-colors ring-1 ring-black/10 active:scale-[0.98]"><Mail size={18} /></a>
             </motion.div>
