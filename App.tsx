@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { Sparkles } from 'lucide-react';
 
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
@@ -11,10 +10,8 @@ import Experience from './components/Experience';
 import Education from './components/Education';
 import Certifications from './components/Certifications';
 import PersonalDetails from './components/PersonalDetails';
-import AICopilotModal from './components/AICopilotModal';
 
 export default function App() {
-  const [isAiOpen, setIsAiOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   const mainContainerRef = useRef<HTMLDivElement>(null);
   
@@ -131,26 +128,6 @@ export default function App() {
       <PersonalDetails />
       </main>
 
-      {/* Floating Action Button - Apple Style */}
-      <motion.button 
-        initial={{ opacity: 0, y: 20 }}
-        animate={{
-          opacity: activeSection === 'home' ? 0 : 1,
-          y: activeSection === 'home' ? 20 : 0,
-          pointerEvents: activeSection === 'home' ? 'none' : 'auto'
-        }}
-        transition={{ duration: 0.4, ease: "easeInOut" }}
-        onMouseEnter={() => setControlsVisible(true)}
-        tabIndex={activeSection === 'home' ? -1 : 0}
-        aria-hidden={activeSection === 'home'}
-        onClick={() => setIsAiOpen(true)} 
-        className="fixed bottom-5 right-5 z-40 bg-black/80 backdrop-blur-md text-white rounded-full shadow-[0_20px_40px_-10px_rgba(0,0,0,0.3)] hover:bg-black active:scale-95 transition-colors flex items-center gap-2 pl-4 pr-5 py-3 border border-white/10"
-      >
-        <Sparkles size={18} />
-        <span className="font-medium text-[14px] whitespace-nowrap">Ask AI</span>
-      </motion.button>
-
-      <AICopilotModal isOpen={isAiOpen} onClose={() => setIsAiOpen(false)} />
     </div>
   );
 }
