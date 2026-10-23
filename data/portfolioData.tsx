@@ -16,7 +16,7 @@ export const summaryFull = (
   <>
     Pharmacist with <span className="font-bold">6+ years</span> across pharmacy practice, GMP-regulated pharmaceutical manufacturing (monthly output roughly quadrupled), and medical and scientific sales, retrained in bioinformatics.
     <br /><br />
-    I build <span className="font-bold">reproducible NGS pipelines in Nextflow DSL2</span>, including a CI-tested GATK germline variant calling and joint genotyping pipeline, alongside RNA-seq, single-cell, and spatial transcriptomics analysis. My pharmacy background gives me a practical sense of <span className="font-bold">why a genetic variant matters clinically</span>, not just how to call it. I'm looking to contribute to genomics and NGS data analysis in a research or clinical setting, and I'm open to relocation.
+    I build <span className="font-bold">reproducible NGS pipelines in Nextflow DSL2</span>, including a CI-tested GATK germline pipeline with ClinVar and SnpEff annotation and trio-based filtering, alongside RNA-seq, single-cell, and spatial transcriptomics analysis. My pharmacy background gives me a practical sense of <span className="font-bold">why a genetic variant matters clinically</span>, not just how to call it. I'm looking to contribute to genomics and NGS data analysis in a research or clinical setting, and I'm open to relocation.
   </>
 );
 
@@ -24,8 +24,8 @@ export const AREAS_OF_EXPERTISE: AreaOfExpertise[] = [
   {
     id: "exp1",
     title: "Genomic data science",
-    description: "Reproducible NGS pipelines, from germline variant calling to single-cell and spatial transcriptomics, each framed around a biological question.",
-    items: ["Germline Variant Calling", "Bulk RNA-seq", "Single-Cell RNA-seq", "Spatial Transcriptomics"],
+    description: "Reproducible NGS pipelines, from germline variant calling and annotation to single-cell and spatial analysis.",
+    items: ["Variant Calling & Annotation", "Trio Analysis", "Bulk RNA-seq", "Single-Cell & Spatial"],
     icon: <Dna className="w-6 h-6" />,
     gradient: "from-blue-50 to-white",
     accent: "text-[#0071e3]"
@@ -69,10 +69,10 @@ export const SKILLS: Skill[] = [
   },
   {
     id: "skill3",
-    category: "Bulk RNA-seq and NGS",
-    description: "Alignment, QC and variant calling.",
+    category: "NGS and variant analysis",
+    description: "Alignment, QC, variant calling and annotation.",
     icon: <Dna className="w-5 h-5" />,
-    items: ["GATK4", "STAR", "SAMtools", "bcftools", "FeatureCounts", "FastQC", "fastp", "MultiQC"],
+    items: ["GATK4", "bcftools", "SnpEff", "ClinVar", "SAMtools", "STAR", "FeatureCounts", "FastQC", "fastp", "MultiQC"],
     color: "bg-blue-50 text-[#0071e3]"
   },
   {
@@ -87,14 +87,14 @@ export const SKILLS: Skill[] = [
 
 export const PROJECTS: Project[] = [
   {
-    title: "Germline Variant Calling & Joint Genotyping",
-    tools: "Nextflow DSL2 | GATK4 | bcftools | nf-test | CI",
-    desc: "Cohort-level joint genotyping on a chr20 family trio, starting from aligned BAMs: per-sample HaplotypeCaller GVCFs, then GenomicsDBImport and GenotypeGVCFs, with Samtools and bcftools QC in MultiQC. Built following Seqera's Nextflow for Science: Genomics course, with an nf-test suite and GitHub Actions CI.",
-    tags: ["Nextflow", "Variant Calling", "GATK4"],
-    features: ["HaplotypeCaller → GenomicsDBImport → GenotypeGVCFs", "nf-test suite with GitHub Actions CI", "Run with Docker; Singularity and Conda profiles included"],
+    title: "Germline Variant Calling & Annotation",
+    tools: "Nextflow DSL2 | GATK4 | bcftools | SnpEff | ClinVar | nf-test",
+    desc: "Calls germline SNPs and indels in a chr20 family trio with GATK4 joint genotyping, then annotates them with ClinVar and SnpEff and filters for protein-altering and de novo variants. The coordinate, ClinVar and filter steps are tested with positive and negative controls in nf-test, run in GitHub Actions. Built on Seqera's Nextflow for Science: Genomics course; I added annotation and filtering.",
+    tags: ["Nextflow", "Variant Calling", "Variant Annotation"],
+    features: ["HaplotypeCaller → GenomicsDBImport → GenotypeGVCFs", "ClinVar + SnpEff annotation, protein-altering and de novo filters", "18 nf-tests, run in GitHub Actions"],
     kind: "pipeline",
     cover: "variants",
-    stats: ["chr20 trio", "GATK4 joint genotyping", "CI passing"],
+    stats: ["chr20 trio", "ClinVar + SnpEff", "CI passing"],
     link: "https://github.com/mujtababarsi/Human-DNAseq-chr20-nf-dsl2"
   },
   {
@@ -163,7 +163,7 @@ export const EXPERIENCE: Experience[] = [
     highlights: [
       "Built bioinformatics projects on GitHub: single-cell and spatial analyses (2022), and Nextflow RNA-seq and germline variant-calling pipelines (2026)",
       "Coursework: Python (Kaggle, Feb 2022); Linux, Bash scripting and R for biologists (Wellcome Connecting Science, 100%, Jul 2023)",
-      "Feb 2026: Seqera Nextflow Training Week (5 certificates), including Nextflow for Genomics, the course my GATK germline variant-calling pipeline follows",
+      "Feb 2026: Seqera Nextflow Training Week (5 certificates), including Nextflow for Genomics, the course my GATK germline variant-calling pipeline follows; extended it with variant annotation and trio filtering (Oct 2026)",
       "In progress: Integrating Generative AI into Data Workflows (BigQuery ML, predictive modelling)"
     ]
   },
