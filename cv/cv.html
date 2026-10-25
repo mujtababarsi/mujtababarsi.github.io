@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Mohamed Elmugtaba Mohamed – CV</title>
+<link rel="stylesheet" href="../node_modules/@fontsource/lora/400.css">
+<link rel="stylesheet" href="../node_modules/@fontsource/lora/500.css">
+<link rel="stylesheet" href="../node_modules/@fontsource/lora/700.css">
+<link rel="stylesheet" href="../node_modules/@fontsource/lora/400-italic.css">
+<link rel="stylesheet" href="../node_modules/@fontsource/source-sans-3/400.css">
+<link rel="stylesheet" href="../node_modules/@fontsource/source-sans-3/400-italic.css">
+<link rel="stylesheet" href="../node_modules/@fontsource/source-sans-3/600.css">
+<link rel="stylesheet" href="../node_modules/@fontsource/source-sans-3/700.css">
+<link rel="stylesheet" href="../node_modules/@fontsource/source-code-pro/400.css">
+<style>
+  @page { size: A4; margin: 0; }
+  :root {
+    --teal: #1a7a6e; --teal-dark: #0d5e54; --ink: #1c1c1e; --body: #4a4a4f; --muted: #6e6e73;
+    --box: #e8f4f2; --chip: #f0f7f6; --chip-line: #cfe4e0; --line: #e4e4e6;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: #fff; }
+  body { font-family: 'Source Sans 3', sans-serif; color: var(--body); font-size: 11.2px; line-height: 18.6px; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  a { color: inherit; text-decoration: none; }
+  .page { width: 794px; height: 1123px; padding: 17px 29px 0 28px; overflow: hidden; page-break-after: always; position: relative; }
+  .page:last-child { page-break-after: auto; }
+
+  h1 { font-family: 'Lora', serif; font-weight: 700; font-size: 30.5px; line-height: 1.15; color: var(--ink); letter-spacing: -0.2px; }
+  .tagline { margin-top: 3px; color: var(--teal); font-size: 11.6px; letter-spacing: 0.135em; font-weight: 500; }
+  .tagline .sep { margin: 0 8px; }
+  .contact { margin-top: 8px; display: flex; flex-wrap: wrap; column-gap: 18px; row-gap: 0; font-size: 11.2px; line-height: 20px; color: var(--body); }
+  .contact span { white-space: nowrap; }
+  .lbl { font-size: 8.6px; font-weight: 700; letter-spacing: 0.08em; color: var(--muted); text-transform: uppercase; margin-right: 4px; }
+  .rule { height: 2px; background: var(--teal); margin-top: 11px; }
+
+  .cols { display: grid; grid-template-columns: 510px 205px; column-gap: 22px; margin-top: 14px; }
+  .sec { font-family: 'Lora', serif; font-weight: 500; font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--teal); padding-bottom: 5px; }
+  .side .sec { border-bottom: 1px solid var(--line); margin-bottom: 6px; }
+  .quote { margin-top: 8px; border-left: 3px solid var(--teal); padding: 1px 0 1px 11px; font-family: 'Lora', serif; font-style: italic; color: var(--teal-dark); font-size: 12.6px; line-height: 19.5px; }
+  .summary { margin-top: 6px; }
+
+  .projects { margin-top: 12px; }
+  .proj { padding: 6px 0 6px; border-bottom: 1px solid var(--line); }
+  .proj:last-child { border-bottom: 0; }
+  .proj-head { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
+  .proj-title { font-weight: 700; color: var(--ink); font-size: 11.9px; }
+  .gh { font-family: 'Source Code Pro', monospace; font-size: 8.8px; color: var(--teal); white-space: nowrap; }
+  .chips { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 5px; }
+  .mono { font-family: 'Source Code Pro', monospace; font-size: 9px; color: var(--teal); background: var(--chip); border: 1px solid var(--chip-line); border-radius: 3px; padding: 0 5px; line-height: 14px; }
+  .output { margin-top: 6px; background: var(--box); border-left: 3px solid var(--teal); padding: 2px 8px; color: var(--ink); font-size: 11.1px; line-height: 18.3px; }
+  .output b { color: var(--teal-dark); }
+  .facts { display: grid; grid-template-columns: 66px 1fr; column-gap: 10px; row-gap: 2px; margin-top: 5px; font-size: 10.3px; line-height: 15.7px; }
+  .facts dt { font-size: 8.5px; font-weight: 600; letter-spacing: 0.08em; color: var(--muted); padding-top: 1px; }
+  .badge { font-family: 'Source Code Pro', monospace; font-size: 8.4px; letter-spacing: 0.08em; color: var(--muted); border: 1px solid #c9c9cc; border-radius: 3px; padding: 0 5px; margin-left: 6px; vertical-align: 1px; }
+  .mini { margin-top: 4px; font-size: 10.8px; line-height: 16.6px; }
+  .mini b { color: var(--ink); }
+  .mini .gh { margin-left: 3px; }
+
+  .side .sub { font-size: 8.9px; font-weight: 700; letter-spacing: 0.09em; color: var(--teal); text-transform: uppercase; margin: 7px 0 4px; }
+  .side .sub:first-of-type { margin-top: 2px; }
+  .chip { font-size: 10.2px; color: var(--ink); background: var(--chip); border: 1px solid var(--chip-line); border-radius: 3px; padding: 0 5px; line-height: 17px; }
+  .side .chips { gap: 4px 4px; margin-top: 0; }
+  .note { font-size: 8.9px; color: var(--muted); margin-top: 6px; }
+  .side-block { margin-top: 14px; }
+  .edu-deg { font-weight: 700; color: var(--ink); font-size: 11.9px; }
+  .edu-school { color: var(--teal); font-size: 11.3px; }
+  .small { font-size: 10px; color: var(--muted); line-height: 15.6px; }
+  .cert { display: grid; grid-template-columns: 11px 1fr; margin-bottom: 6px; }
+  .cert::before { content: "◈"; color: var(--teal); font-size: 8.5px; line-height: 15.6px; }
+  .cert-t { font-weight: 600; color: var(--ink); font-size: 10.6px; line-height: 15.6px; }
+
+  .train { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 10px; }
+  .tbox { background: var(--box); border: 1px solid #c3e0db; border-radius: 4px; padding: 12px 14px 13px; }
+  .tbox h3 { font-size: 11.3px; font-weight: 700; color: var(--teal-dark); }
+  .tbox .when { font-size: 9.1px; color: var(--muted); margin-top: 3px; }
+  .tbox .intro { font-style: italic; margin-top: 6px; font-size: 10.8px; line-height: 16.4px; }
+  .tbox ul { list-style: none; margin-top: 6px; }
+  .tbox li { position: relative; padding-left: 15px; font-size: 10.8px; line-height: 16.4px; margin-top: 3.5px; }
+  .tbox li::before { content: "✓"; position: absolute; left: 1px; color: var(--teal); font-size: 10px; }
+  .tbox li b { color: var(--ink); font-weight: 600; }
+
+  .p2 .sec { border-bottom: 1px solid var(--line); margin-bottom: 0; }
+  .job { margin-top: 12px; }
+  .job-head { display: flex; justify-content: space-between; align-items: baseline; }
+  .role { font-weight: 700; color: var(--ink); font-size: 12.4px; }
+  .dates { font-size: 10px; color: var(--muted); }
+  .org { color: var(--teal); font-size: 11.3px; margin-top: 0; }
+  .job ul { list-style: none; margin-top: 3px; }
+  .job li { position: relative; padding-left: 14px; font-size: 11px; margin-top: 2px; line-height: 18.3px; }
+  .job li::before { content: "▸"; position: absolute; left: 0; color: var(--teal); font-size: 9px; top: 1px; }
+  .foot { margin-top: 14px; background: var(--chip); border: 1px solid #c3e0db; border-radius: 4px; padding: 8px 13px; font-size: 10.8px; }
+  .foot .k { font-size: 8.7px; font-weight: 700; letter-spacing: 0.08em; color: var(--teal); margin-right: 5px; }
+  .foot .dot { color: #b9b9bd; margin: 0 10px; }
+  .updated { text-align: right; font-size: 8.9px; color: var(--muted); margin-top: 10px; }
+</style>
+</head>
+<body>
+
+<!-- PAGE 1 -->
+<section class="page">
+  <h1>Mohamed Elmugtaba Mohamed</h1>
+  <div class="tagline">BIOINFORMATICS PRACTITIONER<span class="sep">|</span>GENOMIC DATA ANALYSIS &amp; REPRODUCIBLE PIPELINES<span class="sep">|</span>PHARMACIST</div>
+  <div class="contact">
+    <span><span class="lbl">Email</span><a href="mailto:mujtababarci@gmail.com">mujtababarci@gmail.com</a></span>
+    <span><span class="lbl">Location</span>Riyadh, Saudi Arabia · open to relocation</span>
+    <span><span class="lbl">GitHub</span><a href="https://github.com/mujtababarsi">github.com/mujtababarsi</a></span>
+    <span><span class="lbl">Portfolio</span><a href="https://mujtababarsi.github.io/">mujtababarsi.github.io</a></span>
+  </div>
+  <div class="rule"></div>
+
+  <div class="cols">
+    <main>
+      <div class="sec">Professional Summary</div>
+      <div class="quote">A pharmacist who retrained in computational biology and builds reproducible, tested genomic workflows.</div>
+      <p class="summary">Pharmacist with 7+ years of professional experience, 6+ of them across pharmacy practice, GMP pharmaceutical manufacturing and medical and scientific sales. Builds Nextflow DSL2 pipelines on Linux for germline variant calling and annotation (GATK4, ClinVar, SnpEff, trio filtering) and RNA-seq, with Git, modular code, nf-test automated testing, GitHub Actions CI and Docker containers, and has hands-on single-cell RNA-seq analysis in Python (Scanpy). GMP production work (batch-record approval, SOPs, deviation records, 100% compliance on every product release) built the documentation and quality habits that reproducible analysis depends on; scientific sales built clear communication of evidence to physicians. Seeking an entry-level bioinformatics role in genomics or precision medicine.</p>
+
+      <div class="sec projects">Bioinformatics Projects</div>
+
+      <div class="proj">
+        <div class="proj-head"><div class="proj-title">1. Germline Variant Calling &amp; Annotation Pipeline (BAM → VCF)</div><a class="gh" href="https://github.com/mujtababarsi/Human-DNAseq-chr20-nf-dsl2">↗ GitHub</a></div>
+        <div class="chips"><span class="mono">Nextflow DSL2</span><span class="mono">GATK4</span><span class="mono">bcftools</span><span class="mono">SnpEff</span><span class="mono">ClinVar</span><span class="mono">nf-test</span><span class="mono">GitHub Actions</span><span class="mono">Docker</span></div>
+        <div class="output"><b>Output:</b> Joint-genotyped trio VCF of germline SNPs and indels, annotated with ClinVar and SnpEff, plus a table of protein-altering and de novo candidates; QC in a MultiQC report; 18 nf-tests passing in CI.</div>
+        <dl class="facts">
+          <dt>SCALE</dt><dd>Family trio (3 samples) · chromosome 20 slice · hg19/b37 · starts from aligned BAMs.</dd>
+          <dt>METHODS</dt><dd>HaplotypeCaller (GVCF) → GenomicsDBImport → GenotypeGVCFs → coordinate shift → ClinVar (bcftools annotate) → SnpEff → protein-altering and de novo filters; samtools and bcftools stats → MultiQC. nf-schema validation, fail-fast input checks, retry on out-of-memory exits.</dd>
+          <dt>TESTS</dt><dd>Positive and negative controls for the coordinate-shift, ClinVar and filter steps.</dd>
+          <dt>SOURCE</dt><dd>Dataset and calling steps adapted from Seqera's Nextflow for Science: Genomics course (credited in the repo); annotation and trio filtering added independently.</dd>
+        </dl>
+      </div>
+
+      <div class="proj">
+        <div class="proj-head"><div class="proj-title">2. Reproducible Human RNA-seq Pipeline (FASTQ → counts)</div><a class="gh" href="https://github.com/mujtababarsi/Human-RNAseq-nf-dsl2">↗ GitHub</a></div>
+        <div class="chips"><span class="mono">Nextflow DSL2</span><span class="mono">FastQC</span><span class="mono">fastp</span><span class="mono">STAR</span><span class="mono">featureCounts</span><span class="mono">MultiQC</span><span class="mono">Docker</span></div>
+        <div class="output"><b>Output:</b> Raw FASTQ → sorted BAM → gene-level count matrix, with all QC aggregated in one MultiQC report.</div>
+        <dl class="facts">
+          <dt>SCALE</dt><dd>Human chromosome 22 (GRCh38, Ensembl 110) · single- or paired-end reads.</dd>
+          <dt>METHODS</dt><dd>STAR index → FastQC → fastp → STAR → featureCounts → MultiQC; Docker containers on a local executor (containerised, not yet run on HPC or cloud); fail-fast checks on the samplesheet and references.</dd>
+        </dl>
+      </div>
+
+      <div class="proj">
+        <div class="proj-head"><div class="proj-title">3. COVID-19 vs Control PBMC Single-Cell RNA-seq Analysis</div><a class="gh" href="https://github.com/mujtababarsi/Covid-19-single-cell-analysis-Scanpy">↗ GitHub</a></div>
+        <div class="chips"><span class="mono">Python</span><span class="mono">Scanpy</span><span class="mono">AnnData</span><span class="mono">Scrublet</span><span class="mono">Scanorama</span><span class="mono">gseapy</span></div>
+        <div class="output"><b>Output:</b> QC-filtered 9,000 cells to 5,589; compared three batch-integration methods; clustered (Louvain, 9 clusters), annotated by reference label transfer and Enrichr markers, and compared COVID-19 with control cells within clusters.</div>
+        <dl class="facts">
+          <dt>SCALE</dt><dd>6 samples (3 COVID-19, 3 controls) · 10x Genomics · 1,500 cells each.</dd>
+          <dt>METHODS</dt><dd>Mito/ribo QC, sex and cell-cycle checks, doublet removal; MNN, ComBat, Scanorama; Wilcoxon, t-test and logistic-regression DE; Enrichr and GSEA.</dd>
+          <dt>SOURCE</dt><dd>NBIS project-based scRNA-seq workshop.</dd>
+        </dl>
+      </div>
+
+      <div class="proj">
+        <div class="proj-title">4. Single-Cell &amp; Spatial Analyses<span class="badge">TUTORIAL-BASED</span></div>
+        <p class="mini"><b>Visium + scRNA-seq integration:</b> human lymph node QC, clustering and spatially variable genes (SpatialDE); two mouse-brain sections integrated with Scanorama and labelled from a cortex reference.<a class="gh" href="https://github.com/mujtababarsi/Scanpy-scRNA-seq-Analysis">↗ GitHub</a></p>
+        <p class="mini" style="margin-top:2px"><b>Scarf:</b> 10x 5K PBMC clustering, and projection of 14K interferon-stimulated PBMCs onto a 15K control reference with label transfer.<a class="gh" href="https://github.com/mujtababarsi/Scarf-workflow-PBMC">↗ GitHub</a></p>
+      </div>
+    </main>
+
+    <aside class="side">
+      <div class="sec">Technical Skills</div>
+      <div class="sub">Languages &amp; Environment</div>
+      <div class="chips"><span class="chip">Python</span><span class="chip">R (ggplot2)</span><span class="chip">Bash</span><span class="chip">Linux / Unix</span><span class="chip">Jupyter</span></div>
+      <div class="sub">Workflows &amp; Practices</div>
+      <div class="chips"><span class="chip">Nextflow DSL2</span><span class="chip">nf-test</span><span class="chip">nf-schema</span><span class="chip">nf-core*</span><span class="chip">Docker</span><span class="chip">Conda</span><span class="chip">Git / GitHub</span><span class="chip">GitHub Actions CI</span></div>
+      <div class="sub">NGS, Variant Analysis &amp; QC</div>
+      <div class="chips"><span class="chip">GATK4</span><span class="chip">HaplotypeCaller</span><span class="chip">GenomicsDBImport</span><span class="chip">GenotypeGVCFs</span><span class="chip">bcftools</span><span class="chip">SnpEff</span><span class="chip">ClinVar</span><span class="chip">Samtools</span><span class="chip">STAR</span><span class="chip">featureCounts</span><span class="chip">FastQC</span><span class="chip">fastp</span><span class="chip">MultiQC</span></div>
+      <div class="sub">Single-Cell &amp; Spatial</div>
+      <div class="chips"><span class="chip">Scanpy</span><span class="chip">AnnData</span><span class="chip">Scanorama</span><span class="chip">ComBat / MNN</span><span class="chip">Scrublet</span><span class="chip">gseapy</span><span class="chip">Scarf*</span><span class="chip">SpatialDE*</span></div>
+      <div class="note">* course- or tutorial-level</div>
+
+      <div class="side-block">
+        <div class="sec">Education</div>
+        <div class="edu-deg">BSc Pharmacy</div>
+        <div class="edu-school">National Ribat University</div>
+        <div class="small">Khartoum, Sudan · 2010 – 2015</div>
+        <div class="small" style="margin-top:6px;color:var(--body)">Coursework: biochemistry, microbiology, pharmacology, clinical pharmacology, analytical chemistry.</div>
+      </div>
+
+      <div class="side-block">
+        <div class="sec">Certifications</div>
+        <div class="sub">Pipelines &amp; NGS</div>
+        <div class="cert"><div><div class="cert-t">Nextflow Training Week 2026-Q1: 5 certificates</div><div class="small">Hello Nextflow · Nextflow Run · Hello nf-core · Nextflow for RNAseq · Nextflow for Genomics</div><div class="small">Seqera · Feb 2026</div></div></div>
+        <div class="sub">Bioinformatics</div>
+        <div class="cert"><div><div class="cert-t">Bioinformatics for Biologists: An Introduction to Linux, Bash Scripting, and R</div><div class="small">Wellcome Connecting Science / FutureLearn · Jul 2023 · 100%</div></div></div>
+        <div class="cert"><div><div class="cert-t">scRNA-seq workshop (project-based)</div><div class="small">NBIS, National Bioinformatics Infrastructure Sweden</div></div></div>
+        <div class="cert"><div><div class="cert-t">Python</div><div class="small">Kaggle · Feb 2022</div></div></div>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- PAGE 2 -->
+<section class="page p2">
+  <div class="sec" style="margin-top:4px">Training &amp; Transition</div>
+  <div class="train">
+    <div class="tbox">
+      <h3>Self-directed retraining in computational biology</h3>
+      <div class="when">2022 – 2024</div>
+      <p class="intro">Career break after a family relocation from Sudan during regional instability, used for structured self-study.</p>
+      <ul>
+        <li><b>Foundations:</b> Python, Kaggle (Feb 2022)</li>
+        <li><b>Portfolio:</b> single-cell and spatial analyses on GitHub (Jul–Sep 2022), including the NBIS COVID-19 workshop project</li>
+        <li><b>Visualisation:</b> R and ggplot2 scripts (Jul 2023)</li>
+        <li><b>Coursework:</b> Linux, Bash scripting and R for biologists, Wellcome Connecting Science, 100% (Jul 2023)</li>
+      </ul>
+    </div>
+    <div class="tbox">
+      <h3>Pipeline engineering</h3>
+      <div class="when">2025 – Present</div>
+      <p class="intro">Relocated to Riyadh (Oct 2025); structured training and pipeline building alongside the job search.</p>
+      <ul>
+        <li><b>Seqera (Feb 2026):</b> 5 Nextflow certificates, including RNA-seq, genomics and nf-core</li>
+        <li><b>Built:</b> RNA-seq pipeline (Feb 2026) and GATK4 germline variant-calling pipeline with nf-test and CI (Sep–Oct 2026), extended with ClinVar/SnpEff annotation and trio filtering (Oct 2026)</li>
+        <li><b>Cloud:</b> Google Cloud Digital Leader badge, Google Skills (Jan 2026)</li>
+        <li><b>In progress:</b> Integrating Generative AI into Data Workflows (Google Skills)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sec" style="margin-top:22px">Professional Experience</div>
+
+  <div class="job">
+    <div class="job-head"><span class="role">Key Account &amp; Operations Coordinator</span><span class="dates">2024 – 2025</span></div>
+    <div class="org">Dukhan Group · Qatar</div>
+    <ul>
+      <li>Built and maintained operational trackers (contract status, SLA compliance, recovery outcomes), checking the data across business units.</li>
+      <li>Found the root causes of workflow bottlenecks between departments; primary liaison between clients and internal teams to resolve service failures.</li>
+    </ul>
+  </div>
+  <div class="job">
+    <div class="job-head"><span class="role">Scientific Sales Officer</span><span class="dates">2021 – 2022</span></div>
+    <div class="org">Salmawit Co. Ltd · Sudan</div>
+    <ul>
+      <li>Turned published clinical study data into evidence-based communication for physicians on efficacy, safety and appropriate prescribing across a GIT/IBS portfolio.</li>
+      <li>Planned and delivered CME events and clinical seminars in gastroenterology at least once a quarter; ran a structured call cycle of 120 physicians.</li>
+    </ul>
+  </div>
+  <div class="job">
+    <div class="job-head"><span class="role">Production Pharmacist</span><span class="dates">2019 – 2020</span></div>
+    <div class="org">Blue Nile Pharmaceutical Factory · Sudan</div>
+    <ul>
+      <li>Reviewed and approved batch production and manufacturing records (BPR/BMR) before release, with 100% GMP compliance on every product release.</li>
+      <li>Wrote SOPs and kept deviation reports and traceability logs.</li>
+      <li>Supervised end-to-end production and a 90-person team, coordinating QA, QC and maintenance as monthly output roughly quadrupled (15–17M → 60–65M tablets/month).</li>
+    </ul>
+  </div>
+  <div class="job">
+    <div class="job-head"><span class="role">Medical Representative (Territory Lead)</span><span class="dates">2017 – 2018</span></div>
+    <div class="org">Aurobindo Pharma · Sudan</div>
+    <ul>
+      <li>Led the launch of a new antibiotic brand in a high-priority territory and secured a government formulary listing under the national government insurance scheme; gave scientific presentations and roundtables for key opinion leaders.</li>
+    </ul>
+  </div>
+  <div class="job">
+    <div class="job-head"><span class="role">Medical Representative</span><span class="dates">2016 – 2017</span></div>
+    <div class="org">Bioderma · Sudan</div>
+  </div>
+  <div class="job">
+    <div class="job-head"><span class="role">Pharmacist</span><span class="dates">2015 – 2016</span></div>
+    <div class="org">Wenji Pharmacy &amp; Sudan Military Hospital · Sudan</div>
+    <ul>
+      <li>Dispensing, dose verification and drug-interaction screening; patient counselling on adherence and side effects.</li>
+    </ul>
+  </div>
+
+  <div class="foot"><span class="k">LANGUAGES</span>Arabic (native) · English (full professional proficiency)<span class="dot">·</span><span class="k">STATUS</span>Valid, transferable Iqama (KSA)<span class="dot">·</span><span class="k">AVAILABILITY</span>Immediate</div>
+  <div class="updated">Updated October 2026</div>
+</section>
+</body>
+</html>
