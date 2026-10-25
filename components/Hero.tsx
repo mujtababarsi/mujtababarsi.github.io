@@ -136,10 +136,11 @@ export default function Hero({ scrollTo }: HeroProps) {
               </button>
               <a
                 href="/Mohamed_Elmugtaba_Bioinformatics_CV.pdf"
-                download
+                target="_blank"
+                rel="noreferrer"
                 className="bg-surface text-ink pl-4 pr-5 py-3 rounded-full font-medium text-[15px] ring-1 ring-black/10 hover:text-accent transition-colors flex items-center gap-2 active:scale-[0.98]"
               >
-                <FileDown size={16} /> Download CV
+                <FileDown size={16} /> View CV
               </a>
               <a href="https://github.com/mujtababarsi" target="_blank" rel="noreferrer" aria-label="GitHub" className="w-11 h-11 flex items-center justify-center bg-surface rounded-full text-ink hover:text-accent transition-colors ring-1 ring-black/10 active:scale-[0.98]"><Github size={18} /></a>
               <a href="mailto:Mujtababarci@gmail.com" aria-label="Email" className="w-11 h-11 flex items-center justify-center bg-surface rounded-full text-ink hover:text-accent transition-colors ring-1 ring-black/10 active:scale-[0.98]"><Mail size={18} /></a>

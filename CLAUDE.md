@@ -14,6 +14,7 @@ Personal portfolio site for Mohamed Elmugtaba (bioinformatics / pharmacy), serve
 - `npm run dev` — dev server on port 3000
 - `npm run build` — production build to `dist/`
 - `npm run preview` — serve the built `dist/`
+- `npm run cv` — print `cv/cv.html` to `public/Mohamed_Elmugtaba_Bioinformatics_CV.pdf` with headless Chrome (set `CHROME_PATH` if Chrome isn't found)
 
 There are no tests, linter, or formatter configured. `npm run build` is the check: it fails on TypeScript/import errors.
 
@@ -24,11 +25,16 @@ There are no tests, linter, or formatter configured. `npm run build` is the chec
 - `data/portfolioData.tsx` — all portfolio content (projects, experience, education, certificates, profile image path). Edit content here, not in components.
 - `types.ts` — shared data types (`Project`, `Experience`, ...)
 - `components/ui/ProjectCover.tsx` — generated SVG cover art for projects, drawn with theme colours
-- `public/` — static assets served at the site root (`me.jpg`, `favicon.svg`, `robots.txt`, `sitemap.xml`)
+- `public/` — static assets served at the site root (`me.jpg`, `favicon.svg`, `robots.txt`, `sitemap.xml`, the CV PDF)
+- `cv/cv.html` — source of the 2-page A4 CV. Not part of the site build; its fonts (Lora, Source Sans 3, Source Code Pro) are dev dependencies
 
 ## Adding a project
 
 Add an entry to `PROJECTS` in `data/portfolioData.tsx` (newest first). Set `kind` (`pipeline` or `analysis`, which decides the group it shows in), `cover` (one of the kinds in `ProjectCover.tsx`; add a new one there if none fits) and 2–3 short `stats`.
+
+## Updating the CV
+
+Edit the text in `cv/cv.html`, run `npm run cv`, then open the PDF and check that both pages still fit: each `.page` has a fixed A4 height with `overflow: hidden`, so text that runs past the bottom of a page is cut off, not moved to the next page. Commit both files. The site's CV buttons open the PDF in a new tab. When the DNA-seq or other project wording changes, update the CV alongside `data/portfolioData.tsx`.
 
 ## Deployment
 

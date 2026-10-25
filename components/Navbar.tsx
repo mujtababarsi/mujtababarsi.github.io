@@ -54,7 +54,8 @@ export default function Navbar({ activeSection, scrollTo }: NavbarProps) {
         <div className="hidden md:flex items-center gap-2">
             <a
               href="/Mohamed_Elmugtaba_Bioinformatics_CV.pdf"
-              download
+              target="_blank"
+              rel="noreferrer"
               className="px-4 py-1.5 bg-surface text-ink ring-1 ring-black/10 text-[12px] font-medium rounded-full hover:text-accent transition-colors"
             >
               CV
@@ -106,10 +107,11 @@ export default function Navbar({ activeSection, scrollTo }: NavbarProps) {
               ))}
               <a
                 href="/Mohamed_Elmugtaba_Bioinformatics_CV.pdf"
-                download
+                target="_blank"
+                rel="noreferrer"
                 className="p-3 text-left rounded-xl text-[14px] font-medium text-ink hover:bg-canvas transition-colors"
               >
-                Download CV
+                View CV
               </a>
             </div>
           </motion.div>
