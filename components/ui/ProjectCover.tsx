@@ -71,7 +71,7 @@ function Pipeline() {
             fill={i === 2 ? 'rgb(var(--c-surface))' : INK} fillOpacity={i === 2 ? 1 : 0.75}>{n.label}</text>
         </g>
       ))}
-      <text x={28} y={196} fontSize={10} fill={INK} fillOpacity={0.45} fontFamily="ui-monospace, monospace">nextflow run main.nf -profile docker</text>
+      <text x={28} y={196} fontSize={10} fill={INK} fillOpacity={0.45} fontFamily="ui-monospace, monospace">nextflow run main.nf</text>
     </>
   );
 }

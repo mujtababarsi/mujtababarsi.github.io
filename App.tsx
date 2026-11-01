@@ -73,7 +73,7 @@ export default function App() {
           }
         });
       },
-      { threshold: 0.2, rootMargin: "-20% 0px -20% 0px" } 
+      { threshold: 0, rootMargin: "-30% 0px -69% 0px" } 
     );
 
     const sections = ['home', 'me', 'expertise', 'projects', 'experience', 'education'];
