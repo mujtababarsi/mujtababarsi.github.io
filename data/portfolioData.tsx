@@ -196,7 +196,7 @@ export const EXPERIENCE: Experience[] = [
     highlights: [
       "Supervised end-to-end production and a 90-person team; monthly output roughly quadrupled, from 15–17M to 60–65M tablets/month",
       "Reviewed and approved batch production and manufacturing records before release, with 100% GMP compliance on every product release",
-      "Coordinated QA, QC and maintenance to clear bottlenecks during the scale-up; wrote SOPs and kept deviation reports and traceability logs"
+      "Coordinated QA, QC and maintenance to clear bottlenecks during the scale-up; planned production schedules against sales forecasts and coordinated with procurement on raw materials"
     ]
   },
   {
