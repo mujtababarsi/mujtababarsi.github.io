@@ -83,9 +83,10 @@ export default function Navbar({ activeSection, scrollTo }: NavbarProps) {
       <AnimatePresence>
         {isMobileOpen && (
           <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.2 }}
             className="md:hidden overflow-hidden bg-white/95 backdrop-blur-xl border-b border-black/5"
           >
             <div className="flex flex-col p-4 space-y-1">
